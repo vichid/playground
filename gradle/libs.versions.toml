@@ -21,5 +21,5 @@ gradlePlugins-kotlin={ module="org.jetbrains.kotlin:kotlin-gradle-plugin", versi
 gradlePlugins-versionsBenManes={ module="com.github.ben-manes:gradle-versions-plugin", version.ref="gradlePlugins-versionsBenManes" }
 
 [bundles]
-compose=["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui"]
+compose=["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]
 

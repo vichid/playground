@@ -36,5 +36,4 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
-    debugImplementation(libs.androidx.compose.uiTooling)
 }
