@@ -6,22 +6,66 @@ on:
   pull_request:
 
 jobs:
-
-  test:
-    name: Run unit tests
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Generate build number
+        shell: bash
+        run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Run tests with Gradle
-        uses: eskatos/gradle-command-action@v1.3.3
+
+      - name: Generate cache key
+        run: ./checksum.sh checksum.txt
+
+      - uses: actions/cache@v2
+        continue-on-error: true # continue if the cache restore/upload fails
         with:
-          arguments: test --continue --no-daemon
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+          key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
+
+      - name: Build and check
+        run: |
+          ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
+               spotlessCheck \
+               assemble bundle \
+               app:lintDebug \
+               testDebug
+
+      - name: Upload build outputs
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-outputs
+          path: app/build/outputs
+
+      - name: Upload build reports
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-reports
+          path: app/build/reports
+
+      - name: Copy test results
+        if: always()
+        run: |
+          mkdir -p junit
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: junit-results
+          path: junit
+

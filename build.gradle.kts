@@ -28,16 +28,32 @@ fun String.isNonStable(): Boolean {
     return isStable.not()
 }
 
-tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+tasks {
+    withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
 
-    rejectVersionIf {
-        candidate.version.isNonStable()
+        rejectVersionIf {
+            candidate.version.isNonStable()
+        }
+
+        checkForGradleUpdate = true
+        outputFormatter = "json"
+        outputDir = "build/dependencyUpdates"
+        reportfileName = "report"
     }
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            // Treat all Kotlin warnings as errors
+            allWarningsAsErrors = true
 
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
+            freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.FlowPreview")
+            freeCompilerArgs.plus("-Xopt-in=kotlin.Experimental")
+
+            // Set JVM target to 1.8
+            jvmTarget = "1.8"
+        }
+    }
 }
 
 allprojects {
