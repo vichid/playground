@@ -5,6 +5,7 @@ buildscript {
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.versionsBenManes)
+        classpath(libs.gradlePlugins.spotless)
     }
 
     repositories {
@@ -15,6 +16,9 @@ buildscript {
     }
 }
 
+apply {
+    from(rootProject.file("gradle/spotless-config.gradle"))
+}
 apply(plugin = "com.github.ben-manes.versions")
 
 fun String.isNonStable(): Boolean {

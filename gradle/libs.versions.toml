@@ -4,6 +4,7 @@ appCompat="1.4.0-alpha03"
 compose="1.0.1"
 gradlePlugins-agp="7.0.0"
 gradlePlugins-versionsBenManes="0.39.0"
+gradlePlugins-spotless="5.14.2"
 kotlin="1.5.21"
 
 [libraries]
@@ -19,6 +20,7 @@ androidx-compose-uiTooling={ module="androidx.compose.ui:ui-tooling", version.re
 gradlePlugins-android={ module="com.android.tools.build:gradle", version.ref="gradlePlugins-agp" }
 gradlePlugins-kotlin={ module="org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref="kotlin" }
 gradlePlugins-versionsBenManes={ module="com.github.ben-manes:gradle-versions-plugin", version.ref="gradlePlugins-versionsBenManes" }
+gradlePlugins-spotless={ module="com.diffplug.spotless:spotless-plugin-gradle", version.ref="gradlePlugins-spotless" }
 
 [bundles]
 compose=["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]
