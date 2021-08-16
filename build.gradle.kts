@@ -19,7 +19,10 @@ buildscript {
 apply {
     from(rootProject.file("gradle/spotless-config.gradle"))
 }
-apply(plugin = "com.github.ben-manes.versions")
+plugins {
+    id("com.github.ben-manes.versions") version "0.39.0"
+    id("com.osacky.doctor") version "0.7.1"
+}
 
 fun String.isNonStable(): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { toUpperCase().contains(it) }
@@ -53,6 +56,13 @@ tasks {
             // Set JVM target to 1.8
             jvmTarget = "1.8"
         }
+    }
+}
+
+doctor {
+    warnWhenNotUsingParallelGC.set(false)
+    javaHome {
+        ensureJavaHomeMatches.set(false)
     }
 }
 
