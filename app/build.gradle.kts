@@ -31,6 +31,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
+    lint {
+        isWarningsAsErrors = true
+        isCheckDependencies = true
+        isCheckReleaseBuilds = false
+        isAbortOnError = true
+        isIgnoreTestSources = true
+    }
 }
 
 dependencies {
