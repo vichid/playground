@@ -16,7 +16,6 @@ fun PlaygroundScaffold(
         Scaffold(
             topBar = {
                 TopAppBar {
-
                 }
             },
             content = content

@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalAnimationApi::class)
-
 package com.example.playground.ui.login
 
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -22,6 +20,7 @@ import com.example.playground.ui.components.ClearableOutlinedTextField
 import com.example.playground.ui.components.ClearablePasswordOutlinedTextField
 import com.example.playground.ui.theme.PlaygroundTheme
 
+@ExperimentalAnimationApi
 @Composable
 internal fun LoginScreen(
     state: LoginUIState,
@@ -63,6 +62,7 @@ internal fun LoginScreen(
     }
 }
 
+@ExperimentalAnimationApi
 @Preview
 @Composable
 fun LoginPreview() {
