@@ -10,6 +10,9 @@ daggerHilt = "2.38.1"
 hilt = "1.0.0"
 hiltLifecycleViewmodel = "1.0.0-alpha03"
 hiltNavigationCompose = "1.0.0-alpha03"
+navigationCompose = "2.4.0-alpha05"
+lifecycle = "2.4.0-alpha02"
+lifecycleViewmodelCompose = "1.0.0-alpha07"
 
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -25,6 +28,9 @@ androidx-hilt-hiltCommon = { module = "androidx.hilt:hilt-common", version.ref =
 androidx-hilt-hiltCompiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt" }
 androidx-hilt-hiltLifecycleViewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
 androidx-hilt-hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-navigation-navigationCompose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-lifecycleViewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerHilt" }
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerHilt" }
 google-dagger-hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
@@ -39,4 +45,5 @@ gradlePlugins-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", 
 compose = ["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]
 hilt = ["google-dagger-dagger", "google-dagger-hiltAndroid", "androidx-hilt-hiltCommon", "androidx-hilt-hiltLifecycleViewmodel"]
 hiltKapt = ["google-dagger-daggerCompiler", "google-dagger-hiltCompiler", "androidx-hilt-hiltCompiler"]
+lifecycle = ["androidx-lifecycle-lifecycleRuntimeKtx", "androidx-lifecycle-lifecycleViewmodelCompose"]
 
