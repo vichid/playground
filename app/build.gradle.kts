@@ -17,6 +17,17 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+        }
+
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
+    }
     buildFeatures {
         compose = true
     }
