@@ -1,7 +1,8 @@
 buildscript {
     dependencies {
-        val libs = project.extensions.getByType<VersionCatalogsExtension>()
-            .named("libs") as org.gradle.accessors.dm.LibrariesForLibs
+        @Suppress("UnstableApiUsage") val libs =
+            project.extensions.getByType<VersionCatalogsExtension>()
+                .named("libs") as org.gradle.accessors.dm.LibrariesForLibs
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.versionsBenManes)
@@ -53,9 +54,6 @@ tasks {
             freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
             freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.FlowPreview")
             freeCompilerArgs.plus("-Xopt-in=kotlin.Experimental")
-
-            // Set JVM target to 1.8
-            jvmTarget = "1.8"
         }
     }
 }
