@@ -33,9 +33,6 @@ jobs:
       - name: Generate cache key
         run: ./checksum.sh checksum.txt
 
-      - name: Copy CI gradle.properties
-        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
-
       - uses: actions/cache@v2
         continue-on-error: true # continue if the cache restore/upload fails
         with:
@@ -51,6 +48,7 @@ jobs:
         run: |
           ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
                spotlessCheck \
+               projectDependencyGraph \
                assemble bundle \
                app:lintDebug \
                testDebug
@@ -62,12 +60,12 @@ jobs:
           name: build-outputs
           path: app/build/outputs
 
-      - name: Upload build reports
+      - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v1
         with:
-          name: build-reports
-          path: app/build/reports
+          name: reports
+          path: build/reports
 
       - name: Copy test results
         if: always()
