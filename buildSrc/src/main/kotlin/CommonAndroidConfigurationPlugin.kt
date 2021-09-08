@@ -69,4 +69,3 @@ class CommonAndroidConfigurationPlugin : Plugin<Project> {
         val targetSdk: Int?
     )
 }
-
