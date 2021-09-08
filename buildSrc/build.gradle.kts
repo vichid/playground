@@ -20,6 +20,10 @@ gradlePlugin {
             id = "common.android.configuration"
             implementationClass = "com.playground.CommonAndroidConfigurationPlugin"
         }
+        create("AppVersioningPlugin") {
+            id = "app.versioning"
+            implementationClass = "com.playground.AppVersioningPlugin"
+        }
     }
 }
 
