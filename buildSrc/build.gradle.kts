@@ -14,6 +14,17 @@ repositories {
     google()
 }
 
+gradlePlugin {
+    plugins {
+        create("CommonAndroidConfigurationPlugin") {
+            id = "common.android.configuration"
+            implementationClass = "com.playground.CommonAndroidConfigurationPlugin"
+        }
+    }
+}
+
 dependencies {
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.gradle)
+    implementation(libs.gradlePlugins.android)
 }

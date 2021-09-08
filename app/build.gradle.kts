@@ -6,12 +6,9 @@ plugins {
 }
 
 android {
-    compileSdk = 30
 
     defaultConfig {
         applicationId = "com.example.playground"
-        minSdk = 26
-        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
