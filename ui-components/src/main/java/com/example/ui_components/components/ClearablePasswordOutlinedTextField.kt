@@ -1,4 +1,4 @@
-package com.example.playground.ui.components
+package com.example.ui_components.components
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,7 +9,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 @ExperimentalAnimationApi
 @Composable
-internal fun ClearablePasswordOutlinedTextField(
+fun ClearablePasswordOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     hint: String,

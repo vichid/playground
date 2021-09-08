@@ -21,6 +21,8 @@ android {
 
 dependencies {
 
+    implementation(projects.uiComponents)
+
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.lifecycle)

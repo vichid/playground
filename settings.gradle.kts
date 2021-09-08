@@ -16,9 +16,11 @@ gradleEnterprise {
     }
 }
 
+enableFeaturePreview("VERSION_CATALOGS")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "Playground"
 
 include(":app")
-
-enableFeaturePreview("VERSION_CATALOGS")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+include(":login")
+include(":ui-components")

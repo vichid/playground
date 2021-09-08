@@ -10,7 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.playground.ui.components.PlaygroundScaffold
+import com.example.playground.ui.PlaygroundScaffold
 import com.example.playground.ui.login.LoginScreen
 import com.example.playground.ui.login.LoginUIState
 import com.example.playground.ui.login.LoginViewModel

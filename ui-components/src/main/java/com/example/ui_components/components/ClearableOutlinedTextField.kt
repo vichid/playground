@@ -1,4 +1,4 @@
-package com.example.playground.ui.components
+package com.example.ui_components.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -18,7 +18,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 
 @ExperimentalAnimationApi
 @Composable
-internal fun ClearableOutlinedTextField(
+fun ClearableOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     hint: String,
