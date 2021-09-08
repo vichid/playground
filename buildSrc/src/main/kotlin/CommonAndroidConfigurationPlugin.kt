@@ -22,6 +22,19 @@ class CommonAndroidConfigurationPlugin : Plugin<Project> {
                     defaultConfig {
                         targetSdk = androidConf.targetSdk
                     }
+                    buildTypes {
+                        getByName("debug") {
+                            applicationIdSuffix = ".debug"
+                            isDefault = true
+                        }
+                    }
+                    lint {
+                        isWarningsAsErrors = true
+                        isCheckDependencies = true
+                        isCheckReleaseBuilds = false
+                        isAbortOnError = true
+                        isIgnoreTestSources = true
+                    }
                 }
             }
             plugins.withType<LibraryPlugin> {
