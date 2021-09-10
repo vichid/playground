@@ -1,4 +1,4 @@
-package com.example.loginscreen.impl
+package com.example.loginscreen.api
 
 import androidx.navigation.compose.NamedNavArgument
 import com.example.navigation.api.NavigationDestination
