@@ -3,9 +3,9 @@ package com.example.navigation.impl
 import androidx.navigation.NavOptionsBuilder
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
-import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.MutableSharedFlow
 
 @Singleton
 class NavigatorImpl @Inject constructor() : Navigator {

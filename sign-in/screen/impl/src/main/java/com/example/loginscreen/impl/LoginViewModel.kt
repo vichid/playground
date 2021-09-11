@@ -6,8 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.base.types.Password
 import com.example.base.types.Username
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 internal class LoginViewModel @Inject constructor() : ViewModel() {
