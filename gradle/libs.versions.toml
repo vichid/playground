@@ -2,18 +2,19 @@
 activityCompose = "1.3.1"
 appCompat = "1.4.0-alpha03"
 compose = "1.0.2"
-gradlePlugins-agp = "7.0.1"
-gradlePlugins-versionsBenManes = "0.39.0"
-gradlePlugins-spotless = "5.14.2"
-kotlin = "1.5.21"
+coroutines = "1.5.1"
 daggerHilt = "2.38.1"
+gradlePlugins-agp = "7.0.1"
+gradlePlugins-spotless = "5.14.2"
+gradlePlugins-versionsBenManes = "0.39.0"
 hilt = "1.0.0"
 hiltLifecycleViewmodel = "1.0.0-alpha03"
 hiltNavigationCompose = "1.0.0-alpha03"
-navigationCompose = "2.4.0-alpha05"
+kotlin = "1.5.21"
 lifecycle = "2.4.0-alpha02"
 lifecycleViewmodelCompose = "1.0.0-alpha07"
-coroutines = "1.5.1"
+navigationCompose = "2.4.0-alpha05"
+store = "4.0.2-KT15"
 
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -29,24 +30,24 @@ androidx-hilt-hiltCommon = { module = "androidx.hilt:hilt-common", version.ref =
 androidx-hilt-hiltCompiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt" }
 androidx-hilt-hiltLifecycleViewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
 androidx-hilt-hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
-androidx-navigation-navigationCompose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-lifecycleViewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+androidx-navigation-navigationCompose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "daggerHilt" }
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerHilt" }
 google-dagger-hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
 google-dagger-hiltCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHilt" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-agp" }
-gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradlePlugins-versionsBenManes = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-versionsBenManes" }
-gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "gradlePlugins-spotless" }
 gradlePlugins-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "daggerHilt" }
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
+gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "gradlePlugins-spotless" }
+gradlePlugins-versionsBenManes = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-versionsBenManes" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }
 
 [bundles]
 compose = ["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]

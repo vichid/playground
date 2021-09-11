@@ -21,8 +21,10 @@ android {
 
 dependencies {
 
+    implementation(projects.base.uiCompose)
     implementation(projects.navigation.wiring)
-    implementation(projects.loginScreen.wiring)
+    implementation(projects.signIn.screen.wiring)
+    implementation(projects.signIn.data.wiring)
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
