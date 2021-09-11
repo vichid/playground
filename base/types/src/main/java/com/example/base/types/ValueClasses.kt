@@ -1,15 +1,7 @@
 package com.example.base.types
 
 @JvmInline
-value class Username(val value: String) {
-    init {
-        require(value.isNotBlank())
-    }
-}
+value class Username(val value: String)
 
 @JvmInline
-value class Password(val value: String) {
-    init {
-        require(value.isNotBlank())
-    }
-}
+value class Password(val value: String)

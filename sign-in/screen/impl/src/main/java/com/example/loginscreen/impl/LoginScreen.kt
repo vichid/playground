@@ -27,12 +27,19 @@ import com.example.playground.ui.theme.PlaygroundTheme
 import com.example.uicompose.components.ClearableOutlinedTextField
 import com.example.uicompose.components.ClearablePasswordOutlinedTextField
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
 
 @ExperimentalAnimationApi
 @Composable
-internal fun LoginScreen() {
-    val viewModel = hiltViewModel<LoginViewModel>()
-    val viewState by rememberFlowWithLifecycle(viewModel.state)
+internal fun LoginScreen(
+    state: StateFlow<LoginUIState>,
+    onUsernameChanged: (username: String) -> Unit,
+    onPasswordChanged: (password: String) -> Unit,
+    onSubmitClick: () -> Unit
+) {
+    val viewState by rememberFlowWithLifecycle(state)
         .collectAsState(initial = LoginUIState.Empty)
     Column(
         Modifier
@@ -44,18 +51,18 @@ internal fun LoginScreen() {
 
         ClearableOutlinedTextField(
             value = viewState.username,
-            onValueChange = { viewModel.onUsernameChanged(it) },
+            onValueChange = { onUsernameChanged(it) },
             hint = "Enter username",
             modifier = Modifier.padding(8.dp)
         )
         ClearablePasswordOutlinedTextField(
             value = viewState.password,
-            onValueChange = { viewModel.onPasswordChanged(it) },
+            onValueChange = { onPasswordChanged(it) },
             hint = "Enter password"
         )
         Button(
             modifier = Modifier.padding(16.dp),
-            onClick = { viewModel.onSubmitClick() }
+            onClick = { onSubmitClick() }
         ) {
             Text(
                 text = "Submit",
@@ -69,9 +76,9 @@ internal fun LoginScreen() {
 @ExperimentalAnimationApi
 @Preview
 @Composable
-fun LoginPreview() {
+internal fun LoginPreview() {
     PlaygroundTheme {
-        LoginScreen()
+        LoginScreen(MutableStateFlow(LoginUIState.Empty), { }, { }, { })
     }
 }
 

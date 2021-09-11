@@ -21,9 +21,13 @@ android {
 
 dependencies {
 
+    implementation(projects.base.uiCompose)
+
+    implementation(projects.navigation.wiring)
+    implementation(projects.signIn.screen.wiring)
+
     implementation(libs.bundles.compose)
     implementation(libs.bundles.hilt)
-    implementation(libs.bundles.lifecycle)
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.navigation.navigationCompose)

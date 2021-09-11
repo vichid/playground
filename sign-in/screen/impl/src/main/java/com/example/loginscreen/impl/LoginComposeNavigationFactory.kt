@@ -1,6 +1,7 @@
 package com.example.loginscreen.impl
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -14,7 +15,13 @@ class LoginComposeNavigationFactory @Inject constructor() : ComposeNavigationFac
         builder.composable(
             route = "login",
             content = {
-                LoginScreen()
+                val viewModel = hiltViewModel<LoginViewModel>()
+                LoginScreen(
+                    viewModel.state,
+                    { viewModel.onUsernameChanged(it) },
+                    { viewModel.onPasswordChanged(it) },
+                    { viewModel.onSubmitClick() }
+                )
             }
         )
     }
