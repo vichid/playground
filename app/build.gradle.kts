@@ -23,6 +23,7 @@ dependencies {
 
     implementation(projects.base.uiCompose)
     implementation(projects.navigation.wiring)
+    implementation(projects.launch.wiring)
     implementation(projects.signIn.screen.wiring)
     implementation(projects.signIn.data.wiring)
 

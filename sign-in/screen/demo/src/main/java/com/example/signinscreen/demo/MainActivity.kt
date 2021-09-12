@@ -1,21 +1,18 @@
-package com.example.playground
+package com.example.signinscreen.demo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.launch.impl.LaunchRouteFactory
 import com.example.navigation.api.ComposeNavigationFactory
 import com.example.playground.ui.theme.PlaygroundTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NavActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var launchRouteFactory: LaunchRouteFactory
     @Inject
     lateinit var composeNavigationFactories: @JvmSuppressWildcards Set<ComposeNavigationFactory>
 
@@ -26,7 +23,7 @@ class NavActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = launchRouteFactory.provide(),
+                    startDestination = "login",
                     builder = {
                         composeNavigationFactories.forEach { factory ->
                             factory.create(this, navController)

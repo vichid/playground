@@ -6,6 +6,13 @@ interface SignInRepository {
 }
 
 class UserProfile(
+    val userId: String,
     val name: String,
     val profilePicture: String
 )
+
+@JvmInline
+value class Username(val value: String)
+
+@JvmInline
+value class Password(val value: String)
