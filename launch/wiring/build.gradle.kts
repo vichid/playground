@@ -1,14 +1,16 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("com.squareup.anvil")
 }
 
 dependencies {
+    implementation(projects.base.di)
     api(projects.launch.impl)
 
-    implementation(libs.bundles.hilt)
+    implementation(libs.dagger)
+}
 
-    kapt(libs.bundles.hiltKapt)
+anvil {
+    generateDaggerFactories.set(true)
 }

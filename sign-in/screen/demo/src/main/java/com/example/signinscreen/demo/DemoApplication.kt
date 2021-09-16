@@ -1,7 +1,12 @@
 package com.example.signinscreen.demo
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.example.base.di.ComponentHolder
 
-@HiltAndroidApp
-class DemoApplication : Application()
+class DemoApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+
+        ComponentHolder.components += DaggerSignInAppComponent.create()
+    }
+}

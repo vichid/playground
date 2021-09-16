@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("com.squareup.anvil")
 }
 
 android {
@@ -21,16 +21,18 @@ android {
 
 dependencies {
 
+    implementation(projects.base.di)
     implementation(projects.base.uiCompose)
     implementation(projects.navigation.wiring)
     implementation(projects.launch.wiring)
+    implementation(projects.logger.wiring)
     implementation(projects.signIn.screen.wiring)
     implementation(projects.signIn.data.wiring)
 
     implementation(libs.bundles.compose)
-    implementation(libs.bundles.hilt)
+    implementation(libs.dagger)
     implementation(libs.androidx.appCompat)
-    implementation(libs.androidx.hilt.hiltNavigationCompose)
+    implementation(libs.androidx.compose.navigation)
 
-    kapt(libs.bundles.hiltKapt)
+    kapt(libs.dagger.compiler)
 }

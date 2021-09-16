@@ -8,7 +8,7 @@ buildscript {
         classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.versionsBenManes)
         classpath(libs.gradlePlugins.spotless)
-        classpath(libs.gradlePlugins.hilt)
+        classpath(libs.gradlePlugins.anvil)
     }
 
     repositories {

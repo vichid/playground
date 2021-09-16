@@ -5,30 +5,27 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.launch.impl.LaunchRouteFactory
-import com.example.navigation.api.ComposeNavigationFactory
+import com.example.base.di.ComponentHolder
+import com.example.launch.wiring.LaunchComponent
+import com.example.navigation.wiring.NavigationComponent
 import com.example.playground.ui.theme.PlaygroundTheme
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class NavActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var launchRouteFactory: LaunchRouteFactory
-    @Inject
-    lateinit var composeNavigationFactories: @JvmSuppressWildcards Set<ComposeNavigationFactory>
+    private val launchComponent: LaunchComponent by lazy { ComponentHolder.component() }
+    private val navigationComponent: NavigationComponent by lazy { ComponentHolder.component() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             PlaygroundTheme {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = launchRouteFactory.provide(),
+                    startDestination = launchComponent.launchRouteFactory().provide(),
                     builder = {
-                        composeNavigationFactories.forEach { factory ->
+                        navigationComponent.composeNavigationFactorySet().forEach { factory ->
                             factory.create(this, navController)
                         }
                     }

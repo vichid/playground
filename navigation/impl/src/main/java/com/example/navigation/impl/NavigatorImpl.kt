@@ -1,13 +1,14 @@
 package com.example.navigation.impl
 
 import androidx.navigation.NavOptionsBuilder
+import com.example.base.di.AppScope
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
+import com.squareup.anvil.annotations.ContributesBinding
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-@Singleton
+@ContributesBinding(AppScope::class)
 class NavigatorImpl @Inject constructor() : Navigator {
 
     private val _navigationEvents = MutableSharedFlow<NavigatorEvent>()

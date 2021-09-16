@@ -1,13 +1,15 @@
 package com.example.signinscreen.impl
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import com.example.base.di.AppScope
 import com.example.navigation.api.ComposeNavigationFactory
+import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
 
+@ContributesMultibinding(AppScope::class)
 class SignInComposeNavigationFactory @Inject constructor() : ComposeNavigationFactory {
 
     @ExperimentalAnimationApi
@@ -15,7 +17,7 @@ class SignInComposeNavigationFactory @Inject constructor() : ComposeNavigationFa
         builder.composable(
             route = "login",
             content = {
-                val viewModel = hiltViewModel<SignInViewModel>()
+                val viewModel = SignInViewModel()
                 LoginScreen(
                     viewModel.state,
                     { viewModel.onUsernameChanged(it) },

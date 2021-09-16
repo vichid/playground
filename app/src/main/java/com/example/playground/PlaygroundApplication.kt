@@ -1,7 +1,12 @@
 package com.example.playground
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.example.base.di.ComponentHolder
 
-@HiltAndroidApp
-class PlaygroundApplication : Application()
+class PlaygroundApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+
+        ComponentHolder.components += DaggerAppComponent.create()
+    }
+}

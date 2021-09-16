@@ -6,5 +6,5 @@ plugins {
 dependencies {
     implementation(projects.navigation.api)
 
-    implementation(libs.androidx.hilt.hiltNavigationCompose)
+    implementation(libs.androidx.compose.navigation)
 }
