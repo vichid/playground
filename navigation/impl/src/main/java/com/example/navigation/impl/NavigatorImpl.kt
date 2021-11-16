@@ -5,18 +5,20 @@ import com.example.base.di.AppScope
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
 import com.squareup.anvil.annotations.ContributesBinding
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
 @ContributesBinding(AppScope::class)
-class NavigatorImpl @Inject constructor() : Navigator {
+object NavigatorImpl : Navigator {
 
-    private val _navigationEvents = MutableSharedFlow<NavigatorEvent>()
-    override val destinations = _navigationEvents
+    private val navigationEvents: MutableSharedFlow<NavigatorEvent> =
+        MutableSharedFlow(extraBufferCapacity = 1)
+    override val destinations: SharedFlow<NavigatorEvent> = navigationEvents.asSharedFlow()
 
     override fun navigateUp(): Boolean =
-        _navigationEvents.tryEmit(NavigatorEvent.NavigateUp)
+        navigationEvents.tryEmit(NavigatorEvent.NavigateUp)
 
     override fun navigate(route: String, builder: NavOptionsBuilder.() -> Unit): Boolean =
-        _navigationEvents.tryEmit(NavigatorEvent.Directions(route, builder))
+        navigationEvents.tryEmit(NavigatorEvent.Directions(route, builder))
 }

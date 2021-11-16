@@ -28,6 +28,7 @@ dependencies {
     implementation(projects.logger.wiring)
     implementation(projects.signIn.screen.wiring)
     implementation(projects.signIn.data.wiring)
+    implementation(projects.list.screen.wiring)
 
     implementation(libs.bundles.compose)
     implementation(libs.dagger)

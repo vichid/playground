@@ -1,18 +1,20 @@
 package com.example.signinscreen.impl
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.navigation.api.Navigator
 import com.example.signindata.api.Password
 import com.example.signindata.api.Username
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-internal class SignInViewModel @Inject constructor() : ViewModel() {
+class SignInViewModel @Inject constructor(
+    private val navigator: Navigator
+) : ViewModel() {
 
     private val _username = MutableStateFlow(Username(""))
     private val _password = MutableStateFlow(Password(""))
@@ -40,6 +42,6 @@ internal class SignInViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onSubmitClick() {
-        Log.d("", "")
+        navigator.navigate("list")
     }
 }
