@@ -30,7 +30,8 @@ class NavActivity : ComponentActivity() {
                     .destinations
                     .onEach { value ->
                         when (value) {
-                            is NavigatorEvent.Directions -> navController.navigate(value.destination)
+                            is NavigatorEvent.Directions ->
+                                navController.navigate(value.destination)
                             NavigatorEvent.NavigateUp -> navController.navigateUp()
                         }
                     }
