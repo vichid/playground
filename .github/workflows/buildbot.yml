@@ -58,14 +58,14 @@ jobs:
 
       - name: Upload build outputs
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: build-outputs
           path: app/build/outputs
 
       - name: Upload reports
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: reports
           path: build/reports
@@ -77,7 +77,7 @@ jobs:
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: junit-results
           path: junit
