@@ -52,7 +52,7 @@ jobs:
           ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
                spotlessCheck \
                projectDependencyGraph \
-               assemble bundle \
+               app:assembleDebug bundle \
                app:lintDebug \
                testDebug
 
