@@ -1,8 +1,5 @@
 buildscript {
     dependencies {
-        @Suppress("UnstableApiUsage") val libs =
-            project.extensions.getByType<VersionCatalogsExtension>()
-                .named("libs") as org.gradle.accessors.dm.LibrariesForLibs
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.versionsBenManes)
