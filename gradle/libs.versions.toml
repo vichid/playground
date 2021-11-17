@@ -6,6 +6,7 @@ composeNavigation = "2.4.0-alpha09"
 coroutines = "1.5.2"
 dagger = "2.40.1"
 daggerAnvil = "2.3.4"
+doctor = "0.7.3"
 inject = "1"
 gradlePlugins-agp = "7.0.3"
 gradlePlugins-spotless = "5.17.1"
@@ -17,6 +18,11 @@ navigationCompose = "2.4.0-alpha05"
 startup = "1.1.0"
 store = "4.0.2-KT15"
 timber = "5.0.1"
+versionUpdate = "0.39.0"
+
+[plugins]
+versionUpdate = { id = "com.github.ben-manes.versions", version.ref = "versionUpdate" }
+doctor = { id = "com.osacky.doctor", version.ref = "doctor" }
 
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -54,4 +60,3 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 [bundles]
 compose = ["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]
 lifecycle = ["androidx-lifecycle-lifecycleRuntimeKtx", "androidx-lifecycle-lifecycleViewmodelCompose"]
-
