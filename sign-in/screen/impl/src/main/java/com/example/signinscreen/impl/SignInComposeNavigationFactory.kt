@@ -16,12 +16,12 @@ import com.example.signinscreen.api.SignInDestination
 import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
 
+@ExperimentalAnimationApi
 @ContributesMultibinding(AppScope::class)
 class SignInComposeNavigationFactory @Inject constructor(
     private val navigator: Navigator
 ) : ComposeNavigationFactory {
 
-    @ExperimentalAnimationApi
     override fun create(builder: NavGraphBuilder, navController: NavHostController) {
         val viewModel = SignInViewModel(navigator)
         builder.viewModelComposable(
