@@ -1,5 +1,6 @@
 package com.example.signinscreen.impl
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -35,10 +36,13 @@ internal fun LoginScreen(
     state: StateFlow<SignInUIState>,
     onUsernameChanged: (username: String) -> Unit,
     onPasswordChanged: (password: String) -> Unit,
-    onSubmitClick: () -> Unit
+    onSubmitClick: () -> Unit,
+    onBackClick: () -> Unit
 ) {
     val viewState by rememberFlowWithLifecycle(state)
         .collectAsState(initial = SignInUIState.Empty)
+
+    BackHandler { onBackClick.invoke() }
     Column(
         Modifier
             .fillMaxSize()
@@ -76,7 +80,7 @@ internal fun LoginScreen(
 @Composable
 internal fun LoginPreview() {
     PlaygroundTheme {
-        LoginScreen(MutableStateFlow(SignInUIState.Empty), { }, { }, { })
+        LoginScreen(MutableStateFlow(SignInUIState.Empty), { }, { }, { }, { })
     }
 }
 

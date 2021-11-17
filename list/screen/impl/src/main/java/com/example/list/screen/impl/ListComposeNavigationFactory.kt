@@ -1,7 +1,6 @@
 package com.example.list.screen.impl
 
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.base.di.AppScope
 import com.example.list.screen.api.ListDestination
@@ -12,7 +11,7 @@ import javax.inject.Inject
 @ContributesMultibinding(AppScope::class)
 class ListComposeNavigationFactory @Inject constructor() : ComposeNavigationFactory {
 
-    override fun create(builder: NavGraphBuilder, navController: NavHostController) {
+    override fun create(builder: NavGraphBuilder) {
         builder.composable(
             route = ListDestination.route(),
             content = { ListScreen() }

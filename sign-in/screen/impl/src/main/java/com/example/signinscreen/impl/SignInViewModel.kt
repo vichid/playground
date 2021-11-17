@@ -45,4 +45,8 @@ class SignInViewModel @Inject constructor(
     fun onSubmitClick() {
         navigator.navigate(ListDestination)
     }
+
+    fun onBackClick() {
+        navigator.navigateUp()
+    }
 }
