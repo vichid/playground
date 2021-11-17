@@ -2,6 +2,7 @@ package com.example.navigation.impl
 
 import androidx.navigation.NavOptionsBuilder
 import com.example.base.di.AppScope
+import com.example.navigation.api.NavigationDestination
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
 import com.squareup.anvil.annotations.ContributesBinding
@@ -19,6 +20,9 @@ object NavigatorImpl : Navigator {
     override fun navigateUp(): Boolean =
         navigationEvents.tryEmit(NavigatorEvent.NavigateUp)
 
-    override fun navigate(route: String, builder: NavOptionsBuilder.() -> Unit): Boolean =
-        navigationEvents.tryEmit(NavigatorEvent.Directions(route, builder))
+    override fun navigate(
+        navigationDestination: NavigationDestination,
+        builder: NavOptionsBuilder.() -> Unit
+    ): Boolean =
+        navigationEvents.tryEmit(NavigatorEvent.Directions(navigationDestination, builder))
 }

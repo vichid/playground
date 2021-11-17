@@ -2,6 +2,7 @@ package com.example.signinscreen.impl
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.list.screen.api.ListDestination
 import com.example.navigation.api.Navigator
 import com.example.signindata.api.Password
 import com.example.signindata.api.Username
@@ -42,6 +43,6 @@ class SignInViewModel @Inject constructor(
     }
 
     fun onSubmitClick() {
-        navigator.navigate("list")
+        navigator.navigate(ListDestination)
     }
 }

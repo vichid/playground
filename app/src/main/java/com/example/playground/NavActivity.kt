@@ -28,10 +28,10 @@ class NavActivity : ComponentActivity() {
 
                 navigationComponent.navigatorFactory()
                     .destinations
-                    .onEach { value ->
-                        when (value) {
+                    .onEach { navigatorEvent ->
+                        when (navigatorEvent) {
                             is NavigatorEvent.Directions ->
-                                navController.navigate(value.destination)
+                                navController.navigate(navigatorEvent.destination.route())
                             NavigatorEvent.NavigateUp -> navController.navigateUp()
                         }
                     }

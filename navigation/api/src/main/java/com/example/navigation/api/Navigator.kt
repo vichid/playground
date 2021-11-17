@@ -8,7 +8,7 @@ interface Navigator {
     fun navigateUp(): Boolean
 
     fun navigate(
-        route: String,
+        navigationDestination: NavigationDestination,
         builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }
     ): Boolean
 
