@@ -19,6 +19,8 @@ apply {
     from(rootProject.file("gradle/spotless-config.gradle"))
     from(rootProject.file("gradle/dependencyGraph.gradle"))
 }
+
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.versionUpdate)
     alias(libs.plugins.doctor)
