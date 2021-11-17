@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import com.example.base.di.AppScope
 import com.example.navigation.api.ComposeNavigationFactory
 import com.example.navigation.api.Navigator
+import com.example.signinscreen.api.SignInDestination
 import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
 
@@ -24,7 +25,7 @@ class SignInComposeNavigationFactory @Inject constructor(
     override fun create(builder: NavGraphBuilder, navController: NavHostController) {
         val viewModel = SignInViewModel(navigator)
         builder.viewModelComposable(
-            route = "login",
+            route = SignInDestination.route(),
             viewModel = viewModel,
             content = {
                 LoginScreen(
