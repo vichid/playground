@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = "login",
                     builder = {
                         navigationComponent.composeNavigationFactorySet().forEach { factory ->
-                            factory.create(this, navController)
+                            factory.create(this)
                         }
                     }
                 )
