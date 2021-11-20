@@ -9,21 +9,24 @@ daggerAnvil = "2.3.4"
 doctor = "0.7.3"
 inject = "1"
 gradlePlugins-agp = "7.0.3"
-gradlePlugins-spotless = "5.17.1"
-gradlePlugins-versionsBenManes = "0.39.0"
 kotlin = "1.5.31"
+kover = "0.4.2"
 ktlint = "0.42.1"
 lifecycle = "2.4.0"
 lifecycleViewmodelCompose = "2.4.0"
 navigationCompose = "2.4.0-beta02"
+spotless = "5.17.1"
 startup = "1.1.0"
 store = "4.0.3-KT15"
 timber = "5.0.1"
 versionUpdate = "0.39.0"
 
 [plugins]
-versionUpdate = { id = "com.github.ben-manes.versions", version.ref = "versionUpdate" }
+anvil = { id = "com.squareup.anvil", version.ref = "daggerAnvil" }
 doctor = { id = "com.osacky.doctor", version.ref = "doctor" }
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+versionUpdate = { id = "com.github.ben-manes.versions", version.ref = "versionUpdate" }
 
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -46,10 +49,7 @@ inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
 google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-agp" }
-gradlePlugins-anvil = { module = "com.squareup.anvil:gradle-plugin", version.ref = "daggerAnvil" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "gradlePlugins-spotless" }
-gradlePlugins-versionsBenManes = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-versionsBenManes" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }

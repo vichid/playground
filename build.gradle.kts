@@ -2,9 +2,6 @@ buildscript {
     dependencies {
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
-        classpath(libs.gradlePlugins.versionsBenManes)
-        classpath(libs.gradlePlugins.spotless)
-        classpath(libs.gradlePlugins.anvil)
     }
 
     repositories {
@@ -22,8 +19,11 @@ apply {
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.versionUpdate)
+    alias(libs.plugins.anvil)
     alias(libs.plugins.doctor)
+    alias(libs.plugins.kover)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.versionUpdate)
     id("common.android.configuration")
     id("app.versioning")
 }
