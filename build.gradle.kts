@@ -56,6 +56,7 @@ tasks {
             freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
             freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.FlowPreview")
             freeCompilerArgs.plus("-Xopt-in=kotlin.Experimental")
+            freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIm")
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.signinscreen.impl
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,7 +29,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-@ExperimentalAnimationApi
 @Composable
 internal fun LoginScreen(
     state: StateFlow<SignInUIState>,
@@ -75,7 +73,6 @@ internal fun LoginScreen(
     }
 }
 
-@ExperimentalAnimationApi
 @Preview
 @Composable
 internal fun LoginPreview() {

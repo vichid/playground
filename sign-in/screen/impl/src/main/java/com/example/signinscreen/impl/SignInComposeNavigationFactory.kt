@@ -1,6 +1,5 @@
 package com.example.signinscreen.impl
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.base.di.AppScope
@@ -15,7 +14,6 @@ class SignInComposeNavigationFactory @Inject constructor(
     private val navigator: Navigator
 ) : ComposeNavigationFactory {
 
-    @ExperimentalAnimationApi
     override fun create(builder: NavGraphBuilder) {
         val viewModel = SignInViewModel(navigator)
         builder.composable(
