@@ -80,4 +80,6 @@ jobs:
         with:
           name: junit-results
           path: junit
-
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
