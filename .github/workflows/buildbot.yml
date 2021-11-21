@@ -54,7 +54,7 @@ jobs:
                projectDependencyGraph \
                app:assembleDebug bundle \
                app:lintDebug \
-               testDebug
+               testDebugUnitTest
 
       - name: Upload build outputs
         if: always()

@@ -2,6 +2,7 @@ buildscript {
     dependencies {
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
+        classpath(libs.gradlePlugins.junit5)
     }
 
     repositories {
@@ -52,11 +53,10 @@ tasks {
             // Treat all Kotlin warnings as errors
             allWarningsAsErrors = true
 
-            // Enable experimental coroutines APIs, including Flow
-            freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
             freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.FlowPreview")
             freeCompilerArgs.plus("-Xopt-in=kotlin.Experimental")
             freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIm")
+            freeCompilerArgs.plus("-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi")
         }
     }
 }

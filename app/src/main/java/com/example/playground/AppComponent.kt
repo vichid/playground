@@ -1,9 +1,9 @@
 package com.example.playground
 
 import com.example.base.di.AppScope
-import com.example.base.di.SingleIn
 import com.squareup.anvil.annotations.MergeComponent
+import javax.inject.Singleton
 
-@SingleIn(AppScope::class)
+@Singleton
 @MergeComponent(AppScope::class)
 interface AppComponent

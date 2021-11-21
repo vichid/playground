@@ -6,12 +6,12 @@ import com.example.list.screen.api.ListDestination
 import com.example.navigation.api.Navigator
 import com.example.signindata.api.Password
 import com.example.signindata.api.Username
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
 
 class SignInViewModel @Inject constructor(
     private val navigator: Navigator
