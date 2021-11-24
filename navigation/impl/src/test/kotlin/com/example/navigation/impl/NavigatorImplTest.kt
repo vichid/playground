@@ -4,11 +4,13 @@ import app.cash.turbine.test
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
+@ExperimentalCoroutinesApi
 internal class NavigatorImplTest {
 
     lateinit var navigator: Navigator
