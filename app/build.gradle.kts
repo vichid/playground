@@ -35,5 +35,7 @@ dependencies {
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
 
+    debugImplementation(libs.leakcanary)
+
     kapt(libs.dagger.compiler)
 }

@@ -14,6 +14,7 @@ jupiter = "5.8.2"
 kotlin = "1.5.31"
 kover = "0.4.4"
 ktlint = "0.42.1"
+leakcanary = "2.7"
 lifecycle = "2.4.0"
 lifecycleViewmodelCompose = "2.4.0"
 navigationCompose = "2.4.0-beta02"
@@ -63,6 +64,7 @@ kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-te
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
