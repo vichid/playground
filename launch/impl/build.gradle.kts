@@ -11,6 +11,7 @@ dependencies {
     implementation(projects.navigation.api)
     implementation(projects.signIn.screen.api)
 
+    implementation(libs.androidx.startup.runtime)
     implementation(libs.inject)
 
     testRuntimeOnly(libs.jupiter.engine)
