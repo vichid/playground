@@ -48,3 +48,7 @@ captures/
 
 # Google/Firebase secrets
 /app/google-services.json
+
+# Profile
+gradle-user-home/
+profile-out*/
