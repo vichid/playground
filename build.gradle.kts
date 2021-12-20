@@ -1,3 +1,6 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 buildscript {
     dependencies {
         classpath(libs.gradlePlugins.android)
@@ -36,29 +39,15 @@ fun String.isNonStable(): Boolean {
     return isStable.not()
 }
 
-tasks {
-    withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
-
-        rejectVersionIf {
-            candidate.version.isNonStable()
-        }
-
-        checkForGradleUpdate = true
-        outputFormatter = "json"
-        outputDir = "build/dependencyUpdates"
-        reportfileName = "report"
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        candidate.version.isNonStable()
     }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions {
-            // Treat all Kotlin warnings as errors
-            allWarningsAsErrors = true
 
-            freeCompilerArgs.plus("-Xopt-in=kotlinx.coroutines.FlowPreview")
-            freeCompilerArgs.plus("-Xopt-in=kotlin.Experimental")
-            freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIm")
-            freeCompilerArgs.plus("-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi")
-        }
-    }
+    checkForGradleUpdate = true
+    outputFormatter = "json"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "report"
 }
 
 doctor {
@@ -78,6 +67,14 @@ allprojects {
         }
     }
 
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            allWarningsAsErrors = true
+            freeCompilerArgs = listOf(
+                "-Xopt-in=kotlin.RequiresOptIn",
+            )
+        }
+    }
     repositories {
         google()
         mavenCentral()
