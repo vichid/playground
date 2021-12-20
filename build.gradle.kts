@@ -25,8 +25,8 @@ plugins {
     alias(libs.plugins.kover)
     alias(libs.plugins.spotless)
     alias(libs.plugins.versionUpdate)
-    id("common.android.configuration")
-    id("app.versioning")
+    id("convention-versioning")
+    id("convention-android")
 }
 
 fun String.isNonStable(): Boolean {

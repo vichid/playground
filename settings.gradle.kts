@@ -1,9 +1,12 @@
+rootProject.name = "Playground"
+
 pluginManagement {
     repositories {
         google()
         gradlePluginPortal()
         mavenCentral()
     }
+    includeBuild("./build-logic")
 }
 plugins {
     id("com.gradle.enterprise") version "3.8"
@@ -18,8 +21,6 @@ gradleEnterprise {
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Playground"
 
 include(":app")
 include(":auth-status:api")

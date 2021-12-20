@@ -1,3 +1,5 @@
+rootProject.name = "build-logic"
+
 enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
@@ -7,3 +9,6 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include("convention-versioning")
+include("convention-android")
