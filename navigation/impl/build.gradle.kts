@@ -9,7 +9,7 @@ dependencies {
     implementation(projects.base.di)
     api(projects.navigation.api)
 
-    implementation(libs.androidx.navigation.navigationCompose)
+    implementation(libs.androidx.compose.navigation)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.inject)
 
