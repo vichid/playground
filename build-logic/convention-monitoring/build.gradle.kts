@@ -10,6 +10,7 @@ buildscript {
     }
     dependencies {
         classpath(libs.gradlePlugins.versionUpdate)
+        classpath(libs.gradlePlugins.moduleGraphAssertion)
     }
 }
 
@@ -19,4 +20,5 @@ repositories {
 
 dependencies {
     implementation(libs.gradlePlugins.versionUpdate)
+    implementation(libs.gradlePlugins.moduleGraphAssertion)
 }

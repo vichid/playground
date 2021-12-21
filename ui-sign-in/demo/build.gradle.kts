@@ -7,7 +7,7 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId = "com.example.playground"
+        applicationId = "com.example.playground.loginscreen"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,20 +20,17 @@ android {
 }
 
 dependencies {
-
     implementation(projects.coreDi)
     implementation(projects.coreUiCompose)
+
     implementation(projects.libNavigation.wiring)
-    implementation(projects.libLaunch.wiring)
-    implementation(projects.libLogger.wiring)
     implementation(projects.uiSignIn.wiring)
-    implementation(projects.dataSignIn.wiring)
-    implementation(projects.uiList.wiring)
 
     implementation(libs.bundles.compose)
-    implementation(libs.dagger)
+    implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.dagger)
 
     debugImplementation(libs.leakcanary)
 

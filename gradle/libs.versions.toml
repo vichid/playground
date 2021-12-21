@@ -18,6 +18,7 @@ ktlint = "0.43.2"
 leakcanary = "2.7"
 lifecycle = "2.4.0"
 lifecycleViewmodelCompose = "2.4.0"
+moduleGraphAssertion = "2.1.0"
 spotless = "6.0.5"
 startup = "1.1.0"
 store = "4.0.4-KT15"
@@ -51,6 +52,7 @@ google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dag
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-agp" }
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
+gradlePlugins-moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "moduleGraphAssertion" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
 gradlePlugins-versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versionUpdate" }
