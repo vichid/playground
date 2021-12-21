@@ -1,6 +1,3 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 buildscript {
     dependencies {
         classpath(libs.gradlePlugins.android)
@@ -25,28 +22,10 @@ plugins {
     alias(libs.plugins.anvil)
     alias(libs.plugins.doctor)
     alias(libs.plugins.kover)
-    alias(libs.plugins.versionUpdate)
     id("convention-versioning")
     id("convention-android")
     id("convention-analyzers")
-}
-
-fun String.isNonStable(): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { toUpperCase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(this)
-    return isStable.not()
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    rejectVersionIf {
-        candidate.version.isNonStable()
-    }
-
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
+    id("convention-monitoring")
 }
 
 doctor {
@@ -66,7 +45,7 @@ allprojects {
         }
     }
 
-    tasks.withType<KotlinCompile> {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             allWarningsAsErrors = true
             freeCompilerArgs = listOf(
