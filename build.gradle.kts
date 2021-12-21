@@ -13,10 +13,6 @@ buildscript {
     }
 }
 
-apply {
-    from(rootProject.file("gradle/dependencyGraph.gradle"))
-}
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.anvil)
