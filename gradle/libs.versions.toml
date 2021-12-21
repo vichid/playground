@@ -10,6 +10,7 @@ doctor = "0.7.3"
 inject = "1"
 gradlePlugins-agp = "7.0.4"
 gradlePlugins-junit5 = "1.8.2.0"
+googlejavaformat = "1.10.0"
 jupiter = "5.8.2"
 kotlin = "1.5.31"
 kover = "0.4.4"
@@ -29,7 +30,6 @@ versionUpdate = "0.39.0"
 anvil = { id = "com.squareup.anvil", version.ref = "daggerAnvil" }
 doctor = { id = "com.osacky.doctor", version.ref = "doctor" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 versionUpdate = { id = "com.github.ben-manes.versions", version.ref = "versionUpdate" }
 
 [libraries]
@@ -53,6 +53,8 @@ google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", v
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-agp" }
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+googlejavaformat = { module = "com.google.googlejavaformat:google-java-format", version.ref = "googlejavaformat" }
 inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
@@ -62,6 +64,7 @@ kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-te
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }

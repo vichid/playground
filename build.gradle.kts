@@ -17,7 +17,6 @@ buildscript {
 }
 
 apply {
-    from(rootProject.file("gradle/spotless-config.gradle"))
     from(rootProject.file("gradle/dependencyGraph.gradle"))
 }
 
@@ -26,10 +25,10 @@ plugins {
     alias(libs.plugins.anvil)
     alias(libs.plugins.doctor)
     alias(libs.plugins.kover)
-    alias(libs.plugins.spotless)
     alias(libs.plugins.versionUpdate)
     id("convention-versioning")
     id("convention-android")
+    id("convention-analyzers")
 }
 
 fun String.isNonStable(): Boolean {

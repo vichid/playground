@@ -12,3 +12,4 @@ dependencyResolutionManagement {
 
 include("convention-versioning")
 include("convention-android")
+include("convention-analyzers")
