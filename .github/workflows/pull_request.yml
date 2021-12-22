@@ -59,8 +59,7 @@ jobs:
         run: |
           ./gradlew --continue --scan --stacktrace --no-daemon\
                testDebugUnitTest \
-               koverXmlReport \
-               koverCollectReports
+               koverXmlReport
 
       - name: Upload reports
         if: always()
