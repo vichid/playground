@@ -20,7 +20,7 @@ dependencies {
     implementation(projects.coreUiCompose)
     implementation(projects.libNavigation.api)
     implementation(projects.dataSignIn.api)
-    implementation(projects.uiSignIn.api)
+    implementation(projects.uiList.api)
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.lifecycle)
