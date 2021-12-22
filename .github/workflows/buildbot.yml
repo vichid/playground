@@ -51,7 +51,6 @@ jobs:
         run: |
           ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
                check \
-               projectDependencyGraph \
                app:assembleDebug bundle \
                koverCollectReports
 
