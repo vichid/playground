@@ -1,5 +1,5 @@
 name: PR
-on: [pull_request]
+on: [ pull_request ]
 
 jobs:
   build:
@@ -48,7 +48,8 @@ jobs:
                spotlessCheck \
                app:assembleDebug \
                test \
-               app:lintRelease
+               app:lintRelease \
+               koverXmlReport
 
       - name: Upload build outputs
         if: always()
