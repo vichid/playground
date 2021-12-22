@@ -6,6 +6,86 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
+  code-linting:
+    name: Spotless Check [JDK ${{ matrix.java_version }}]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        java_version: [ 17 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Set up JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ matrix.java_version }}
+          distribution: 'zulu'
+
+      - name: Build and check
+        run: |
+          ./gradlew --no-daemon --scan --stacktrace spotlessCheck
+
+  tests:
+    name: Run tests [JDK ${{ matrix.java_version }}]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        java_version: [ 17 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Set up JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ matrix.java_version }}
+          distribution: 'zulu'
+
+      - uses: ./.github/actions/gradle-cache
+        with:
+          key-prefix: gradle-tests
+
+      - name: Build and check
+        run: |
+          ./gradlew --continue --scan --stacktrace --no-daemon\
+               testDebugUnitTest \
+               koverXmlReport
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: build/reports
+
+      - name: Copy test results
+        if: failure()
+        run: |
+          mkdir -p junit
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: junit-results
+          path: junit
+
+      - name: Coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   build:
     name: Build [JDK ${{ matrix.java_version }}]
     runs-on: ubuntu-latest
@@ -14,7 +94,6 @@ jobs:
       matrix:
         java_version: [ 17 ]
     steps:
-
       - name: Generate build number
         shell: bash
         run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
@@ -38,40 +117,5 @@ jobs:
       - name: Build and check
         run: |
           ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
-               spotlessCheck \
                app:assembleDebug \
-               test \
-               app:lintRelease \
-               koverXmlReport
-
-      - name: Upload build outputs
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-outputs
-          path: app/build/outputs
-
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: reports
-          path: build/reports
-
-      - name: Copy test results
-        if: always()
-        run: |
-          mkdir -p junit
-          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: junit-results
-          path: junit
-
-      - name: Coverage
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+               app:lintRelease

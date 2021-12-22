@@ -8,11 +8,11 @@ runs:
   using: "composite"
   steps:
     - name: Generate cache key
+      shell: bash
       run: chmod +x scripts/checksum.sh ; ./scripts/checksum.sh checksum.txt
 
     - name: Cache
       uses: actions/cache@v2
-      continue-on-error: true
       with:
         path: |
           ~/.gradle/caches/modules-*

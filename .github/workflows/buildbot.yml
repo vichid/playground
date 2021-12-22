@@ -29,27 +29,17 @@ jobs:
           java-version: ${{ matrix.java_version }}
           distribution: 'zulu'
 
-      - name: Generate cache key
-        run: chmod +x scripts/checksum.sh ; ./scripts/checksum.sh checksum.txt
-
-      - name: Cache
-        uses: actions/cache@v2
-        continue-on-error: true
+      - uses: ./.github/actions/gradle-cache
         with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          key-prefix: gradle-buildbot
 
       - name: Build and check
         run: |
           ./gradlew -Pplayground.versioncode=$BUILD_NUMBER --scan --stacktrace --continue --no-daemon\
                spotlessCheck \
                app:assembleDebug \
-               test \
+               testDebugUnitTest \
+               koverXmlReport \
                app:lintRelease
 
       - name: Upload build outputs
@@ -60,14 +50,19 @@ jobs:
           path: app/build/outputs
 
       - name: Copy test results
-        if: always()
+        if: failure()
         run: |
           mkdir -p junit
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
       - name: Upload test results
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: junit-results
           path: junit
+
+      - name: Coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
