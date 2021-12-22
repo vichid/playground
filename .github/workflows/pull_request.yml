@@ -29,7 +29,7 @@ jobs:
 
       - name: Build and check
         run: |
-          ./gradlew --no-daemon spotlessCheck
+          ./gradlew --no-daemon --scan --stacktrace spotlessCheck
 
   tests:
     name: Run tests [JDK ${{ matrix.java_version }}]
@@ -57,9 +57,10 @@ jobs:
 
       - name: Build and check
         run: |
-          ./gradlew --continue --no-daemon\
+          ./gradlew --continue --scan --stacktrace --no-daemon\
                testDebugUnitTest \
-               koverXmlReport
+               koverXmlReport \
+               koverCollectReports
 
       - name: Upload reports
         if: always()
@@ -69,13 +70,13 @@ jobs:
           path: build/reports
 
       - name: Copy test results
-        if: always()
+        if: failure()
         run: |
           mkdir -p junit
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
       - name: Upload test results
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: junit-results
