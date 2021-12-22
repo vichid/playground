@@ -21,11 +21,11 @@ project.subprojects {
                 }
             }
             lint {
-                isWarningsAsErrors = true
-                isCheckDependencies = true
-                isCheckReleaseBuilds = false
-                isAbortOnError = true
-                isIgnoreTestSources = true
+                warningsAsErrors = true
+                checkDependencies = true
+                checkReleaseBuilds = false
+                abortOnError = true
+                ignoreTestSources = true
             }
         }
     }
