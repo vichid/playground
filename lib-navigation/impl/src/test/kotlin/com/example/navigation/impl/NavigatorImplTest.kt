@@ -5,7 +5,7 @@ import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -26,7 +26,7 @@ internal class NavigatorImplTest {
         private val path: String = "/login"
 
         @Test
-        fun `should propagate destination`(): Unit = runBlockingTest {
+        fun `should propagate destination`(): Unit = runTest {
             navigator.destinations.test {
                 navigator.navigate { path }
                 assertThat((awaitItem() as NavigatorEvent.Directions).destination.route())
@@ -40,7 +40,7 @@ internal class NavigatorImplTest {
     inner class OnNavigateUp {
 
         @Test
-        fun `should propagate NavigatorEvent Up`(): Unit = runBlockingTest {
+        fun `should propagate NavigatorEvent Up`(): Unit = runTest {
             navigator.destinations.test {
                 navigator.navigateUp()
 
