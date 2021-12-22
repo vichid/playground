@@ -27,15 +27,12 @@ jobs:
           java-version: '11'
           distribution: 'zulu'
 
-      - name: Grant execute permission for checksum.sh
-        run: chmod +x checksum.sh
-
       - name: Generate cache key
-        run: ./checksum.sh checksum.txt
+        run: chmod +x scripts/checksum.sh ; ./scripts/checksum.sh checksum.txt
 
       - name: Cache
         uses: actions/cache@v2
-        continue-on-error: true # continue if the cache restore/upload fails
+        continue-on-error: true
         with:
           path: |
             ~/.gradle/caches/modules-*
