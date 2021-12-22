@@ -29,20 +29,9 @@ jobs:
           java-version: ${{ matrix.java_version }}
           distribution: 'zulu'
 
-      - name: Generate cache key
-        run: chmod +x scripts/checksum.sh ; ./scripts/checksum.sh checksum.txt
-
-      - name: Cache
-        uses: actions/cache@v2
-        continue-on-error: true
+      - uses: ./.github/actions/gradle-cache
         with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          key-prefix: gradle-buildbot
 
       - name: Build and check
         run: |
