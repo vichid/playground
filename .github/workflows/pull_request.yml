@@ -11,21 +11,8 @@ jobs:
     name: Spotless Check [JDK ${{ matrix.java_version }}]
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    strategy:
-      matrix:
-        java_version: [ 17 ]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Set up JDK ${{ matrix.java_version }}
-        uses: actions/setup-java@v2
-        with:
-          java-version: ${{ matrix.java_version }}
-          distribution: 'zulu'
+      - uses: ./.github/actions/setup
 
       - name: Build and check
         run: |
@@ -35,21 +22,8 @@ jobs:
     name: Run tests [JDK ${{ matrix.java_version }}]
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    strategy:
-      matrix:
-        java_version: [ 17 ]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Set up JDK ${{ matrix.java_version }}
-        uses: actions/setup-java@v2
-        with:
-          java-version: ${{ matrix.java_version }}
-          distribution: 'zulu'
+      - uses: ./.github/actions/setup
 
       - uses: ./.github/actions/gradle-cache
         with:
@@ -90,25 +64,12 @@ jobs:
     name: Build [JDK ${{ matrix.java_version }}]
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    strategy:
-      matrix:
-        java_version: [ 17 ]
     steps:
       - name: Generate build number
         shell: bash
         run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
 
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Set up JDK ${{ matrix.java_version }}
-        uses: actions/setup-java@v2
-        with:
-          java-version: ${{ matrix.java_version }}
-          distribution: 'zulu'
+      - uses: ./.github/actions/setup
 
       - uses: ./.github/actions/gradle-cache
         with:
