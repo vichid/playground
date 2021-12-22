@@ -10,7 +10,7 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        java_version: [ 11, 17 ]
+        java_version: [ 17 ]
     steps:
 
       - name: Generate build number
