@@ -1,4 +1,2 @@
-plugins {
-    id("dependency-update")
-    id("module-graph-assert")
-}
+apply(plugin = "dependency-update")
+apply(plugin = "module-graph-assert")

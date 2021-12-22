@@ -3,6 +3,7 @@ package com.example.playground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -26,16 +27,18 @@ class NavActivity : ComponentActivity() {
             PlaygroundTheme {
                 val navController = rememberNavController()
 
-                navigationComponent.navigatorFactory()
-                    .destinations
-                    .onEach { navigatorEvent ->
-                        when (navigatorEvent) {
-                            is NavigatorEvent.Directions ->
-                                navController.navigate(navigatorEvent.destination.route())
-                            NavigatorEvent.NavigateUp -> navController.navigateUp()
+                LaunchedEffect(Unit) {
+                    navigationComponent.navigatorFactory()
+                        .destinations
+                        .onEach { navigatorEvent ->
+                            when (navigatorEvent) {
+                                is NavigatorEvent.Directions ->
+                                    navController.navigate(navigatorEvent.destination.route())
+                                NavigatorEvent.NavigateUp -> navController.navigateUp()
+                            }
                         }
-                    }
-                    .launchIn(lifecycleScope)
+                        .launchIn(lifecycleScope)
+                }
 
                 NavHost(
                     navController = navController,
