@@ -27,9 +27,9 @@ jobs:
           java-version: ${{ matrix.java_version }}
           distribution: 'zulu'
 
-      - uses: ./.github/actions
+      - uses: ./.github/actions/cache-build
         with:
-          key-prefix: cache-build
+          key-prefix: gradle-build
 
       - name: Build and check
         run: |
