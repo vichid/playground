@@ -61,8 +61,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: reports
-          path: build/reports
+          name: coverage
+          path: build/reports/kover
 
       - name: Codecov coverage
         uses: codecov/codecov-action@v2
