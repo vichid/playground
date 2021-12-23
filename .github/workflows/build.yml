@@ -1,0 +1,105 @@
+name: PR
+on: [ push, pull_request ]
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  code-linting:
+    name: Code linting
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup
+
+      - uses: burrunan/gradle-cache-action@v1
+        name: SpotlessCheck
+        with:
+          gradle-dependencies-cache-key: |
+            gradle/libs.versions.toml
+          arguments: |
+            --scan
+            spotlessCheck
+
+  tests:
+    name: Run tests
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup
+
+      - uses: burrunan/gradle-cache-action@v1
+        name: Tests
+        with:
+          gradle-dependencies-cache-key: |
+            gradle/libs.versions.toml
+          arguments: |
+            --scan
+            testDebugUnitTest
+            koverXmlReport
+
+      - name: Copy test results
+        if: failure()
+        run: |
+          mkdir -p junit
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: junit-results
+          path: junit
+
+      - name: Upload coverage artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: build/reports/kover
+
+      - name: Codecov coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate build number
+        shell: bash
+        run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
+
+      - uses: ./.github/actions/setup
+
+      - uses: burrunan/gradle-cache-action@v1
+        name: Build and check
+        with:
+          gradle-dependencies-cache-key: |
+            gradle/libs.versions.toml
+          arguments: |
+            --scan
+            app:assembleDebug
+            app:lintRelease
+
+      - name: Upload build outputs
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-outputs
+          path: app/build/outputs

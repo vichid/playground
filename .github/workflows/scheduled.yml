@@ -11,11 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Check dependency updates
-        run: ./gradlew dependencyUpdates
+      - uses: burrunan/gradle-cache-action@v1
+        name: Check dependency updates
+        with:
+          gradle-dependencies-cache-key: |
+            gradle/libs.versions.toml
+          arguments: |
+            --scan
+            dependencyUpdates
 
       - name: Upload dependency updates report
         uses: actions/upload-artifact@v2
