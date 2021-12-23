@@ -8,7 +8,7 @@ concurrency:
 jobs:
 
   code-linting:
-    name: Spotless Check
+    name: Code linting
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -17,7 +17,7 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: Build and check
+      - name: SpotlessCheck
         run: |
           ./gradlew --no-daemon --scan --stacktrace spotlessCheck
 
@@ -35,18 +35,11 @@ jobs:
         with:
           key-prefix: gradle-tests
 
-      - name: Build and check
+      - name: Tests and coverage
         run: |
           ./gradlew --continue --scan --stacktrace --no-daemon\
                testDebugUnitTest \
                koverXmlReport
-
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: reports
-          path: build/reports
 
       - name: Copy test results
         if: failure()
@@ -54,14 +47,21 @@ jobs:
           mkdir -p junit
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
-      - name: Upload test results
+      - name: Upload test artifacts
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: junit-results
           path: junit
 
-      - name: Coverage
+      - name: Upload coverage artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: build/reports
+
+      - name: Codecov coverage
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
