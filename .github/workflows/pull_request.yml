@@ -122,7 +122,7 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
-            dependencies
+            :app:dependencies --configuration debugRuntimeClasspath
 
       - id: dependency-diff
         name: Generate dependency diff
