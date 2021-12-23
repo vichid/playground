@@ -17,6 +17,7 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
+            --scan
             dependencyUpdates
 
       - name: Upload dependency updates report

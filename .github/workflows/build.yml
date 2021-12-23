@@ -23,6 +23,7 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
+            --scan
             spotlessCheck
 
   tests:
@@ -41,6 +42,7 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
+            --scan
             testDebugUnitTest
             koverXmlReport
 
@@ -89,5 +91,6 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
+            --scan
             app:assembleDebug
             app:lintRelease
