@@ -7,7 +7,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.base.di.ComponentHolder
+import com.example.core.di.ComponentHolder
 import com.example.launch.wiring.LaunchComponent
 import com.example.navigation.api.NavigatorEvent
 import com.example.navigation.wiring.NavigationComponent

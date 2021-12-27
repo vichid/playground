@@ -2,7 +2,7 @@ package com.example.signinscreen.impl
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.base.di.AppScope
+import com.example.core.di.AppScope
 import com.example.navigation.api.ComposeNavigationFactory
 import com.example.navigation.api.Navigator
 import com.example.signinscreen.api.SignInDestination

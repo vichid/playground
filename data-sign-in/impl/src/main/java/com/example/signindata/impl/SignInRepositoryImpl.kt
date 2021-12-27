@@ -1,6 +1,6 @@
 package com.example.signindata.impl
 
-import com.example.base.di.AppScope
+import com.example.core.di.AppScope
 import com.example.signindata.api.SignInRepository
 import com.example.signindata.api.UserProfile
 import com.squareup.anvil.annotations.ContributesBinding

@@ -1,4 +1,4 @@
-package com.example.base.di
+package com.example.core.di
 
 import javax.inject.Scope
 import kotlin.reflect.KClass

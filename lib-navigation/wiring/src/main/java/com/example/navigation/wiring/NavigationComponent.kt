@@ -1,6 +1,6 @@
 package com.example.navigation.wiring
 
-import com.example.base.di.AppScope
+import com.example.core.di.AppScope
 import com.example.navigation.api.ComposeNavigationFactory
 import com.example.navigation.api.Navigator
 import com.squareup.anvil.annotations.ContributesTo

@@ -1,6 +1,6 @@
 package com.example.navigation.impl
 
-import com.example.base.di.AppScope
+import com.example.core.di.AppScope
 import com.example.navigation.api.NavigationDestination
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent

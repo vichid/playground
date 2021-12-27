@@ -1,7 +1,7 @@
 package com.example.playground
 
 import android.app.Application
-import com.example.base.di.ComponentHolder
+import com.example.core.di.ComponentHolder
 
 class PlaygroundApplication : Application() {
     override fun onCreate() {

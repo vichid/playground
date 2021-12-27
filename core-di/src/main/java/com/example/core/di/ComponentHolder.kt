@@ -1,4 +1,4 @@
-package com.example.base.di
+package com.example.core.di
 
 object ComponentHolder {
     val components = mutableSetOf<Any>()
