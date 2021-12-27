@@ -9,6 +9,5 @@ dependencies {
     api(projects.libLogger.api)
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.inject)
     implementation(libs.timber)
 }

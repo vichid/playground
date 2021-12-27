@@ -26,5 +26,4 @@ dependencies {
     implementation(libs.bundles.lifecycle)
 
     implementation(libs.androidx.compose.navigation)
-    implementation(libs.inject)
 }

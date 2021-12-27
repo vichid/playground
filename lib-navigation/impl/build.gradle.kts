@@ -11,7 +11,6 @@ dependencies {
 
     implementation(libs.androidx.compose.navigation)
     implementation(libs.kotlin.coroutines.android)
-    implementation(libs.inject)
 
     testRuntimeOnly(libs.jupiter.engine)
     testImplementation(libs.bundles.unitTests)

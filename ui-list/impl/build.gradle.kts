@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.squareup.anvil")
 }
 
 android {
@@ -24,5 +23,4 @@ dependencies {
     implementation(libs.bundles.lifecycle)
 
     implementation(libs.androidx.compose.navigation)
-    implementation(libs.inject)
 }

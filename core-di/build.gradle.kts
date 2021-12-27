@@ -4,5 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.inject)
+    api(libs.anvil.annotations)
+    api(libs.inject)
 }

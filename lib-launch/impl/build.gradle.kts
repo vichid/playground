@@ -12,7 +12,6 @@ dependencies {
     implementation(projects.uiSignIn.api)
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.inject)
 
     testRuntimeOnly(libs.jupiter.engine)
     testImplementation(libs.bundles.unitTests)
