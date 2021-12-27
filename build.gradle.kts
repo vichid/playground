@@ -22,6 +22,7 @@ plugins {
     id("convention-android")
     id("convention-analyzers")
     id("convention-monitoring")
+    id("module-generator")
 }
 
 doctor {
