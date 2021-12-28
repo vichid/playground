@@ -36,7 +36,9 @@ open class ModuleGenerationTask : DefaultTask() {
 
     private fun Project.generateDirs(moduleName: String, configurationList: List<Configuration>) {
         configurationList.forEach { configuration ->
-            val configurationPath = "$packageName.$moduleName.$configuration".replace('.', '/')
+            val configurationPath = "$packageName.$moduleName.$configuration"
+                .replace('.', '/')
+                .replace("-", "")
             mkdir("$moduleName/$configuration/src/main/kotlin/$configurationPath")
             if (configuration == Configuration.IMPL) {
                 mkdir("$moduleName/$configuration/src/androidTest/kotlin/$configurationPath")
