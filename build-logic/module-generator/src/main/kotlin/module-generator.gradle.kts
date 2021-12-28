@@ -21,7 +21,7 @@ open class ModuleGenerationTask : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val moduleName = moduleInput ?: return
+        val moduleName = moduleInput?.cleanModuleName() ?: return
         val configurationList = configurationInput ?: return
 
         with(project) {
@@ -32,12 +32,14 @@ open class ModuleGenerationTask : DefaultTask() {
         }
     }
 
+    private fun String.cleanModuleName(): String = "[^-a-z]".toRegex().replace(toLowerCase(), "")
+
     private fun Project.generateDirs(moduleName: String, configurationList: List<Configuration>) {
-        configurationList.forEach {
-            mkdir("$moduleName/${it.name.toLowerCase()}/src/main/kotlin/")
-            if (it == Configuration.IMPL) {
-                mkdir("$moduleName/${it.name.toLowerCase()}/src/androidTest/kotlin/")
-                mkdir("$moduleName/${it.name.toLowerCase()}/src/test/kotlin/")
+        configurationList.forEach { configuration ->
+            mkdir("$moduleName/${configuration}/src/main/kotlin/")
+            if (configuration == Configuration.IMPL) {
+                mkdir("$moduleName/${configuration}/src/androidTest/kotlin/")
+                mkdir("$moduleName/${configuration}/src/test/kotlin/")
             }
         }
     }
@@ -46,18 +48,18 @@ open class ModuleGenerationTask : DefaultTask() {
         moduleName: String,
         configurationList: List<Configuration>
     ) {
-        val temp = "-[a-zA-Z]".toRegex().replace(moduleName) {
+        val camelCaseModuleName = "-[a-zA-Z]".toRegex().replace(moduleName) {
             it.value.replace("-", "")
                 .toUpperCase()
         }
         configurationList
             .map { configuration ->
-                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/${configuration.name.toLowerCase()}.gradle.kts")
+                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/${configuration}.gradle.kts")
                     .readText()
-                    .replace("\$s", temp)
+                    .replace("\$s", camelCaseModuleName)
             }
             .forEach { pair ->
-                file("$moduleName/${pair.first.name.toLowerCase()}/build.gradle.kts")
+                file("$moduleName/${pair.first.name}/build.gradle.kts")
                     .writeText(pair.second)
             }
     }
@@ -66,9 +68,9 @@ open class ModuleGenerationTask : DefaultTask() {
         moduleName: String,
         configurationList: List<Configuration>
     ) {
-        configurationList.forEach {
-            file("$moduleName/${it.name.toLowerCase()}/src/main/AndroidManifest.xml")
-                .writeText("<manifest package=\"$packageName.$moduleName.${it.name.toLowerCase()}\" />\n")
+        configurationList.forEach { configuration ->
+            file("$moduleName/${configuration}/src/main/AndroidManifest.xml")
+                .writeText("<manifest package=\"$packageName.$moduleName.${configuration}\" />\n")
         }
     }
 
@@ -79,8 +81,8 @@ open class ModuleGenerationTask : DefaultTask() {
         val modulesFile = "modules.gradle.kts"
         val originalModules = file(modulesFile).readLines().toMutableList()
         configurationList
-            .forEach {
-                val include = "include(\":$moduleName:${it.name.toLowerCase()}\")"
+            .forEach { configuration ->
+                val include = "include(\":$moduleName:${configuration}\")"
                 if (!originalModules.contains(include)) {
                     originalModules.add(include)
                 }
@@ -91,7 +93,9 @@ open class ModuleGenerationTask : DefaultTask() {
     }
 
     enum class Configuration {
-        API, IMPL, DEMO, FAKES
+        API, IMPL, DEMO, FAKES;
+
+        override fun toString(): String = name.toLowerCase()
     }
 
     companion object {
