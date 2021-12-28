@@ -24,44 +24,60 @@ open class ModuleGenerationTask : DefaultTask() {
         val moduleName = moduleInput ?: return
         val configurationList = configurationInput ?: return
 
-        generateDirs(moduleName, configurationList)
-        generateManifest(moduleName, configurationList)
-        generateBuildGradle(moduleName, configurationList)
-        generateModuleSettings(moduleName, configurationList)
+        with(project) {
+            generateDirs(moduleName, configurationList)
+            generateManifest(moduleName, configurationList)
+            generateBuildGradle(moduleName, configurationList)
+            generateModuleSettings(moduleName, configurationList)
+        }
     }
 
-    private fun generateDirs(moduleName: String, configurationList: List<Configuration>) {
+    private fun Project.generateDirs(moduleName: String, configurationList: List<Configuration>) {
         configurationList.forEach {
-            project.mkdir("$moduleName/${it.name.toLowerCase()}/src/main/kotlin/")
+            mkdir("$moduleName/${it.name.toLowerCase()}/src/main/kotlin/")
             if (it == Configuration.IMPL) {
-                project.mkdir("$moduleName/${it.name.toLowerCase()}/src/androidTest/kotlin/")
-                project.mkdir("$moduleName/${it.name.toLowerCase()}/src/test/kotlin/")
+                mkdir("$moduleName/${it.name.toLowerCase()}/src/androidTest/kotlin/")
+                mkdir("$moduleName/${it.name.toLowerCase()}/src/test/kotlin/")
             }
         }
     }
 
-    private fun generateBuildGradle(moduleName: String, configurationList: List<Configuration>) {
+    private fun Project.generateBuildGradle(
+        moduleName: String,
+        configurationList: List<Configuration>
+    ) {
+        val temp = "-[a-zA-Z]".toRegex().replace(moduleName) {
+            it.value.replace("-", "")
+                .toUpperCase()
+        }
         configurationList
             .map { configuration ->
-                configuration to project.file("${project.projectDir}/build-logic/module-generator/src/main/templates/${configuration.name.toLowerCase()}.gradle.kts")
+                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/${configuration.name.toLowerCase()}.gradle.kts")
                     .readText()
+                    .replace("\$s", temp)
             }
             .forEach { pair ->
-                project.file("$moduleName/${pair.first.name.toLowerCase()}/build.gradle.kts")
+                file("$moduleName/${pair.first.name.toLowerCase()}/build.gradle.kts")
                     .writeText(pair.second)
             }
     }
 
-    private fun generateManifest(moduleName: String, configurationList: List<Configuration>) {
+    private fun Project.generateManifest(
+        moduleName: String,
+        configurationList: List<Configuration>
+    ) {
         configurationList.forEach {
-            project.file("$moduleName/${it.name.toLowerCase()}/src/main/AndroidManifest.xml")
+            file("$moduleName/${it.name.toLowerCase()}/src/main/AndroidManifest.xml")
                 .writeText("<manifest package=\"$packageName.$moduleName.${it.name.toLowerCase()}\" />\n")
         }
     }
 
-    private fun generateModuleSettings(moduleName: String, configurationList: List<Configuration>) {
+    private fun Project.generateModuleSettings(
+        moduleName: String,
+        configurationList: List<Configuration>
+    ) {
         val modulesFile = "modules.gradle.kts"
-        val originalModules = project.file(modulesFile).readLines().toMutableList()
+        val originalModules = file(modulesFile).readLines().toMutableList()
         configurationList
             .forEach {
                 val include = "include(\":$moduleName:${it.name.toLowerCase()}\")"
@@ -71,7 +87,7 @@ open class ModuleGenerationTask : DefaultTask() {
             }
 
         originalModules.sort()
-        project.file(modulesFile).writeText(originalModules.joinToString(separator = "\n"))
+        file(modulesFile).writeText(originalModules.joinToString(separator = "\n", postfix = "\n"))
     }
 
     enum class Configuration {
