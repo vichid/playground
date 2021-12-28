@@ -1,5 +1,7 @@
 include(":app")
 include(":core-di")
+include(":core-network:api")
+include(":core-network:impl")
 include(":core-ui-compose")
 include(":data-sign-in:api")
 include(":data-sign-in:impl")
