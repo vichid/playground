@@ -1,4 +1,6 @@
 include(":app")
+include(":core-coroutines:api")
+include(":core-coroutines:impl")
 include(":core-di")
 include(":core-network:api")
 include(":core-network:impl")
