@@ -1,4 +1,4 @@
-package com.example.navigation.wiring
+package com.example.navigation.impl
 
 import com.example.core.di.AppScope
 import com.example.navigation.api.ComposeNavigationFactory

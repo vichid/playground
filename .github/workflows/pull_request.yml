@@ -94,6 +94,7 @@ jobs:
             gradle/libs.versions.toml
           arguments: |
             --scan
+            assertModuleGraph
             app:assembleDebug
             app:lintRelease
 

@@ -75,7 +75,7 @@ open class ModuleGenerationTask : DefaultTask() {
     }
 
     enum class Configuration {
-        API, IMPL, WIRING, DEMO, FAKES
+        API, IMPL, DEMO, FAKES
     }
 
     companion object {

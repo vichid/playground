@@ -1,4 +1,4 @@
-package com.example.logger.wiring
+package com.example.logger.impl
 
 import com.example.core.di.AppScope
 import com.example.logger.api.Logger

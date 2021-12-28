@@ -8,9 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.core.di.ComponentHolder
-import com.example.launch.wiring.LaunchComponent
+import com.example.launch.impl.LaunchComponent
 import com.example.navigation.api.NavigatorEvent
-import com.example.navigation.wiring.NavigationComponent
+import com.example.navigation.impl.NavigationComponent
 import com.example.playground.ui.theme.PlaygroundTheme
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

@@ -23,12 +23,12 @@ dependencies {
 
     implementation(projects.coreDi)
     implementation(projects.coreUiCompose)
-    implementation(projects.libNavigation.wiring)
-    implementation(projects.libLaunch.wiring)
-    implementation(projects.libLogger.wiring)
-    implementation(projects.uiSignIn.wiring)
-    implementation(projects.dataSignIn.wiring)
-    implementation(projects.uiList.wiring)
+    implementation(projects.libNavigation.impl)
+    implementation(projects.libLaunch.impl)
+    implementation(projects.libLogger.impl)
+    implementation(projects.uiSignIn.impl)
+    implementation(projects.dataSignIn.impl)
+    implementation(projects.uiList.impl)
 
     implementation(libs.bundles.compose)
     implementation(libs.dagger)

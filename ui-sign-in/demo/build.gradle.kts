@@ -23,8 +23,8 @@ dependencies {
     implementation(projects.coreDi)
     implementation(projects.coreUiCompose)
 
-    implementation(projects.libNavigation.wiring)
-    implementation(projects.uiSignIn.wiring)
+    implementation(projects.libNavigation.impl)
+    implementation(projects.uiSignIn.impl)
 
     implementation(libs.bundles.compose)
     implementation(libs.androidx.activity.activityCompose)
