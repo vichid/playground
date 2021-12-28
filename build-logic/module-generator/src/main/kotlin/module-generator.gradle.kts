@@ -36,10 +36,11 @@ open class ModuleGenerationTask : DefaultTask() {
 
     private fun Project.generateDirs(moduleName: String, configurationList: List<Configuration>) {
         configurationList.forEach { configuration ->
-            mkdir("$moduleName/${configuration}/src/main/kotlin/")
+            val configurationPath = "$packageName.$moduleName.$configuration".replace('.', '/')
+            mkdir("$moduleName/$configuration/src/main/kotlin/$configurationPath")
             if (configuration == Configuration.IMPL) {
-                mkdir("$moduleName/${configuration}/src/androidTest/kotlin/")
-                mkdir("$moduleName/${configuration}/src/test/kotlin/")
+                mkdir("$moduleName/$configuration/src/androidTest/kotlin/$configurationPath")
+                mkdir("$moduleName/$configuration/src/test/kotlin/$configurationPath")
             }
         }
     }
@@ -54,7 +55,7 @@ open class ModuleGenerationTask : DefaultTask() {
         }
         configurationList
             .map { configuration ->
-                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/${configuration}.gradle.kts")
+                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/$configuration.gradle.kts")
                     .readText()
                     .replace("\$s", camelCaseModuleName)
             }
@@ -69,8 +70,8 @@ open class ModuleGenerationTask : DefaultTask() {
         configurationList: List<Configuration>
     ) {
         configurationList.forEach { configuration ->
-            file("$moduleName/${configuration}/src/main/AndroidManifest.xml")
-                .writeText("<manifest package=\"$packageName.$moduleName.${configuration}\" />\n")
+            file("$moduleName/$configuration/src/main/AndroidManifest.xml")
+                .writeText("<manifest package=\"$packageName.$moduleName.$configuration\" />\n")
         }
     }
 
@@ -82,7 +83,7 @@ open class ModuleGenerationTask : DefaultTask() {
         val originalModules = file(modulesFile).readLines().toMutableList()
         configurationList
             .forEach { configuration ->
-                val include = "include(\":$moduleName:${configuration}\")"
+                val include = "include(\":$moduleName:$configuration\")"
                 if (!originalModules.contains(include)) {
                     originalModules.add(include)
                 }
