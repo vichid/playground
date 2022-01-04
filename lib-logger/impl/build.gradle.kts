@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     api(projects.libLogger.api)
 
     implementation(libs.androidx.startup.runtime)

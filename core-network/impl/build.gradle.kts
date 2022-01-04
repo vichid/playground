@@ -5,6 +5,6 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     api(projects.coreNetwork.api)
 }

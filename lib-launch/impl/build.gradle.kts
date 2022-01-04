@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     api(projects.libLaunch.api)
     implementation(projects.libNavigation.api)
     implementation(projects.uiSignIn.api)

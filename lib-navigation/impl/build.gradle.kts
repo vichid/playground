@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     api(projects.libNavigation.api)
 
     implementation(libs.androidx.compose.navigation)

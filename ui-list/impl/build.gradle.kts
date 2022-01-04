@@ -13,10 +13,10 @@ android {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     api(projects.uiList.api)
 
-    implementation(projects.coreUiCompose)
+    implementation(projects.coreUiCompose.api)
     implementation(projects.libNavigation.api)
 
     implementation(libs.bundles.compose)

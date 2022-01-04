@@ -21,8 +21,8 @@ android {
 
 dependencies {
 
-    implementation(projects.coreDi)
-    implementation(projects.coreUiCompose)
+    implementation(projects.coreDi.api)
+    implementation(projects.coreUiCompose.api)
     implementation(projects.libNavigation.impl)
     implementation(projects.libLaunch.impl)
     implementation(projects.libLogger.impl)

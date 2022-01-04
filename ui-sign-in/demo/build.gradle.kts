@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation(projects.coreDi)
-    implementation(projects.coreUiCompose)
+    implementation(projects.coreUiCompose.api)
 
     implementation(projects.libNavigation.impl)
     implementation(projects.uiSignIn.impl)
