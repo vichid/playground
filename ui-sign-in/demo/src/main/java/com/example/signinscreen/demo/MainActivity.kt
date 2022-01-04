@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.core.di.ComponentHolder
 import com.example.navigation.impl.NavigationComponent
-import com.example.playground.ui.theme.PlaygroundTheme
+import com.example.uicompose.theme.PlaygroundTheme
 
 class MainActivity : ComponentActivity() {
 

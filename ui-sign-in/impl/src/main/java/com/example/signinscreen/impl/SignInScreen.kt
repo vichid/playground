@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
-import com.example.playground.ui.theme.PlaygroundTheme
 import com.example.uicompose.components.ClearableOutlinedTextField
 import com.example.uicompose.components.ClearablePasswordOutlinedTextField
+import com.example.uicompose.theme.PlaygroundTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
