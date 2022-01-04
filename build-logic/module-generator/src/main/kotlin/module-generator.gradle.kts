@@ -23,10 +23,10 @@ open class ModuleGenerationTask : DefaultTask() {
     fun generate() {
         val moduleName = moduleInput?.cleanModuleName() ?: return
         val configurationList = configurationInput ?: return
-
+        val unhyphenedModuleName = moduleName.replace("-", "")
         with(project) {
-            generateDirs(moduleName, configurationList)
-            generateManifest(moduleName, configurationList)
+            generateDirs(unhyphenedModuleName, configurationList)
+            generateManifest(unhyphenedModuleName, configurationList)
             generateBuildGradle(moduleName, configurationList)
             generateModuleSettings(moduleName, configurationList)
         }
@@ -38,12 +38,21 @@ open class ModuleGenerationTask : DefaultTask() {
         configurationList.forEach { configuration ->
             val configurationPath = "$packageName.$moduleName.$configuration"
                 .replace('.', '/')
-                .replace("-", "")
             mkdir("$moduleName/$configuration/src/main/kotlin/$configurationPath")
             if (configuration == Configuration.IMPL) {
                 mkdir("$moduleName/$configuration/src/androidTest/kotlin/$configurationPath")
                 mkdir("$moduleName/$configuration/src/test/kotlin/$configurationPath")
             }
+        }
+    }
+
+    private fun Project.generateManifest(
+        moduleName: String,
+        configurationList: List<Configuration>
+    ) {
+        configurationList.forEach { configuration ->
+            file("$moduleName/$configuration/src/main/AndroidManifest.xml")
+                .writeText("<manifest package=\"$packageName.$moduleName.$configuration\" />\n")
         }
     }
 
@@ -65,16 +74,6 @@ open class ModuleGenerationTask : DefaultTask() {
                 file("$moduleName/${pair.first.name}/build.gradle.kts")
                     .writeText(pair.second)
             }
-    }
-
-    private fun Project.generateManifest(
-        moduleName: String,
-        configurationList: List<Configuration>
-    ) {
-        configurationList.forEach { configuration ->
-            file("$moduleName/$configuration/src/main/AndroidManifest.xml")
-                .writeText("<manifest package=\"$packageName.$moduleName.$configuration\" />\n")
-        }
     }
 
     private fun Project.generateModuleSettings(
