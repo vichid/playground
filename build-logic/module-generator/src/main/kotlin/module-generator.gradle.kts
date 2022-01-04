@@ -23,10 +23,9 @@ open class ModuleGenerationTask : DefaultTask() {
     fun generate() {
         val moduleName = moduleInput?.cleanModuleName() ?: return
         val configurationList = configurationInput ?: return
-        val unhyphenedModuleName = moduleName.replace("-", "")
         with(project) {
-            generateDirs(unhyphenedModuleName, configurationList)
-            generateManifest(unhyphenedModuleName, configurationList)
+            generateDirs(moduleName, configurationList)
+            generateManifest(moduleName, configurationList)
             generateBuildGradle(moduleName, configurationList)
             generateModuleSettings(moduleName, configurationList)
         }
@@ -38,6 +37,7 @@ open class ModuleGenerationTask : DefaultTask() {
         configurationList.forEach { configuration ->
             val configurationPath = "$packageName.$moduleName.$configuration"
                 .replace('.', '/')
+                .replace("-", "")
             mkdir("$moduleName/$configuration/src/main/kotlin/$configurationPath")
             if (configuration == Configuration.IMPL) {
                 mkdir("$moduleName/$configuration/src/androidTest/kotlin/$configurationPath")
@@ -52,7 +52,14 @@ open class ModuleGenerationTask : DefaultTask() {
     ) {
         configurationList.forEach { configuration ->
             file("$moduleName/$configuration/src/main/AndroidManifest.xml")
-                .writeText("<manifest package=\"$packageName.$moduleName.$configuration\" />\n")
+                .writeText(
+                    "<manifest package=\"$packageName.${
+                        moduleName.replace(
+                            "-",
+                            ""
+                        )
+                    }.$configuration\" />\n"
+                )
         }
     }
 
