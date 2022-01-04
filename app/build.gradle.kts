@@ -31,7 +31,6 @@ dependencies {
     implementation(projects.uiList.impl)
 
     implementation(libs.bundles.compose)
-    implementation(libs.dagger)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
 

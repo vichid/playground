@@ -5,5 +5,5 @@ plugins {
 
 dependencies {
     api(libs.anvil.annotations)
-    api(libs.inject)
+    api(libs.dagger)
 }
