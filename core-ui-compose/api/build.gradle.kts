@@ -13,6 +13,5 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.bundles.compose)
+    api(libs.bundles.compose)
 }

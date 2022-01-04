@@ -22,11 +22,9 @@ android {
 dependencies {
     implementation(projects.coreDi)
     implementation(projects.coreUiCompose.api)
-
     implementation(projects.libNavigation.impl)
     implementation(projects.uiSignIn.impl)
 
-    implementation(libs.bundles.compose)
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)

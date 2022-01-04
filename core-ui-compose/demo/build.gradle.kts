@@ -25,7 +25,7 @@ dependencies {
 
     implementation(projects.libNavigation.impl)
 
-    implementation(libs.bundles.compose)
+
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)

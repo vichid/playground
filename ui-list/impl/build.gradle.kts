@@ -15,11 +15,9 @@ android {
 dependencies {
     implementation(projects.coreDi.api)
     api(projects.uiList.api)
-
     implementation(projects.coreUiCompose.api)
     implementation(projects.libNavigation.api)
 
-    implementation(libs.bundles.compose)
     implementation(libs.bundles.lifecycle)
 
     implementation(libs.androidx.compose.navigation)

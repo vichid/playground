@@ -22,7 +22,6 @@ dependencies {
     implementation(projects.dataSignIn.api)
     implementation(projects.uiList.api)
 
-    implementation(libs.bundles.compose)
     implementation(libs.bundles.lifecycle)
 
     implementation(libs.androidx.compose.navigation)
