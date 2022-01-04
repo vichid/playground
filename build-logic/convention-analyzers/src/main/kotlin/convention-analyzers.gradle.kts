@@ -4,6 +4,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 apply(plugin = "com.diffplug.spotless")
 
 configure<SpotlessExtension> {
+    ratchetFrom("origin/main")
     val libs = the<LibrariesForLibs>()
     format("misc") {
         target("**/*.md", "**/.gitignore")
@@ -21,6 +22,7 @@ configure<SpotlessExtension> {
     }
     kotlinGradle {
         target("**/*.gradle.kts")
+        targetExclude("**/module-generator/**/templates/*.gradle.kts")
         ktlint(libs.versions.ktlint.get())
         trimTrailingWhitespace()
         endWithNewline()

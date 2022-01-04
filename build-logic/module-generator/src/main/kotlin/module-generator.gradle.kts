@@ -54,10 +54,10 @@ open class ModuleGenerationTask : DefaultTask() {
             file("$moduleName/$configuration/src/main/AndroidManifest.xml")
                 .writeText(
                     "<manifest package=\"$packageName.${
-                        moduleName.replace(
-                            "-",
-                            ""
-                        )
+                    moduleName.replace(
+                        "-",
+                        ""
+                    )
                     }.$configuration\" />\n"
                 )
         }
@@ -73,7 +73,7 @@ open class ModuleGenerationTask : DefaultTask() {
         }
         configurationList
             .map { configuration ->
-                configuration to file("${projectDir}/build-logic/module-generator/src/main/templates/$configuration.gradle.kts")
+                configuration to file("$projectDir/build-logic/module-generator/src/main/templates/$configuration.gradle.kts")
                     .readText()
                     .replace("\$s", camelCaseModuleName)
             }
