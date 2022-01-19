@@ -3,9 +3,9 @@ package com.example.logger.impl
 import com.example.core.di.AppScope
 import com.example.logger.api.Logger
 import com.squareup.anvil.annotations.ContributesBinding
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
-import timber.log.Timber
 
 @Singleton
 @ContributesBinding(AppScope::class)

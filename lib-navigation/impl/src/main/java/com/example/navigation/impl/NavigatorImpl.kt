@@ -5,11 +5,11 @@ import com.example.navigation.api.NavigationDestination
 import com.example.navigation.api.Navigator
 import com.example.navigation.api.NavigatorEvent
 import com.squareup.anvil.annotations.ContributesBinding
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Singleton
 @ContributesBinding(AppScope::class)
