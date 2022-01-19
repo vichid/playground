@@ -9,7 +9,7 @@ pluginManagement {
     includeBuild("./build-logic")
 }
 plugins {
-    id("com.gradle.enterprise") version "3.8"
+    id("com.gradle.enterprise") version "3.8.1"
 }
 val isCiServer = System.getenv().containsKey("CI")
 
