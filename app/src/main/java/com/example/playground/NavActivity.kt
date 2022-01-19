@@ -11,7 +11,7 @@ import com.example.core.di.ComponentHolder
 import com.example.launch.impl.LaunchComponent
 import com.example.navigation.api.NavigatorEvent
 import com.example.navigation.impl.NavigationComponent
-import com.example.uicompose.theme.PlaygroundTheme
+import com.example.uicompose.theme.AppTheme
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -24,7 +24,7 @@ class NavActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            PlaygroundTheme {
+            AppTheme {
                 val navController = rememberNavController()
 
                 LaunchedEffect(Unit) {

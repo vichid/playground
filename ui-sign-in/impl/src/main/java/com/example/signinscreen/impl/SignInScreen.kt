@@ -24,7 +24,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import com.example.uicompose.components.ClearableOutlinedTextField
 import com.example.uicompose.components.ClearablePasswordOutlinedTextField
-import com.example.uicompose.theme.PlaygroundTheme
+import com.example.uicompose.theme.AppTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -76,7 +76,7 @@ internal fun LoginScreen(
 @Preview
 @Composable
 internal fun LoginPreview() {
-    PlaygroundTheme {
+    AppTheme {
         LoginScreen(MutableStateFlow(SignInUIState.Empty), { }, { }, { }, { })
     }
 }

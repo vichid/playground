@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.coreDi)
+    implementation(projects.coreDi.api)
     implementation(projects.coreUiCompose.api)
     implementation(projects.libNavigation.impl)
     implementation(projects.uiSignIn.impl)
