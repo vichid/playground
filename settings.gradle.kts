@@ -6,7 +6,6 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
-    includeBuild("./build-logic")
 }
 plugins {
     id("com.gradle.enterprise") version "3.8.1"

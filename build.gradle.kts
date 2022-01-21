@@ -3,10 +3,12 @@ buildscript {
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.junit5)
+        classpath(libs.gradlePlugins.buildLogic)
     }
 
     repositories {
         google()
+        maven("https://jitpack.io")
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
@@ -18,12 +20,8 @@ plugins {
     alias(libs.plugins.anvil)
     alias(libs.plugins.doctor)
     alias(libs.plugins.kover)
-    id("convention-versioning")
-    id("convention-android")
-    id("convention-analyzers")
-    id("convention-monitoring")
-    id("module-generator")
 }
+apply(plugin = "android-build-logic")
 
 doctor {
     warnWhenNotUsingParallelGC.set(false)
@@ -36,9 +34,7 @@ allprojects {
     buildscript {
         repositories {
             google()
-            maven {
-                url = uri("https://plugins.gradle.org/m2/")
-            }
+            maven { url = uri("https://plugins.gradle.org/m2/") }
         }
     }
 
