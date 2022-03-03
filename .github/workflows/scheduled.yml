@@ -21,7 +21,7 @@ jobs:
             dependencyUpdates
 
       - name: Upload dependency updates report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: dependency-updates
           path: build/dependencyUpdates
