@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.squareup.anvil")
     id("de.mannodermaus.android-junit5")
 }
 
@@ -9,7 +8,8 @@ dependencies {
     implementation(projects.coreDi.api)
     api(projects.libNavigation.api)
 
-    implementation(libs.androidx.compose.navigation)
+    implementation(libs.anvil.annotations)
+    implementation(libs.inject.annotations)
     implementation(libs.kotlin.coroutines.android)
 
     testRuntimeOnly(libs.jupiter.engine)

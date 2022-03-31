@@ -22,4 +22,7 @@ dependencies {
 
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
+    implementation(libs.androidx.compose.compiler)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.ui)
 }

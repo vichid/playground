@@ -15,10 +15,14 @@ android {
 dependencies {
     implementation(projects.coreDi.api)
     api(projects.uiList.api)
-    implementation(projects.coreUiCompose.api)
     implementation(projects.libNavigation.api)
 
-    implementation(libs.bundles.lifecycle)
-
+    implementation(libs.androidx.compose.compiler)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.uiToolingPreview)
+    implementation(libs.anvil.annotations)
+    implementation(libs.inject.annotations)
 }

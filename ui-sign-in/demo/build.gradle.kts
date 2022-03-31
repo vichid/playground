@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.dagger)
 
     debugImplementation(libs.leakcanary)
 

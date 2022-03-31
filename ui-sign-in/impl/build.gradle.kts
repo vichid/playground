@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.squareup.anvil")
 }
 
 android {
@@ -22,7 +21,12 @@ dependencies {
     implementation(projects.dataSignIn.api)
     implementation(projects.uiList.api)
 
-    implementation(libs.bundles.lifecycle)
-
+    implementation(libs.androidx.compose.compiler)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
+    implementation(libs.anvil.annotations)
+    implementation(libs.inject.annotations)
 }

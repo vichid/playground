@@ -7,12 +7,14 @@ compose = "1.1.1"
 composeNavigation = "2.4.1"
 coroutines = "1.6.0"
 dagger = "2.41"
+dependencyAnalysis = "1.0.0-rc05"
 doctor = "0.8.0"
 gradlePlugins-agp = "7.2.0-beta04"
 gradlePlugins-buildLogic = "0.0.1-SNAPSHOT"
 gradlePlugins-junit5 = "1.8.2.0"
 gradlePlugins-ktlint = "10.2.1"
 googlejavaformat = "1.15.0"
+inject = "1"
 jupiter = "5.8.2"
 kotlin = "1.6.10"
 kover = "0.5.0"
@@ -29,6 +31,7 @@ versionUpdate = "0.42.0"
 
 [plugins]
 anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
 doctor = { id = "com.osacky.doctor", version.ref = "doctor" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
@@ -40,9 +43,13 @@ androidx-compose-foundation = { module = "androidx.compose.foundation:foundation
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 androidx-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
 androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 androidx-compose-runtimeLivedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+androidx-compose-uiGraphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
+androidx-compose-uiText = { module = "androidx.compose.ui:ui-text", version.ref = "compose" }
 androidx-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+androidx-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-lifecycleViewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
@@ -59,9 +66,11 @@ gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 gradlePlugins-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "gradlePlugins-ktlint" }
 gradlePlugins-versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versionUpdate" }
 googlejavaformat = { module = "com.google.googlejavaformat:google-java-format", version.ref = "googlejavaformat" }
+inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
 jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
@@ -74,6 +83,4 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [bundles]
-compose = ["androidx-compose-compiler", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-materialIconsExtended", "androidx-compose-runtimeLivedata", "androidx-compose-ui", "androidx-compose-uiTooling"]
-lifecycle = ["androidx-lifecycle-lifecycleRuntimeKtx", "androidx-lifecycle-lifecycleViewmodelCompose"]
 unitTests = ["jupiter-api", "jupiter-params", "truth", "turbine", "kotlin-coroutines-test"]

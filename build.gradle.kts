@@ -18,6 +18,7 @@ buildscript {
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.anvil)
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.kover)
 }

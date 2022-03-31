@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.squareup.anvil")
 }
 
 dependencies {
@@ -9,5 +8,7 @@ dependencies {
     api(projects.libLogger.api)
 
     implementation(libs.androidx.startup.runtime)
+    implementation(libs.anvil.annotations)
+    implementation(libs.inject.annotations)
     implementation(libs.timber)
 }

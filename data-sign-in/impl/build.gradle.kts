@@ -6,4 +6,7 @@ plugins {
 dependencies {
     implementation(projects.coreDi.api)
     api(projects.dataSignIn.api)
+
+    implementation(libs.anvil.annotations)
+    implementation(libs.inject.annotations)
 }
