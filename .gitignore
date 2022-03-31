@@ -52,3 +52,6 @@ captures/
 # Profile
 gradle-user-home/
 profile-out*/
+
+# Focus plugin
+.focus

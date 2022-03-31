@@ -9,6 +9,7 @@ pluginManagement {
 }
 plugins {
     id("com.gradle.enterprise") version "3.9"
+    id("com.dropbox.focus") version "0.4.0"
 }
 val isCiServer = System.getenv().containsKey("CI")
 
@@ -25,4 +26,6 @@ if (isCiServer) {
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-apply(from = "modules.gradle.kts")
+configure<com.dropbox.focus.FocusExtension> {
+    this.allSettingsFileName.set("modules.gradle.kts")
+}
