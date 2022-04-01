@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     id("de.mannodermaus.android-junit5")
+    id("com.squareup.anvil")
 }
 
 dependencies {
