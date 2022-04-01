@@ -7,33 +7,22 @@ compose = "1.1.1"
 composeNavigation = "2.4.1"
 coroutines = "1.6.0"
 dagger = "2.41"
-dependencyAnalysis = "1.0.0-rc05"
-doctor = "0.8.0"
-gradlePlugins-agp = "7.2.0-beta04"
-gradlePlugins-buildLogic = "0.0.1-SNAPSHOT"
+gradlePlugins-buildLogic = "0.0.3-SNAPSHOT"
 gradlePlugins-junit5 = "1.8.2.0"
-gradlePlugins-ktlint = "10.2.1"
-googlejavaformat = "1.15.0"
 inject = "1"
 jupiter = "5.8.2"
 kotlin = "1.6.10"
-kover = "0.5.0"
 leakcanary = "2.8.1"
 lifecycle = "2.4.1"
 lifecycleViewmodelCompose = "2.4.1"
-moduleGraphAssertion = "2.2.0"
 startup = "1.1.1"
 store = "4.0.5"
 timber = "5.0.1"
 turbine = "0.7.0"
 truth = "1.1.3"
-versionUpdate = "0.42.0"
 
 [plugins]
 anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
-doctor = { id = "com.osacky.doctor", version.ref = "doctor" }
-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -58,14 +47,8 @@ dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
-gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "gradlePlugins-agp" }
 gradlePlugins-buildLogic = { module = "com.github.vichid:android-build-logic", version.ref = "gradlePlugins-buildLogic" }
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
-gradlePlugins-moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "moduleGraphAssertion" }
-gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradlePlugins-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "gradlePlugins-ktlint" }
-gradlePlugins-versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versionUpdate" }
-googlejavaformat = { module = "com.google.googlejavaformat:google-java-format", version.ref = "googlejavaformat" }
 inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
@@ -74,7 +57,6 @@ kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jv
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }

@@ -6,6 +6,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
+    // includeBuild("../android-build-logic")
 }
 plugins {
     id("com.gradle.enterprise") version "3.9"

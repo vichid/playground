@@ -1,7 +1,5 @@
 buildscript {
     dependencies {
-        classpath(libs.gradlePlugins.android)
-        classpath(libs.gradlePlugins.kotlin)
         classpath(libs.gradlePlugins.junit5)
         classpath(libs.gradlePlugins.buildLogic)
     }
@@ -18,18 +16,9 @@ buildscript {
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.anvil)
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.doctor)
-    alias(libs.plugins.kover)
+    // id("android-build-logic") apply false
 }
 apply(plugin = "android-build-logic")
-
-doctor {
-    warnWhenNotUsingParallelGC.set(false)
-    javaHome {
-        ensureJavaHomeMatches.set(false)
-    }
-}
 
 allprojects {
     buildscript {
