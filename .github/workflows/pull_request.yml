@@ -69,7 +69,7 @@ jobs:
           path: build/reports/kover
 
       - name: Codecov coverage
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
