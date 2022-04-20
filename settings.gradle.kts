@@ -9,7 +9,7 @@ pluginManagement {
     // includeBuild("../android-build-logic")
 }
 plugins {
-    id("com.gradle.enterprise") version "3.9"
+    id("com.gradle.enterprise") version "3.10"
     id("com.dropbox.focus") version "0.4.0"
 }
 val isCiServer = System.getenv().containsKey("CI")
