@@ -2,7 +2,7 @@
 activityCompose = "1.4.0"
 anvil = "2.4.0"
 appCompat = "1.4.1"
-benchmark = "1.1.0-beta06"
+benchmark = "1.1.0-rc01"
 composeCompiler = "1.2.0-alpha08"
 compose = "1.2.0-alpha07"
 composeNavigation = "2.4.2"
