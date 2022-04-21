@@ -20,7 +20,7 @@ plugins {
 }
 apply(plugin = "android-build-logic")
 
-subprojects {
+allprojects {
     repositories {
         google()
         mavenCentral()
