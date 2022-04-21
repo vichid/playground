@@ -2,12 +2,13 @@
 activityCompose = "1.4.0"
 anvil = "2.4.0"
 appCompat = "1.4.1"
+benchmark = "1.1.0-beta06"
 composeCompiler = "1.2.0-alpha08"
 compose = "1.2.0-alpha07"
 composeNavigation = "2.4.2"
 coroutines = "1.6.1"
 dagger = "2.41"
-gradlePlugins-buildLogic = "0.0.5"
+gradlePlugins-buildLogic = "0.0.6"
 gradlePlugins-junit5 = "1.8.2.0"
 inject = "1"
 jupiter = "5.8.2"
@@ -27,6 +28,7 @@ anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 [libraries]
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
+androidx-benchmark = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmark" }
 androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
