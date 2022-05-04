@@ -24,7 +24,6 @@ if (isCiServer) {
     }
 }
 
-enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 configure<com.dropbox.focus.FocusExtension> {
