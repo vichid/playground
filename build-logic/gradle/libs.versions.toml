@@ -1,0 +1,21 @@
+[versions]
+agp = "7.2.0-rc02"
+dependency = "1.1.0"
+doctor = "0.8.0"
+junit5 = "1.8.2.0"
+kotlin = "1.5.31"
+kover = "0.5.0"
+ktlint = "10.2.1"
+moduleGraphAssertion = "2.2.0"
+versionUpdate = "0.41.0"
+
+[libraries]
+android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+dependency = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependency" }
+doctor = { module = "com.osacky.doctor:doctor-plugin", version.ref = "doctor" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
+ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
+moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "moduleGraphAssertion" }
+versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versionUpdate" }
