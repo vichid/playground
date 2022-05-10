@@ -1,5 +1,7 @@
 package modulegenerator
 
+import java.util.Locale
+
 enum class ModuleConfiguration {
     API,
     IMPL,
@@ -11,11 +13,11 @@ enum class ModuleConfiguration {
 
 fun StringBuilder.appendConfiguration(moduleConfiguration: ModuleConfiguration): StringBuilder =
     when (moduleConfiguration) {
-        API -> appendPluginLibrary()
-        IMPL -> appendPluginLibrary()
+        ModuleConfiguration.API -> appendPluginLibrary()
+        ModuleConfiguration.IMPL -> appendPluginLibrary()
             .appendLibraryDependency()
-        DEMO -> appendApplication()
-        FAKES -> appendPluginLibrary()
+        ModuleConfiguration.DEMO -> appendApplication()
+        ModuleConfiguration.FAKES -> appendPluginLibrary()
             .appendLibraryDependency()
     }
 

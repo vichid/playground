@@ -16,7 +16,7 @@ buildscript {
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.anvil)
-    // id("android-build-logic") apply false
+    id("android-build-logic") apply false
 }
 
 apply(plugin = "android-build-logic")
