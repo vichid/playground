@@ -2,6 +2,8 @@ name: Main
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'server/**'
 
 jobs:
 
@@ -16,9 +18,6 @@ jobs:
       - name: Generate build number
         shell: bash
         run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
-
-      - name: Copy CI gradle.properties
-        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
       - uses: ./.github/actions/setup
 
