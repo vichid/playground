@@ -54,24 +54,24 @@ jobs:
           mkdir -p junit
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
-      - name: Upload test artifacts
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: junit-results
-          path: junit
+#      - name: Upload test artifacts
+#        if: failure()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: junit-results
+#          path: junit
+#
+#      - name: Upload coverage artifacts
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: coverage
+#          path: build/reports/kover
 
-      - name: Upload coverage artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: build/reports/kover
-
-      - name: Codecov coverage
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+#      - name: Codecov coverage
+#        uses: codecov/codecov-action@v3
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build
@@ -98,12 +98,12 @@ jobs:
             android-app:app:assembleDebug
             android-app:app:lintRelease
 
-      - name: Upload build outputs
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-outputs
-          path: app/build/outputs
+#      - name: Upload build outputs
+#        if: success()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: build-outputs
+#          path: app/build/outputs
 
   dep-diff:
     name: Dependency diff

@@ -29,9 +29,9 @@ jobs:
             android-app:app:assembleDebug
             android-app:app:lintRelease
 
-      - name: Upload build outputs
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-outputs
-          path: android-app/app/build/outputs
+#      - name: Upload build outputs
+#        if: success()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: build-outputs
+#          path: android-app/app/build/outputs
