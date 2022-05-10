@@ -5,7 +5,7 @@ doctor = "0.8.0"
 junit5 = "1.8.2.0"
 kotlin = "1.5.31"
 kover = "0.5.0"
-ktlint = "10.2.1"
+ktlint = "10.3.0"
 moduleGraphAssertion = "2.2.0"
 versionUpdate = "0.41.0"
 
