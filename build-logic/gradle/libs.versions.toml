@@ -1,6 +1,6 @@
 [versions]
 agp = "7.2.0-rc02"
-dependency = "1.1.0"
+dependency = "1.2.0"
 doctor = "0.8.0"
 junit5 = "1.8.2.0"
 kotlin = "1.5.31"
