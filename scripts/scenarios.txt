@@ -1,0 +1,4 @@
+clean_build {
+    tasks = [":android-app:app:assembleDebug"]
+    cleanup-tasks = [":android-app:app:clean"]
+}
