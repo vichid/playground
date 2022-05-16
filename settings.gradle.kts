@@ -9,6 +9,14 @@ pluginManagement {
     includeBuild("./build-logic")
 }
 
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 plugins {
     id("com.gradle.enterprise") version "3.10"
     id("com.dropbox.focus") version "0.4.0"

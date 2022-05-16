@@ -6,14 +6,7 @@ plugins {
 group = "io.github.vichid"
 version = "0.0.6"
 
-allprojects {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-}
-
-val targetJavaVersion = JavaVersion.VERSION_1_8
+val targetJavaVersion = JavaVersion.VERSION_11
 tasks.withType<JavaCompile>().configureEach {
     options.release.set(targetJavaVersion.majorVersion.toInt())
 }
