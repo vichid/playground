@@ -1,16 +1,6 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    id("com.playground.buildlogic.library.compose")
     id("com.squareup.anvil")
-}
-
-android {
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
 }
 
 dependencies {

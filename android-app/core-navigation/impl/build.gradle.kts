@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    id("com.playground.buildlogic.library")
     id("de.mannodermaus.android-junit5")
     id("com.squareup.anvil")
 }

@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.test")
-    kotlin("android")
+    id("com.playground.buildlogic.test")
 }
 
 android {

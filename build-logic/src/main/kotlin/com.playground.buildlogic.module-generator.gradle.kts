@@ -1,6 +1,6 @@
-import modulegenerator.ModuleConfiguration
-import modulegenerator.ModuleConfiguration.IMPL
-import modulegenerator.appendConfiguration
+import com.playground.buildlogic.ModuleConfiguration
+import com.playground.buildlogic.ModuleConfiguration.IMPL
+import com.playground.buildlogic.appendConfiguration
 
 open class ModuleGenerationTask : DefaultTask() {
 

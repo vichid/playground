@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("com.playground.buildlogic.application.compose")
 }
 
 android {
@@ -8,12 +7,6 @@ android {
         applicationId = "com.example.playground.coreUiCompose"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 }
 

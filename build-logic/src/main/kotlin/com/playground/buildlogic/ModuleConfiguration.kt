@@ -1,4 +1,4 @@
-package modulegenerator
+package com.playground.buildlogic
 
 import java.util.Locale
 
@@ -23,15 +23,13 @@ fun StringBuilder.appendConfiguration(moduleConfiguration: ModuleConfiguration):
 
 private fun StringBuilder.appendPluginLibrary(): StringBuilder = append(
     "plugins {\n" +
-        "    id(\"com.android.library\")\n" +
-        "    kotlin(\"android\")\n" +
+        "    id(\"com.playground.buildlogic.library\")\n" +
         "}\n"
 )
 
 private fun StringBuilder.appendApplication(): StringBuilder = append(
     "plugins {\n" +
-        "    id(\"com.android.application\")\n" +
-        "    kotlin(\"android\")\n" +
+        "    id(\"com.playground.buildlogic.application.compose\")\n" +
         "}\n" +
         "\n" +
         "android {\n" +

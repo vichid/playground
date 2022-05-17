@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library")
+    id("com.playground.buildlogic.library")
 }
 
 dependencies {

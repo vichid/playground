@@ -1,7 +1,3 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
-}
-
-dependencies {
+    id("com.playground.buildlogic.library")
 }

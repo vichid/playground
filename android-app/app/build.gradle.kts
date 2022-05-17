@@ -1,8 +1,5 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
-    id("com.squareup.anvil")
+    id("com.playground.buildlogic.application.compose")
 }
 
 android {
@@ -10,12 +7,6 @@ android {
         applicationId = "com.example.playground"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 }
 
