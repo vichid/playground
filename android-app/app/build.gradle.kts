@@ -22,6 +22,7 @@ dependencies {
 
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.profileinstaller)
     implementation(libs.dagger)
 
     debugImplementation(libs.leakcanary)

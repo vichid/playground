@@ -22,6 +22,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.benchmark)
+    implementation(libs.androidx.test.uiautomator)
 }
 
 androidComponents {

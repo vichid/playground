@@ -3,6 +3,7 @@ activityCompose = "1.4.0"
 agp = "7.2.0"
 anvil = "2.4.0"
 appCompat = "1.4.1"
+automator = "2.2.0"
 benchmark = "1.1.0-rc02"
 compose = "1.2.0-alpha08"
 composeNavigation = "2.4.2"
@@ -22,6 +23,7 @@ leakcanary = "2.9.1"
 lifecycle = "2.4.1"
 lifecycleViewmodelCompose = "2.4.1"
 moduleGraphAssertion = "2.2.0"
+profileinstaller = "1.2.0-beta01"
 startup = "1.1.1"
 store = "4.0.5"
 timber = "5.0.1"
@@ -48,7 +50,9 @@ androidx-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", versio
 androidx-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-lifecycleViewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
+androidx-test-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "automator" }
 anvil = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anvil" }
 anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "anvil" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
