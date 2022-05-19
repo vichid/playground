@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 
 plugins {
     id("com.gradle.enterprise") version "3.10.1"
-    id("com.dropbox.focus") version "0.4.0"
+    id("com.dropbox.focus") version "0.5.1"
 }
 
 val isCiServer = System.getenv().containsKey("CI")
