@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.library")
+    id("com.playground.buildlogic.jvm")
 }
 
 dependencies {
