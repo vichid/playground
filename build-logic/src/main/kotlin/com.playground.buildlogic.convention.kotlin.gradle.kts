@@ -3,6 +3,13 @@ import org.gradle.kotlin.dsl.withType
 plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
+val libs: VersionCatalog =
+    project.extensions.getByType<VersionCatalogsExtension>().named("libs")
+
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    android.set(true)
+    version.set(libs.findVersion("ktlint").get().toString())
+}
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
