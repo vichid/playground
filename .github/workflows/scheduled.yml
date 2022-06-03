@@ -40,4 +40,4 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: release-candidate
-      - run: gradle build --dry-run # just test build configuration
+      - run: gradle :android-app:app:assembleDebug --dry-run # just test build configuration
