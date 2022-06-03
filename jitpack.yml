@@ -2,4 +2,4 @@ jdk:
   - openjdk11
 install:
   - chmod +x gradlew
-  - ./gradlew :build-logic:publishToMavenLocal
+  - ./gradlew :build-logic:publishToMavenLocal --no-configuration-cache
