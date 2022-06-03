@@ -26,6 +26,7 @@ plugins {
 val isCI = System.getenv().containsKey("CI")
 
 gradleEnterprise {
+    server = "https://ge.gradle.org/"
     buildScan {
         termsOfServiceAgree = "yes"
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
