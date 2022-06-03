@@ -18,13 +18,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: KtlintCheck
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: |
-            ktlintCheck
+          arguments: ktlintCheck
 
   tests:
     name: Run tests
@@ -37,14 +33,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: Tests
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: |
-            testDebugUnitTest
-            koverXmlReport
+          arguments: testDebugUnitTest koverXmlReport
 
       - name: Copy test results
         if: failure()
@@ -81,15 +72,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: Build and check
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: |
-            assertModuleGraph
-            android-app:app:assembleDebug
-            android-app:app:lintRelease
+          arguments: assertModuleGraph android-app:app:assembleDebug android-app:app:lintRelease
 
 #      - name: Upload build outputs
 #        if: success()
@@ -110,13 +95,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: Dependencies
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: |
-            android-app:app:dependencies --configuration debugRuntimeClasspath
+          arguments: android-app:app:dependencies --configuration debugRuntimeClasspath
 
       - id: dependency-diff
         name: Generate dependency diff

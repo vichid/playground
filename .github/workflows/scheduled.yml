@@ -14,13 +14,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: burrunan/gradle-cache-action@v1
-        name: Check dependency updates
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-dependencies-cache-key: |
-            gradle/libs.versions.toml
-          arguments: |
-            dependencyUpdates
+          arguments: dependencyUpdates
 
 #      - name: Upload dependency updates report
 #        uses: actions/upload-artifact@v3
