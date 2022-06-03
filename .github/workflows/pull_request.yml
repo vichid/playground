@@ -81,10 +81,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate build number
-        shell: bash
-        run: echo "BUILD_NUMBER=$(expr $GITHUB_RUN_NUMBER + 5210)" >> $GITHUB_ENV
-
       - uses: ./.github/actions/setup
 
       - uses: burrunan/gradle-cache-action@v1
