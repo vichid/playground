@@ -24,7 +24,6 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
-            --scan
             ktlintCheck
 
   tests:
@@ -44,7 +43,6 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
-            --scan
             testDebugUnitTest
             koverXmlReport
 
@@ -89,7 +87,6 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
-            --scan
             assertModuleGraph
             android-app:app:assembleDebug
             android-app:app:lintRelease

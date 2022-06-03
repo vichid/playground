@@ -23,7 +23,6 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
           arguments: |
-            --scan
             android-app:app:assembleDebug
             android-app:app:lintRelease
 
