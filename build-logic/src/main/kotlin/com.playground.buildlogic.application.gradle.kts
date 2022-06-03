@@ -8,7 +8,6 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("org.jlleitschuh.gradle.ktlint")
     id("com.playground.buildlogic.convention.kotlin")
     id("com.squareup.anvil")
 }
