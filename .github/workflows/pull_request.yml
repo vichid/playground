@@ -20,6 +20,7 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: ktlintCheck
 
   tests:
@@ -35,6 +36,7 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: testDebugUnitTest koverXmlReport
 
       - name: Copy test results
@@ -74,6 +76,7 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: assertModuleGraph android-app:app:assembleDebug android-app:app:lintRelease
 
 #      - name: Upload build outputs
@@ -97,6 +100,7 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: android-app:app:dependencies --configuration debugRuntimeClasspath
 
       - id: dependency-diff
