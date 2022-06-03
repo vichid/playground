@@ -20,17 +20,25 @@ dependencyResolutionManagement {
 plugins {
     id("com.gradle.enterprise") version "3.10.1"
     id("com.dropbox.focus") version "0.5.1"
+    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.7.1"
 }
 
-val isCiServer = System.getenv().containsKey("CI")
+val isCI = System.getenv().containsKey("CI")
 
-if (isCiServer) {
-    gradleEnterprise {
-        buildScan {
-            termsOfServiceAgree = "yes"
-            termsOfServiceUrl = "https://gradle.com/terms-of-service"
-            tag("CI")
-        }
+gradleEnterprise {
+    buildScan {
+        termsOfServiceAgree = "yes"
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        tag("CI")
+        capture { isTaskInputFiles = true }
+        isUploadInBackground = !isCI
+        publishAlways()
+    }
+}
+
+buildCache {
+    local {
+        isEnabled = true
     }
 }
 
