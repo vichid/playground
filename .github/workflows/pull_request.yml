@@ -7,6 +7,14 @@ concurrency:
 
 jobs:
 
+  validate-wrapper:
+    name: Validate wrapper
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate
+      uses: gradle/wrapper-validation-action@v1
+
   code-linting:
     name: Code linting
     if: github.ref != 'refs/heads/main'

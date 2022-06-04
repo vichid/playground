@@ -6,6 +6,14 @@ on:
       - 'server/**'
 
 jobs:
+  validate-wrapper:
+    name: Validate wrapper
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate
+      uses: gradle/wrapper-validation-action@v1
+
   build:
     name: Build
     runs-on: ubuntu-latest
