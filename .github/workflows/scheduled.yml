@@ -17,7 +17,8 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: dependencyUpdates
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #      - name: Upload dependency updates report
 #        uses: actions/upload-artifact@v3
 #        with:
@@ -37,3 +38,5 @@ jobs:
         with:
           gradle-version: release-candidate
       - run: gradle :android-app:app:assembleDebug --dry-run # just test build configuration
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

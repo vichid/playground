@@ -22,7 +22,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: ktlintCheck
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   tests:
     name: Run tests
     if: github.ref != 'refs/heads/main'
@@ -38,7 +39,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: testDebugUnitTest koverXmlReport
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy test results
         if: failure()
         run: |
@@ -78,7 +80,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: assertModuleGraph android-app:app:assembleDebug android-app:app:lintRelease
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #      - name: Upload build outputs
 #        if: success()
 #        uses: actions/upload-artifact@v3
@@ -102,7 +105,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: android-app:app:dependencies --configuration debugRuntimeClasspath
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: dependency-diff
         name: Generate dependency diff
         uses: usefulness/dependency-tree-diff-action@v1
