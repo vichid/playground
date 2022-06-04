@@ -1,5 +1,6 @@
 plugins {
     id("io.github.vichid.library.compose")
+    id("com.squareup.anvil")
 }
 
 dependencies {
