@@ -1,4 +1,4 @@
-package com.playground.buildlogic
+package io.github.vichid
 
 import java.util.Locale
 

@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.library.compose")
+    id("io.github.vichid.library.compose")
 }
 
 dependencies {

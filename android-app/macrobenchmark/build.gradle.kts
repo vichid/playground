@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.test")
+    id("io.github.vichid.test")
 }
 
 android {

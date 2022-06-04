@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.application.compose")
+    id("io.github.vichid.application.compose")
 }
 
 android {

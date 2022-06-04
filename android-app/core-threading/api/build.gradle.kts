@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.library")
+    id("io.github.vichid.library")
 }
 
 dependencies {

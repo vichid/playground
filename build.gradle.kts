@@ -18,4 +18,4 @@ buildscript {
     }
 }
 
-apply(plugin = "com.playground.buildlogic.root")
+apply(plugin = "io.github.vichid.root")

@@ -1,3 +1,3 @@
 plugins {
-    id("com.playground.buildlogic.jvm")
+    id("io.github.vichid.jvm")
 }

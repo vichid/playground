@@ -1,6 +1,13 @@
-import com.playground.buildlogic.ModuleConfiguration
-import com.playground.buildlogic.ModuleConfiguration.IMPL
-import com.playground.buildlogic.appendConfiguration
+package io.github.vichid
+
+import io.github.vichid.ModuleConfiguration
+import io.github.vichid.ModuleConfiguration.IMPL
+import io.github.vichid.appendConfiguration
+import org.gradle.api.DefaultTask
+import org.gradle.api.Project
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.options.Option
 
 open class ModuleGenerationTask : DefaultTask() {
 
@@ -111,9 +118,4 @@ open class ModuleGenerationTask : DefaultTask() {
     companion object {
         const val packageName = "com.example"
     }
-}
-
-tasks.register<ModuleGenerationTask>("createModules") {
-    group = "help"
-    description = "Creates a new set of modules following project structure"
 }

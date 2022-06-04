@@ -25,6 +25,47 @@ publishing {
     }
 }
 
+gradlePlugin {
+    plugins {
+        register("root") {
+            id = "io.github.vichid.root"
+            implementationClass = "AndroidProjectConventionPlugin"
+        }
+        register("application") {
+            id = "io.github.vichid.application"
+            implementationClass = "ApplicationConventionPlugin"
+        }
+        register("applicationCompose") {
+            id = "io.github.vichid.application.compose"
+            implementationClass = "ApplicationComposeConventionPlugin"
+        }
+        register("library") {
+            id = "io.github.vichid.library"
+            implementationClass = "LibraryConventionPlugin"
+        }
+        register("libraryCompose") {
+            id = "io.github.vichid.library.compose"
+            implementationClass = "LibraryComposeConventionPlugin"
+        }
+        register("jvm") {
+            id = "io.github.vichid.jvm"
+            implementationClass = "JvmConventionPlugin"
+        }
+        register("test") {
+            id = "io.github.vichid.test"
+            implementationClass = "TestConventionPlugin"
+        }
+        register("kotlin") {
+            id = "io.github.vichid.kotlin"
+            implementationClass = "KotlinConventionPlugin"
+        }
+        register("module") {
+            id = "io.github.vichid.module"
+            implementationClass = "ModuleConventionPlugin"
+        }
+    }
+}
+
 dependencies {
     implementation(libs.agp)
     implementation(libs.anvil)

@@ -1,4 +1,4 @@
-package com.playground.buildlogic
+package io.github.vichid
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project

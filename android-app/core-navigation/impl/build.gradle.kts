@@ -1,5 +1,5 @@
 plugins {
-    id("com.playground.buildlogic.library")
+    id("io.github.vichid.library")
     id("de.mannodermaus.android-junit5")
     id("com.squareup.anvil")
 }
