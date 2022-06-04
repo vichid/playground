@@ -79,4 +79,5 @@ dependencies {
     implementation(libs.gradlePlugins.ktlint)
     implementation(libs.moduleGraphAssertion)
     implementation(libs.versionUpdate)
+    implementation(libs.gradlePlugins.autoManifest)
 }

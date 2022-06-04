@@ -3,6 +3,7 @@ package com.example.launch.impl
 import android.content.Context
 import android.os.StrictMode
 import androidx.startup.Initializer
+import com.example.playground.android_app.core_app_start.impl.BuildConfig
 
 class StrictModeInitializer : Initializer<Unit> {
     override fun create(context: Context) {

@@ -2,6 +2,7 @@ package com.example.logger.impl
 
 import com.example.core.di.AppScope
 import com.example.logger.api.Logger
+import com.example.playground.android_app.core_logger.impl.BuildConfig
 import com.squareup.anvil.annotations.ContributesBinding
 import timber.log.Timber
 import javax.inject.Inject

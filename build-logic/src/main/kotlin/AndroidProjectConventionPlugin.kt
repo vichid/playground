@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.gradleup.auto.manifest.AutoManifestExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -14,6 +15,11 @@ class AndroidProjectConventionPlugin : Plugin<Project> {
                 apply("io.github.vichid.module")
                 apply("com.jraska.module.graph.assertion")
                 apply("org.jetbrains.kotlinx.kover")
+                apply("com.gradleup.auto.manifest")
+            }
+
+            extensions.configure<AutoManifestExtension> {
+                packageName.set("com.example.playground")
             }
 
             fun String.isNonStable(): Boolean {
