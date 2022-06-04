@@ -6,7 +6,16 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
-    includeBuild("./build-logic")
+}
+
+if ("build.logic.path" in extra.properties) {
+    val path = (extra["build.logic.path"] as String)
+    includeBuild(path) {
+        dependencySubstitution {
+            substitute(module("io.github.vichid:build-logic"))
+                .using(project(":"))
+        }
+    }
 }
 
 dependencyResolutionManagement {
@@ -29,7 +38,6 @@ gradleEnterprise {
     buildScan {
         termsOfServiceAgree = "yes"
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        tag("CI")
         capture { isTaskInputFiles = true }
         isUploadInBackground = !isCI
         publishAlways()

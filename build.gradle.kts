@@ -6,16 +6,16 @@ buildscript {
 
     repositories {
         google()
-        maven("https://jitpack.io")
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
+        maven("https://maven.pkg.github.com/vichid/playground") {
+            credentials {
+                username = "vichid"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
-}
-
-@Suppress("DSL_SCOPE_VIOLATION")
-plugins {
-    id("com.playground.buildlogic.root") apply false
 }
 
 apply(plugin = "com.playground.buildlogic.root")

@@ -1,6 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.osacky.doctor.DoctorExtension
-import org.gradle.kotlin.dsl.configure
 
 plugins {
     id("com.autonomousapps.dependency-analysis")
@@ -9,13 +7,6 @@ plugins {
     id("com.playground.buildlogic.module-generator")
     id("com.jraska.module.graph.assertion")
     id("org.jetbrains.kotlinx.kover")
-}
-
-extensions.configure(DoctorExtension::class) {
-    javaHome {
-        ensureJavaHomeIsSet.set(false)
-        ensureJavaHomeMatches.set(false)
-    }
 }
 
 fun String.isNonStable(): Boolean {
