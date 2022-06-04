@@ -2,16 +2,5 @@
     "extends": [
         "config:base"
     ],
-    "prConcurrentLimit": 0,
-    "packageRules": [
-        {
-            "matchUpdateTypes": [
-                "minor",
-                "patch",
-                "pin",
-                "digest"
-            ],
-            "automerge": true
-        }
-    ]
+    "prConcurrentLimit": 0
 }
