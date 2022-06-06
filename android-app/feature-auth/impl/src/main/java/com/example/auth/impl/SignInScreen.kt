@@ -48,7 +48,6 @@ internal fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
         ClearableOutlinedTextField(
             value = viewState.username,
             onValueChange = { onUsernameChanged(it) },

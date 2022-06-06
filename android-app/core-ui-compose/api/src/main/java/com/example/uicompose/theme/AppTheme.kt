@@ -22,8 +22,11 @@ private val LocalDimens = compositionLocalOf<AppDimens> {
 @Composable
 fun AppTheme(
     isDarkMode: Boolean = isSystemInDarkTheme(),
-    colors: AppColors = if (isDarkMode)
-        AppColors.defaultDarkColors() else AppColors.defaultLightColors(),
+    colors: AppColors = if (isDarkMode) {
+        AppColors.defaultDarkColors()
+    } else {
+        AppColors.defaultLightColors()
+    },
     typography: AppTypography = AppTypography.defaultTypography(),
     shapes: AppShapes = AppShapes.defaultShapes(),
     dimens: AppDimens = AppDimens.defaultDimens(),

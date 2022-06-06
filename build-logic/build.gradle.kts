@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.agp)
     implementation(libs.anvil)
     implementation(libs.dependencyAnalysis)
+    implementation(libs.detekt.api)
     implementation(libs.doctor)
     implementation(libs.kotlin.gradle)
     implementation(libs.kover) {

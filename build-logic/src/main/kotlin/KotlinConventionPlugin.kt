@@ -6,6 +6,10 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_TEST_SRC_DIR_KOTLIN
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.registering
@@ -54,6 +58,12 @@ class KotlinConventionPlugin : Plugin<Project> {
                         input.from(sarifReportFile)
                     }
                 }
+            }
+
+            val libs: VersionCatalog =
+                project.extensions.getByType<VersionCatalogsExtension>().named("libs")
+            dependencies {
+                "detektPlugins"(libs.findLibrary("detekt.formatting").get().get())
             }
 
             tasks.withType<KotlinCompile> {
