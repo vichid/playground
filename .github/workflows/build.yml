@@ -21,6 +21,12 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+          arguments: detekt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: gradle/gradle-build-action@v2
+        with:
           arguments: android-app:app:assembleDebug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
