@@ -14,7 +14,7 @@ internal fun ListScreen() {
         }
 
         // Add 5 items
-        items(5) { index ->
+        items(ELEMENTS) { index ->
             Text(text = "Item: $index")
         }
 
@@ -24,6 +24,8 @@ internal fun ListScreen() {
         }
     }
 }
+
+private const val ELEMENTS = 5
 
 @Preview
 @Composable

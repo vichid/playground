@@ -30,7 +30,7 @@ class SignInViewModel @Inject constructor(
         )
     }.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
+        started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
         initialValue = SignInUIState.Empty,
     )
 
@@ -48,5 +48,9 @@ class SignInViewModel @Inject constructor(
 
     fun onBackClick() {
         navigator.navigateUp()
+    }
+
+    companion object {
+        const val TIMEOUT_MILLIS = 5000L
     }
 }
