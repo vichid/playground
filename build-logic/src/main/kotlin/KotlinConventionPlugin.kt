@@ -20,6 +20,7 @@ class KotlinConventionPlugin : Plugin<Project> {
             }
 
             tasks.withType<Detekt>().configureEach {
+                config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
                 buildUponDefaultConfig = true
                 reports {
                     xml.required.set(true)
