@@ -64,6 +64,7 @@ class KotlinConventionPlugin : Plugin<Project> {
                 project.extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 "detektPlugins"(libs.findLibrary("detekt.formatting").get().get())
+                "detektPlugins"(libs.findLibrary("detekt.custom.rules").get().get())
             }
 
             tasks.withType<KotlinCompile> {

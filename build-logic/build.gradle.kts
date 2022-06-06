@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.vichid"
-version = "0.0.9"
+version = "0.0.12"
 
 java {
     toolchain {

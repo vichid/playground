@@ -729,3 +729,7 @@ formatting:
     active: true
   SpacingBetweenDeclarationsWithComments:
     active: true
+
+ExtraRuleSet:
+  NoSingletonAnnotation:
+    active: true

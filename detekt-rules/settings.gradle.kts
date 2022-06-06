@@ -1,10 +1,8 @@
-rootProject.name = "build-logic"
+rootProject.name = "detekt-rules"
 
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
-        gradlePluginPortal()
     }
     versionCatalogs {
         create("libs") {
@@ -12,4 +10,3 @@ dependencyResolutionManagement {
         }
     }
 }
-includeBuild("../detekt-rules") 

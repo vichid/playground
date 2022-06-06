@@ -23,6 +23,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.pkg.github.com/vichid/playground") {
+            credentials {
+                username = "vichid"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
 
