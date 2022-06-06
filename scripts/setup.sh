@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ktlint --install-git-pre-commit-hook
+ln -sf ../../hooks/pre-commit .git/hooks/pre-commit
