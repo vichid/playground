@@ -35,7 +35,7 @@ dependencyResolutionManagement {
 plugins {
     id("com.gradle.enterprise") version "3.10.1"
     id("com.dropbox.focus") version "0.5.1"
-    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.7.1"
+    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.7.2"
 }
 
 val isCI = System.getenv().containsKey("CI")
