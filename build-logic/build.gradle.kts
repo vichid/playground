@@ -72,7 +72,6 @@ dependencies {
     implementation(libs.dependencyAnalysis)
     implementation(libs.doctor)
     implementation(libs.kotlin.gradle)
-    implementation(libs.kotlin.stdlib)
     implementation(libs.kover) {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
     }
