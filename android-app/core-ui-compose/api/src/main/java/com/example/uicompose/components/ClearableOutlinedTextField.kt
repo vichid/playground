@@ -22,10 +22,7 @@ fun ClearableOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     hint: String,
-    modifier: Modifier = Modifier,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions(),
-    visualTransformation: VisualTransformation = VisualTransformation.None,
+    modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = value,
@@ -50,8 +47,8 @@ fun ClearableOutlinedTextField(
         },
         maxLines = 1,
         singleLine = true,
-        keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions,
-        visualTransformation = visualTransformation,
+        keyboardOptions = KeyboardOptions.Default,
+        keyboardActions = KeyboardActions(),
+        visualTransformation = VisualTransformation.None,
     )
 }

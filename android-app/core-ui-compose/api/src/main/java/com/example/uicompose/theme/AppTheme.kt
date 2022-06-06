@@ -18,6 +18,7 @@ private val LocalDimens = compositionLocalOf<AppDimens> {
     error("No dimens provided! Make sure to wrap all usages of App components in a AppTheme.")
 }
 
+@Suppress("LongParameterList")
 @Composable
 fun AppTheme(
     isDarkMode: Boolean = isSystemInDarkTheme(),

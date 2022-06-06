@@ -1,4 +1,4 @@
-package com.playground.macrobenchmark
+package com.playground.macrobenchmark.startup
 
 import androidx.benchmark.macro.BaselineProfileMode
 import androidx.benchmark.macro.CompilationMode
@@ -30,7 +30,7 @@ class HotStartupBenchmark : AbstractStartupBenchmark(StartupMode.HOT)
  * Base class for benchmarks with different startup modes.
  * Enables app startups from various states of baseline profile or [CompilationMode]s.
  */
-abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
+open class AbstractStartupBenchmark(private val startupMode: StartupMode) {
     @get:Rule
     val benchmarkRule = MacrobenchmarkRule()
 

@@ -76,8 +76,8 @@ dependencies {
     implementation(libs.kover) {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
     }
-    implementation(libs.gradlePlugins.ktlint)
     implementation(libs.moduleGraphAssertion)
     implementation(libs.versionUpdate)
     implementation(libs.gradlePlugins.autoManifest)
+    implementation(libs.gradlePlugins.detekt)
 }

@@ -11,16 +11,15 @@ composeNavigation = "2.4.2"
 coroutines = "1.6.2"
 dagger = "2.42"
 dependencyAnalysis = "1.4.0"
+detekt = "1.21.0-RC1"
 doctor = "0.8.1"
 gradlePlugins-buildLogic = "0.0.8"
 gradlePlugins-junit5 = "1.8.2.0"
-gradlePlugins-ktlint = "10.3.0"
 inject = "1"
 junit5 = "1.8.2.0"
 jupiter = "5.8.2"
 kotlin = "1.6.21"
 kover = "0.5.1"
-ktlint = "0.45.2"
 leakcanary = "2.9.1"
 lifecycle = "2.4.1"
 lifecycleViewmodelCompose = "2.4.1"
@@ -60,13 +59,15 @@ anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 dependencyAnalysis = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
+detekt = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 doctor = { module = "com.osacky.doctor:doctor-plugin", version.ref = "doctor" }
 google-dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 google-dagger-daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
-gradlePlugins-buildLogic = { module = "io.github.vichid:build-logic", version.ref = "gradlePlugins-buildLogic" }
-gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
-gradlePlugins-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "gradlePlugins-ktlint" }
 gradlePlugins-autoManifest = { module = "com.gradleup:auto-manifest-plugin", version.ref = "autoManifest" }
+gradlePlugins-buildLogic = { module = "io.github.vichid:build-logic", version.ref = "gradlePlugins-buildLogic" }
+gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
 inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
@@ -78,7 +79,6 @@ kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions",
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
-ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "moduleGraphAssertion" }
 store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }

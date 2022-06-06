@@ -21,9 +21,14 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-          arguments: ktlintCheck
+          arguments: detekt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload SARIF to Github using the upload-sarif action
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/merge.sarif
   tests:
     name: Run tests
     if: github.ref != 'refs/heads/main'
