@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.6.21"
-ktor = "2.0.3-eap-414"
+ktor = "2.0.3-eap-415"
 logback = "1.2.11"
 
 [plugins]
