@@ -1,5 +1,6 @@
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.spotify.ruler.plugin.RulerExtension
 import io.github.vichid.AndroidConfiguration.configureAndroid
 import io.github.vichid.AndroidConfiguration.configureApp
 import org.gradle.api.Plugin
@@ -16,6 +17,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.kapt")
                 apply("com.squareup.anvil")
                 apply("io.github.vichid.kotlin")
+                apply("com.spotify.ruler")
             }
 
             extensions.getByType<BaseAppModuleExtension>().apply {
@@ -48,6 +50,13 @@ class ApplicationConventionPlugin : Plugin<Project> {
                         it.versionName.set("$major.$minor.$patch")
                     }
                 }
+            }
+
+            extensions.configure<RulerExtension> {
+                abi.set("arm64-v8a")
+                locale.set("en")
+                screenDensity.set(480)
+                sdkVersion.set(27)
             }
         }
     }

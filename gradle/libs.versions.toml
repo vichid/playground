@@ -16,6 +16,7 @@ doctor = "0.8.1"
 gradlePlugins-android = "7.2.1"
 gradlePlugins-buildLogic = "0.0.12"
 gradlePlugins-junit5 = "1.8.2.0"
+gradlePlugins-ruler = "1.2.1"
 inject = "1"
 junit5 = "1.8.2.0"
 jupiter = "5.8.2"
@@ -72,6 +73,7 @@ gradlePlugins-buildLogic = { module = "io.github.vichid:build-logic", version.re
 gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-ruler = { module = "com.spotify.ruler:ruler-gradle-plugin", version.ref = "gradlePlugins-ruler" }
 inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
