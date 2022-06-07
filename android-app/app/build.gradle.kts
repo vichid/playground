@@ -18,6 +18,7 @@ dependencies {
     implementation(projects.androidApp.coreAppStart.impl)
     implementation(projects.androidApp.coreLogger.impl)
     implementation(projects.androidApp.coreNetwork.impl)
+    implementation(projects.androidApp.coreThreading.impl)
     implementation(projects.androidApp.featureAuth.impl)
     implementation(projects.androidApp.featureList.impl)
 

@@ -11,9 +11,6 @@ dependencies {
     implementation(projects.androidApp.featureAuth.api)
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.anvil.annotations)
-    implementation(libs.dagger)
-    implementation(libs.inject.annotations)
 
     testRuntimeOnly(libs.jupiter.engine)
     testImplementation(libs.bundles.unitTests)

@@ -19,8 +19,5 @@ dependencies {
     implementation(libs.androidx.compose.navigation)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
-    implementation(libs.anvil.annotations)
-    implementation(libs.inject.annotations)
     implementation(libs.retrofit)
-    implementation(libs.dagger)
 }

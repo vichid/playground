@@ -1,5 +1,6 @@
 plugins {
     id("io.github.vichid.library")
+    id("com.squareup.anvil")
 }
 
 dependencies {
@@ -7,7 +8,5 @@ dependencies {
     api(projects.androidApp.coreLogger.api)
 
     implementation(libs.androidx.startup.runtime)
-    implementation(libs.anvil.annotations)
-    implementation(libs.inject.annotations)
     implementation(libs.timber)
 }

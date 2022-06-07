@@ -14,7 +14,4 @@ dependencies {
     implementation(libs.androidx.compose.navigation)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.uiToolingPreview)
-    implementation(libs.anvil.annotations)
-    implementation(libs.dagger)
-    implementation(libs.inject.annotations)
 }

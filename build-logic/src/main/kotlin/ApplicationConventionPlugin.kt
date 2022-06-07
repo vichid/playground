@@ -1,9 +1,9 @@
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.spotify.ruler.plugin.RulerExtension
-import com.squareup.anvil.plugin.AnvilExtension
 import io.github.vichid.AndroidConfiguration.configureAndroid
 import io.github.vichid.AndroidConfiguration.configureApp
+import io.github.vichid.AnvilConfiguration.configureAnvil
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -16,16 +16,11 @@ class ApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
-                apply("com.squareup.anvil")
                 apply("io.github.vichid.kotlin")
                 apply("com.spotify.ruler")
-                withPlugin("com.squareup.anvil") {
-                    extensions.configure<AnvilExtension> {
-                        generateDaggerFactories.set(true)
-                    }
-                }
+                apply("com.squareup.anvil")
+                withPlugin("com.squareup.anvil", configureAnvil())
             }
-
             extensions.getByType<BaseAppModuleExtension>().apply {
                 configureAndroid(providers)
                 configureApp()
