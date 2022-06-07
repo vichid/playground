@@ -67,16 +67,16 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation(libs.anvil)
-    implementation(libs.dependencyAnalysis)
     implementation(libs.detekt.api)
-    implementation(libs.doctor)
     implementation(libs.gradlePlugins.android)
+    implementation(libs.gradlePlugins.anvil)
     implementation(libs.gradlePlugins.autoManifest)
+    implementation(libs.gradlePlugins.dependencyAnalysis)
     implementation(libs.gradlePlugins.detekt)
+    implementation(libs.gradlePlugins.doctor)
     implementation(libs.gradlePlugins.kotlin)
+    implementation(libs.gradlePlugins.moduleGraphAssertion)
     implementation(libs.gradlePlugins.ruler)
+    implementation(libs.gradlePlugins.versionUpdate)
     implementation(libs.kover) { exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8") }
-    implementation(libs.moduleGraphAssertion)
-    implementation(libs.versionUpdate)
 }
