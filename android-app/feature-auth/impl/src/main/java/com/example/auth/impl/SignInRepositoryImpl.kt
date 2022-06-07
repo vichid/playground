@@ -9,6 +9,6 @@ import javax.inject.Inject
 @ContributesBinding(AppScope::class)
 class SignInRepositoryImpl @Inject constructor() : SignInRepository {
     override suspend fun signIn(email: String, password: String): UserProfile {
-        TODO("Not yet implemented")
+        return UserProfile("", "", "")
     }
 }

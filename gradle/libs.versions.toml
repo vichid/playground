@@ -2,6 +2,7 @@
 activityCompose = "1.4.0"
 appCompat = "1.4.2"
 automator = "2.2.0"
+autoService = "1.0.1"
 benchmark = "1.1.0-rc03"
 compose = "1.2.0-beta03"
 composeNavigation = "2.4.2"
@@ -23,11 +24,13 @@ inject = "1"
 junit5 = "1.8.2.0"
 jupiter = "5.8.2"
 kotlin = "1.6.21"
+kotlin-poet = "1.10.2"
 kover = "0.5.1"
 leakcanary = "2.9.1"
 lifecycle = "2.4.1"
 lifecycleViewmodelCompose = "2.4.1"
 profileinstaller = "1.2.0-beta03"
+retrofit = "2.9.0"
 startup = "1.1.1"
 store = "4.0.5"
 timber = "5.0.1"
@@ -56,6 +59,10 @@ androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstall
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
 androidx-test-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "automator" }
 anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "gradlePlugins-anvil" }
+anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "gradlePlugins-anvil" }
+anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "gradlePlugins-anvil" }
+autoService = { module = "com.google.auto.service:auto-service", version.ref = "autoService" }
+autoService-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoService" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 detekt-api = { module = "io.gitlab.arturbosch.detekt:detekt-api", version.ref = "detekt" }
@@ -80,13 +87,16 @@ inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inje
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
 jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
+kotlinCompilerEmbeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
+kotlinPoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlin-poet" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 store = { module = "com.dropbox.mobile.store:store4", version.ref = "store" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }

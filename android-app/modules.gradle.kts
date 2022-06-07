@@ -1,4 +1,5 @@
 include(":android-app:app")
+include(":android-app:anvil-code-gen")
 include(":android-app:core-app-start:api")
 include(":android-app:core-app-start:impl")
 include(":android-app:core-di:api")

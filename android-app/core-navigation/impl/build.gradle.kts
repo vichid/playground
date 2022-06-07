@@ -9,6 +9,7 @@ dependencies {
     api(projects.androidApp.coreNavigation.api)
 
     implementation(libs.anvil.annotations)
+    implementation(libs.dagger)
     implementation(libs.inject.annotations)
     implementation(libs.kotlin.coroutines.android)
 

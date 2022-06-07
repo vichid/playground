@@ -14,6 +14,7 @@ dependencies {
     implementation(projects.androidApp.coreDi.api)
     implementation(projects.androidApp.coreUiCompose.api)
     implementation(projects.androidApp.coreNavigation.impl)
+    implementation(projects.androidApp.coreNetwork.impl)
     implementation(projects.androidApp.featureAuth.impl)
 
     implementation(libs.androidx.activity.activityCompose)

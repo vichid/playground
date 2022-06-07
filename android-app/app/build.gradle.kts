@@ -17,15 +17,16 @@ dependencies {
     implementation(projects.androidApp.coreNavigation.impl)
     implementation(projects.androidApp.coreAppStart.impl)
     implementation(projects.androidApp.coreLogger.impl)
+    implementation(projects.androidApp.coreNetwork.impl)
     implementation(projects.androidApp.featureAuth.impl)
     implementation(projects.androidApp.featureList.impl)
 
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
     implementation(libs.androidx.profileinstaller)
-    implementation(libs.dagger)
 
     debugImplementation(libs.leakcanary)
 
+    implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 }

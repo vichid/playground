@@ -12,6 +12,7 @@ dependencies {
 
     implementation(libs.androidx.startup.runtime)
     implementation(libs.anvil.annotations)
+    implementation(libs.dagger)
     implementation(libs.inject.annotations)
 
     testRuntimeOnly(libs.jupiter.engine)

@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    anvil(projects.androidApp.anvilCodeGen)
+
     implementation(projects.androidApp.coreDi.api)
     api(projects.androidApp.featureAuth.api)
 
@@ -19,4 +21,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
     implementation(libs.anvil.annotations)
     implementation(libs.inject.annotations)
+    implementation(libs.retrofit)
+    implementation(libs.dagger)
 }
