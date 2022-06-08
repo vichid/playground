@@ -1,0 +1,28 @@
+name: Build build-logic
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'server/**'
+      - 'android-app/**'
+      - 'detekt-rules/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+
+      - name: Validate
+        uses: gradle/wrapper-validation-action@v1
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: :build-logic:assemble -Pbuild.logic.path=build-logic --no-configuration-cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

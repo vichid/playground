@@ -13,6 +13,6 @@ jobs:
       - name: Publish package
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: :detekt-rules:publish --no-configuration-cache
+          arguments: :detekt-rules:publish -Pbuild.logic.path=build-logic -Pdetekt.rules.path=../detekt-rules --no-configuration-cache
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

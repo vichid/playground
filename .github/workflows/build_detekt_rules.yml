@@ -1,0 +1,29 @@
+name: Build detekt-rules
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'server/**'
+      - 'build-logic/**'
+      - 'android-app/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+
+      - name: Validate
+        uses: gradle/wrapper-validation-action@v1
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: :detekt-rules:assemble -Pbuild.logic.path=build-logic -Pdetekt.rules.path=../detekt-rules --no-configuration-cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

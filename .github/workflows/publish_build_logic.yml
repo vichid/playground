@@ -13,6 +13,6 @@ jobs:
       - name: Publish package
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: :build-logic:publish --no-configuration-cache
+          arguments: :build-logic:publish -Pbuild.logic.path=build-logic --no-configuration-cache
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

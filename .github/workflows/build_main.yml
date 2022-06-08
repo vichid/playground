@@ -1,9 +1,11 @@
-name: Main
+name: Build android-app
 on:
   push:
     branches: [ main ]
     paths-ignore:
       - 'server/**'
+      - 'build-logic/**'
+      - 'detekt-rules/**'
 
 jobs:
   build:
