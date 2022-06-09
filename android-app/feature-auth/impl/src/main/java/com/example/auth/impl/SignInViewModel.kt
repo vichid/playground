@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.auth.api.Password
 import com.example.auth.api.Username
+import com.example.core.di.AppScope
+import com.example.core.di.ContributesViewModel
+import com.example.core.di.SingleIn
 import com.example.list.screen.api.ListDestination
 import com.example.navigation.api.Navigator
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +16,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor(
+@SingleIn(AppScope::class)
+@ContributesViewModel(AppScope::class)
+class SignInViewModel
+@Inject constructor(
     private val navigator: Navigator
 ) : ViewModel() {
 

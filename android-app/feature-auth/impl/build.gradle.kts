@@ -7,6 +7,7 @@ dependencies {
     anvil(projects.androidApp.anvilCodeGen)
 
     implementation(projects.androidApp.coreDi.api)
+    implementation(projects.androidApp.coreDiUtils.api)
     api(projects.androidApp.featureAuth.api)
 
     implementation(projects.androidApp.coreUiCompose.api)

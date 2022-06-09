@@ -25,9 +25,6 @@ import org.jetbrains.kotlin.psi.KtFile
 import retrofit2.Retrofit
 import java.io.File
 
-private val contributesApiFqName = ContributesApi::class.fqName
-
-@Suppress("unused")
 @AutoService(CodeGenerator::class)
 class ContributesApiCodeGenerator : CodeGenerator {
 
@@ -39,7 +36,7 @@ class ContributesApiCodeGenerator : CodeGenerator {
         projectFiles: Collection<KtFile>
     ): Collection<GeneratedFile> {
         return projectFiles.classAndInnerClassReferences(module)
-            .filter { it.isAnnotatedWith(contributesApiFqName) }
+            .filter { it.isAnnotatedWith(ContributesApi::class.fqName) }
             .map { generateModule(it, codeGenDir) }
             .toList()
     }
@@ -49,11 +46,10 @@ class ContributesApiCodeGenerator : CodeGenerator {
         val moduleClassName = "${apiClass.shortName}_Module"
 
         val scope = apiClass.annotations
-            .single { it.fqName == contributesApiFqName }
+            .single { it.fqName == ContributesApi::class.fqName }
             .scope()
             .asClassName()
 
-        // Generate a Dagger module file called MyApi_Module.
         val content = FileSpec.buildFile(generatedPackage, moduleClassName) {
             addType(
                 TypeSpec.objectBuilder(moduleClassName)
@@ -63,13 +59,11 @@ class ContributesApiCodeGenerator : CodeGenerator {
                             .build()
                     )
                     .addFunction(
-                        // @Provides @Reusable provideMyApi(retrofit: Retrofit): MyApi
                         FunSpec.builder("provide${apiClass.shortName}")
                             .addParameter("retrofit", Retrofit::class.asClassName())
                             .returns(apiClass.asClassName())
                             .addAnnotation(Provides::class)
                             .addAnnotation(Reusable::class)
-                            // return retrofit.create(MyApi::class.java)
                             .addCode(
                                 "return retrofit.create(%T::class.java)",
                                 apiClass.asClassName()

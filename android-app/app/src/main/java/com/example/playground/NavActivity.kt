@@ -9,9 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.core.di.ComponentHolder
-import com.example.launch.impl.LaunchComponent
 import com.example.navigation.api.NavigatorEvent
-import com.example.navigation.impl.NavigationComponent
 import com.example.uicompose.theme.AppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.launchIn
@@ -19,8 +17,7 @@ import kotlinx.coroutines.flow.onEach
 
 class NavActivity : ComponentActivity() {
 
-    private val launchComponent: LaunchComponent by lazy { ComponentHolder.component() }
-    private val navigationComponent: NavigationComponent by lazy { ComponentHolder.component() }
+    private val appComponent: AppComponent by lazy { ComponentHolder.component() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +30,11 @@ class NavActivity : ComponentActivity() {
 
                 NavHost(
                     navController = navController,
-                    startDestination = launchComponent.launchRouteFactory().provide(),
+                    startDestination = appComponent.launchRouteFactory().provide(),
                     builder = {
-                        navigationComponent.composeNavigationFactorySet()
+                        appComponent.composeNavigationFactorySet()
                             .forEach { factory ->
-                                factory.create(this)
+                                factory.create(this, this@NavActivity)
                             }
                     }
                 )
@@ -49,7 +46,7 @@ class NavActivity : ComponentActivity() {
         navController: NavHostController,
         coroutineScope: CoroutineScope
     ): CoroutineScope.() -> Unit = {
-        navigationComponent.navigatorFactory()
+        appComponent.navigatorFactory()
             .destinations
             .onEach { navigatorEvent ->
                 when (navigatorEvent) {

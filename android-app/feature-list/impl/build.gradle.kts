@@ -4,7 +4,10 @@ plugins {
 }
 
 dependencies {
+    anvil(projects.androidApp.anvilCodeGen)
+
     implementation(projects.androidApp.coreDi.api)
+    implementation(projects.androidApp.coreDiUtils.api)
     api(projects.androidApp.featureList.api)
     implementation(projects.androidApp.coreNavigation.api)
 
