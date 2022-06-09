@@ -52,10 +52,6 @@ class SignInViewModel
         navigator.navigate(ListDestination)
     }
 
-    fun onBackClick() {
-        navigator.navigateUp()
-    }
-
     companion object {
         const val TIMEOUT_MILLIS = 5000L
     }

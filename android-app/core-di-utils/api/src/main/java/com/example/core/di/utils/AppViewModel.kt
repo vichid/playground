@@ -1,7 +1,6 @@
 package com.example.core.di.utils
 
 import androidx.lifecycle.ViewModel
-import com.example.core.di.DaggerSet
 
-inline fun <reified VM : ViewModel> appViewModel(set: DaggerSet<ViewModelFactory>): VM =
-    set.firstNotNullOf { it.create(VM::class.java) }
+inline fun <reified VM : ViewModel> getViewModel(viewModelSet: Set<@JvmSuppressWildcards ViewModelFactory>): VM =
+    viewModelSet.firstNotNullOf { it.create(VM::class.java) }

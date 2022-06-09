@@ -19,7 +19,6 @@ class NavActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
             val startDestination = appComponent.launchRouteFactory().provide()
             val navigationFactorySet = appComponent.composeNavigationFactorySet()
             val destinations = appComponent.navigatorFactory().destinations
@@ -33,6 +32,7 @@ class NavActivity : ComponentActivity() {
                         is NavigatorEvent.Directions ->
                             navController.navigate(navigatorEvent.destination.route())
                         NavigatorEvent.NavigateUp -> navController.navigateUp()
+                        NavigatorEvent.NavigateBack -> navController.popBackStack()
                         NavigatorEvent.None -> {}
                     }
                 }
