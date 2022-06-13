@@ -1,5 +1,6 @@
 package io.github.vichid
 
+import org.jetbrains.kotlin.cli.common.repl.replAddLineBreak
 import java.util.Locale
 
 enum class ModuleConfiguration {
@@ -13,37 +14,58 @@ enum class ModuleConfiguration {
 
 fun StringBuilder.appendConfiguration(moduleConfiguration: ModuleConfiguration): StringBuilder =
     when (moduleConfiguration) {
-        ModuleConfiguration.API -> appendPluginLibrary()
-        ModuleConfiguration.IMPL -> appendPluginLibrary()
+        ModuleConfiguration.API -> appendJvmPlugin()
+        ModuleConfiguration.IMPL -> appendAndroidLibraryPlugin()
             .appendLibraryDependency()
         ModuleConfiguration.DEMO -> appendApplication()
-        ModuleConfiguration.FAKES -> appendPluginLibrary()
+        ModuleConfiguration.FAKES -> appendAndroidLibraryPlugin()
             .appendLibraryDependency()
     }
 
-private fun StringBuilder.appendPluginLibrary(): StringBuilder = append(
-    "plugins {\n" +
-        "    id(\"com.playground.buildlogic.library\")\n" +
-        "}\n"
+private fun StringBuilder.appendJvmPlugin(): StringBuilder = append(
+    """
+    plugins {
+        id("io.github.vichid.jvm")
+    }
+"""
+        .trimIndent()
+        .replAddLineBreak()
+)
+
+private fun StringBuilder.appendAndroidLibraryPlugin(): StringBuilder = append(
+    """
+    plugins {
+        id("io.github.vichid.library")
+        id("com.squareup.anvil")
+    }
+"""
+        .trimIndent()
+        .replAddLineBreak()
 )
 
 private fun StringBuilder.appendApplication(): StringBuilder = append(
-    "plugins {\n" +
-        "    id(\"com.playground.buildlogic.application.compose\")\n" +
-        "}\n" +
-        "\n" +
-        "android {\n" +
-        "    defaultConfig {\n" +
-        "        applicationId = \"com.example.playground.\$s\"\n" +
-        "\n" +
-        "        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n" +
-        "    }\n" +
-        "}\n"
+    """
+    plugins {
+        id("io.github.vichid.application.compose")
+        id("com.squareup.anvil")
+    }
+
+    android {
+        defaultConfig {
+            applicationId = "com.example.playground.&s"
+
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+    }
+""".trimIndent()
 )
 
 private fun StringBuilder.appendLibraryDependency(): StringBuilder = append(
-    "\n" +
-        "dependencies {\n" +
-        "    api(projects.\$s.api)\n" +
-        "}\n"
+    """
+    dependencies {
+        api(projects.&s.api)
+    }
+"""
+        .trimIndent()
+        .replAddLineBreak()
 )

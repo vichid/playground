@@ -59,5 +59,5 @@ buildCache {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 configure<com.dropbox.focus.FocusExtension> {
-    this.allSettingsFileName.set("android-app/modules.gradle.kts")
+    this.allSettingsFileName.set("modules.gradle.kts")
 }

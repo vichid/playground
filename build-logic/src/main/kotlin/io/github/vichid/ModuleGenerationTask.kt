@@ -6,6 +6,7 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.options.Option
+import java.util.Locale
 
 open class ModuleGenerationTask : DefaultTask() {
 
@@ -30,56 +31,49 @@ open class ModuleGenerationTask : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val moduleName = moduleInput?.cleanModuleName() ?: return
+        val moduleName = moduleInput?.split(":")
+            ?.map(::cleanModuleName)
+            ?.filter(String::isNotEmpty)
+            ?: return
         val configurationList = configurationInput ?: return
         with(project) {
             generateDirs(moduleName, configurationList)
-            generateManifest(moduleName, configurationList)
             generateBuildGradle(moduleName, configurationList)
             generateModuleSettings(moduleName, configurationList)
         }
     }
 
-    private fun String.cleanModuleName(): String =
-        "[^-a-z]".toRegex().replace(toLowerCase(), "")
+    private fun cleanModuleName(path: String): String =
+        "[^-a-z]".toRegex().replace(path.toLowerCase(Locale.ROOT), "")
 
     private fun Project.generateDirs(
-        moduleName: String,
+        moduleList: List<String>,
         configurationList: List<ModuleConfiguration>
     ) {
+        val dir = moduleList.joinToString("/")
+        val subpackage = moduleList.joinToString(".")
         configurationList.forEach { configuration ->
-            val configurationPath = "$packageName.$moduleName.$configuration"
+            val configurationPath = "$packageName.$subpackage.$configuration"
                 .replace('.', '/')
                 .replace("-", "")
-            mkdir("$moduleName/$configuration/src/main/kotlin/$configurationPath")
+            mkdir("$dir/$configuration/src/main/kotlin/$configurationPath")
             if (configuration == IMPL) {
-                mkdir("$moduleName/$configuration/src/androidTest/kotlin/$configurationPath")
-                mkdir("$moduleName/$configuration/src/test/kotlin/$configurationPath")
+                mkdir("$dir/$configuration/src/androidTest/kotlin/$configurationPath")
+                mkdir("$dir/$configuration/src/test/kotlin/$configurationPath")
             }
         }
     }
 
-    private fun Project.generateManifest(
-        moduleName: String,
-        configurationList: List<ModuleConfiguration>
-    ) {
-        val manifest = "<manifest package=\"$packageName.${moduleName.replace("-", "")}"
-        configurationList.forEach { configuration ->
-            file("$moduleName/$configuration/src/main/AndroidManifest.xml")
-                .writeText(
-                    "$manifest.$configuration\" />\n"
-                )
-        }
-    }
-
     private fun Project.generateBuildGradle(
-        moduleName: String,
+        moduleList: List<String>,
         configurationList: List<ModuleConfiguration>
     ) {
-        val camelCaseModuleName = "-[a-zA-Z]".toRegex().replace(moduleName) {
-            it.value.replace("-", "")
-                .toUpperCase()
+        val regex = "-[a-zA-Z]".toRegex()
+        val camelCaseModuleName = moduleList.joinToString(".") {
+            regex.replace(it) { it.value.replace("-", "").toUpperCase(Locale.ROOT) }
         }
+
+        val dir = moduleList.joinToString("/")
         configurationList
             .map { configuration ->
                 val stringBuilder = StringBuilder()
@@ -87,23 +81,25 @@ open class ModuleGenerationTask : DefaultTask() {
                 stringBuilder.appendConfiguration(configuration)
                 println(stringBuilder.toString())
                 configuration to stringBuilder.toString()
-                    .replace("\$s", camelCaseModuleName)
+                    .replace("&s", camelCaseModuleName)
             }
             .forEach { pair ->
-                file("$moduleName/${pair.first}/build.gradle.kts")
+                file("$dir/${pair.first}/build.gradle.kts")
                     .writeText(pair.second)
             }
     }
 
     private fun Project.generateModuleSettings(
-        moduleName: String,
+        moduleList: List<String>,
         configurationList: List<ModuleConfiguration>
     ) {
         val modulesFile = "modules.gradle.kts"
         val originalModules = file(modulesFile).readLines().toMutableList()
+        val includeModules = moduleList.joinToString(":")
+
         configurationList
             .forEach { configuration ->
-                val include = "include(\":$moduleName:$configuration\")"
+                val include = "include(\":$includeModules:$configuration\")"
                 if (!originalModules.contains(include)) {
                     originalModules.add(include)
                 }
