@@ -6,6 +6,8 @@ on:
       - 'server/**'
       - 'android-app/**'
       - 'detekt-rules/**'
+      - 'art/**'
+      - '**.md'
 
 jobs:
   build:

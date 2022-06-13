@@ -6,6 +6,8 @@ on:
       - 'server/**'
       - 'build-logic/**'
       - 'android-app/**'
+      - 'art/**'
+      - '**.md'
 
 jobs:
   build:
