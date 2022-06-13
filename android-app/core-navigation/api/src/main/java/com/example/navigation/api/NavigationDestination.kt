@@ -1,6 +1,6 @@
 package com.example.navigation.api
 
-fun interface NavigationDestination {
+interface NavigationDestination {
 
     fun route(): String
 }

@@ -5,11 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.core.di.ComponentHolder
 import com.example.navigation.api.NavigatorEvent
 import com.example.uicompose.theme.AppTheme
+import kotlinx.coroutines.CoroutineScope
 
 class NavActivity : ComponentActivity() {
 
@@ -27,15 +30,7 @@ class NavActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val navigatorEvent =
                     destinations.collectAsState(initial = NavigatorEvent.None).value
-                LaunchedEffect(navigatorEvent) {
-                    when (navigatorEvent) {
-                        is NavigatorEvent.Directions ->
-                            navController.navigate(navigatorEvent.destination.route())
-                        NavigatorEvent.NavigateUp -> navController.navigateUp()
-                        NavigatorEvent.NavigateBack -> navController.popBackStack()
-                        NavigatorEvent.None -> {}
-                    }
-                }
+                LaunchedEffect(navigatorEvent, navigateTo(navigatorEvent, navController))
                 NavHost(
                     navController = navController,
                     startDestination = startDestination,
@@ -47,6 +42,23 @@ class NavActivity : ComponentActivity() {
                     }
                 )
             }
+        }
+    }
+
+    private fun navigateTo(
+        navigatorEvent: NavigatorEvent,
+        navController: NavHostController
+    ): suspend CoroutineScope.() -> Unit = {
+        when (navigatorEvent) {
+            is NavigatorEvent.Directions ->
+                navController.navigate(navigatorEvent.destination.route()) {
+                    popUpTo(navController.graph.findStartDestination().id)
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            NavigatorEvent.NavigateUp -> navController.navigateUp()
+            NavigatorEvent.NavigateBack -> navController.popBackStack()
+            NavigatorEvent.None -> {}
         }
     }
 }
