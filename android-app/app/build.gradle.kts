@@ -25,6 +25,7 @@ dependencies {
 
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.core.splashScreen)
     implementation(libs.androidx.profileinstaller)
 
     debugImplementation(libs.leakcanary)

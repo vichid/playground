@@ -30,6 +30,7 @@ leakcanary = "2.9.1"
 lifecycle = "2.4.1"
 profileinstaller = "1.2.0-beta03"
 retrofit = "2.9.0"
+splashScreen = "1.0.0-rc01"
 startup = "1.1.1"
 store = "4.0.5"
 timber = "5.0.1"
@@ -52,6 +53,7 @@ androidx-compose-uiGraphics = { module = "androidx.compose.ui:ui-graphics", vers
 androidx-compose-uiText = { module = "androidx.compose.ui:ui-text", version.ref = "compose" }
 androidx-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+androidx-core-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
 androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
