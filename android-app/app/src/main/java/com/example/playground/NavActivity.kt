@@ -39,7 +39,7 @@ class NavActivity : ComponentActivity() {
                     builder = {
                         navigationFactorySet
                             .forEach { factory ->
-                                factory.create(this, this@NavActivity)
+                                factory.create(this)
                             }
                     }
                 )

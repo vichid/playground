@@ -1,6 +1,5 @@
 package com.example.auth.impl
 
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.auth.api.SignInDestination
@@ -16,7 +15,7 @@ class SignInComposeNavigationFactory @Inject constructor(
     private val viewModelSet: Set<@JvmSuppressWildcards ViewModelFactory>
 ) : ComposeNavigationFactory {
 
-    override fun create(builder: NavGraphBuilder, viewModelStoreOwner: ViewModelStoreOwner) {
+    override fun create(builder: NavGraphBuilder) {
         builder.composable(
             route = SignInDestination.route()
         ) {
