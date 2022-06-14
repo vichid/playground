@@ -8,5 +8,5 @@ import javax.inject.Inject
 
 @ContributesBinding(AppScope::class)
 class LaunchRouteFactoryImpl @Inject constructor() : LaunchRouteFactory {
-    override fun provide(): String = SignInDestination.route()
+    override fun provide(): String = SignInDestination.route
 }

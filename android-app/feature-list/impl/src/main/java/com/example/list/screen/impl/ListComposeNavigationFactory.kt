@@ -13,7 +13,7 @@ class ListComposeNavigationFactory @Inject constructor() : ComposeNavigationFact
 
     override fun create(builder: NavGraphBuilder) {
         builder.composable(
-            route = ListDestination.route(),
+            route = ListDestination.route,
             content = { ListScreen() }
         )
     }

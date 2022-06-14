@@ -17,7 +17,7 @@ class SignInComposeNavigationFactory @Inject constructor(
 
     override fun create(builder: NavGraphBuilder) {
         builder.composable(
-            route = SignInDestination.route()
+            route = SignInDestination.route
         ) {
             val viewModel: SignInViewModel = getViewModel(viewModelSet)
 
