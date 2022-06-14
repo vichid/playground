@@ -9,8 +9,10 @@ import com.example.core.di.utils.getViewModel
 import com.example.navigation.api.ComposeNavigationFactory
 import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
+import javax.inject.Named
 
 @ContributesMultibinding(AppScope::class)
+@Named("top-navigation")
 class SignInComposeNavigationFactory @Inject constructor(
     private val viewModelSet: Set<@JvmSuppressWildcards ViewModelFactory>
 ) : ComposeNavigationFactory {

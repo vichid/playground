@@ -10,18 +10,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-internal fun ChildAScreen() {
+internal fun SecondChildAScreen() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Child A")
+        Text(text = "Second Child A")
     }
 }
 
 @Preview
 @Composable
 private fun ListScreenPreview() {
-    ChildAScreen()
+    SecondChildAScreen()
 }

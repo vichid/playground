@@ -49,7 +49,7 @@ class SignInViewModel
     }
 
     fun onSubmitClick() {
-        navigator.navigate(ListDestination)
+        navigator.navigate(ListDestination.route)
     }
 
     companion object {

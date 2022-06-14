@@ -8,7 +8,7 @@ interface Navigator {
 
     fun navigateBack(): Boolean
 
-    fun navigate(navigationDestination: NavigationDestination): Boolean
+    fun navigate(destination: String): Boolean
 
     val destinations: Flow<NavigatorEvent>
 }

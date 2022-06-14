@@ -22,6 +22,10 @@ dependencies {
     implementation(projects.androidApp.coreThreading.impl)
     implementation(projects.androidApp.featureAuth.impl)
     implementation(projects.androidApp.featureList.impl)
+    implementation(projects.androidApp.featureScreenTopA.impl)
+    implementation(projects.androidApp.featureScreenTopB.impl)
+    implementation(projects.androidApp.featureScreenChildA.impl)
+    implementation(projects.androidApp.featureScreenChildB.impl)
 
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.compose.navigation)
