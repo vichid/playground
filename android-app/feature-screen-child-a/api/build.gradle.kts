@@ -1,3 +1,7 @@
 plugins {
-    id("io.github.vichid.jvm")
+    id("io.github.vichid.library")
+}
+
+dependencies {
+    implementation(projects.androidApp.coreNavigation.api)
 }
