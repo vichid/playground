@@ -1,6 +1,5 @@
 plugins {
     id("io.github.vichid.library.compose")
-    id("com.squareup.anvil")
 }
 dependencies {
     api(projects.androidApp.featureScreenChildA.api)
@@ -11,7 +10,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.uiTooling)
     implementation(libs.androidx.compose.uiToolingPreview)
 
-    implementation(projects.androidApp.coreDi.api)
     implementation(projects.androidApp.coreNavigation.api)
     implementation(libs.androidx.compose.navigation)
 }

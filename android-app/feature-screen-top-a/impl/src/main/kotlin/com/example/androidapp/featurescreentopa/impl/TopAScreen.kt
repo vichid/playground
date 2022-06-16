@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-internal fun TopAScreen(
+fun TopAScreen(
     onFirstChildButtonClick: () -> Unit,
     onSecondChildButtonClick: () -> Unit
 ) {

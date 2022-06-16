@@ -7,8 +7,6 @@ import com.example.auth.api.Username
 import com.example.core.di.AppScope
 import com.example.core.di.ContributesViewModel
 import com.example.core.di.SingleIn
-import com.example.list.screen.api.ListDestination
-import com.example.navigation.api.Navigator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -19,9 +17,7 @@ import javax.inject.Inject
 @SingleIn(AppScope::class)
 @ContributesViewModel(AppScope::class)
 class SignInViewModel
-@Inject constructor(
-    private val navigator: Navigator
-) : ViewModel() {
+@Inject constructor() : ViewModel() {
 
     private val _username = MutableStateFlow(Username(""))
     private val _password = MutableStateFlow(Password(""))
@@ -48,9 +44,7 @@ class SignInViewModel
         _password.value = Password(password)
     }
 
-    fun onSubmitClick() {
-        navigator.navigate(ListDestination.route)
-    }
+    fun onSubmitClick() = Unit
 
     companion object {
         const val TIMEOUT_MILLIS = 5000L

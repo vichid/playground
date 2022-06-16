@@ -10,24 +10,29 @@ import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.androidapp.featurescreenchilda.api.FirstChildADestination
+import com.example.androidapp.featurescreenchilda.api.SecondChildADestination
+import com.example.androidapp.featurescreenchilda.impl.firstChildAGraph
+import com.example.androidapp.featurescreenchilda.impl.secondChildAGraph
+import com.example.androidapp.featurescreenchildb.api.ChildBDestination
+import com.example.androidapp.featurescreenchildb.impl.childBGraph
 import com.example.androidapp.featurescreentopa.api.TopADestination
+import com.example.androidapp.featurescreentopa.impl.topAGraph
 import com.example.androidapp.featurescreentopb.api.TopBDestination
+import com.example.androidapp.featurescreentopb.impl.topBGraph
 import com.example.core.di.ComponentHolder
 import com.example.navigation.api.NavigationDestination
-import com.example.navigation.api.NavigatorEvent
 import com.example.uicompose.theme.AppTheme
-import kotlinx.coroutines.CoroutineScope
 
 class NavActivity : ComponentActivity() {
 
@@ -39,17 +44,11 @@ class NavActivity : ComponentActivity() {
 
         setContent {
             val startRoute = appComponent.launchRouteFactory().route
-            val navigationFactorySet = appComponent.topComposeNavigationFactorySet()
-            val navigator = appComponent.navigatorFactory()
 
             AppTheme {
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
-
-                val navigatorEvent =
-                    navigator.destinations.collectAsState(initial = NavigatorEvent.None).value
-                LaunchedEffect(navigatorEvent, navigateTo(navigatorEvent, navController))
 
                 Scaffold(
                     modifier = Modifier,
@@ -82,16 +81,37 @@ class NavActivity : ComponentActivity() {
                         startDestination = startRoute,
                         modifier = Modifier
                             .padding(padding),
-                        builder = {
-                            navigationFactorySet
-                                .forEach { factory ->
-                                    factory.create(this)
-                                }
-                        }
+                        builder = buildGraph(navController)
                     )
                 }
             }
         }
+    }
+
+    private fun buildGraph(navController: NavHostController): NavGraphBuilder.() -> Unit =
+        {
+            topAGraph(
+                navigateToFirstChild = {
+                    navController.navigate(FirstChildADestination.destination)
+                },
+                navigateToSecondChild = {
+                    navController.navigate(SecondChildADestination.destination)
+                },
+                nestedGraphs = topANestedGraph()
+            )
+            topBGraph(
+                navigateToChild = {
+                    navController.navigate(ChildBDestination.destination)
+                },
+                nestedGraphs = {
+                    childBGraph()
+                }
+            )
+        }
+
+    private fun topANestedGraph(): NavGraphBuilder.() -> Unit = {
+        firstChildAGraph()
+        secondChildAGraph()
     }
 
     private fun handleTopLevelNavigation(
@@ -104,20 +124,6 @@ class NavActivity : ComponentActivity() {
             }
             launchSingleTop = true
             restoreState = true
-        }
-    }
-
-    private fun navigateTo(
-        navigatorEvent: NavigatorEvent,
-        navController: NavHostController
-    ): suspend CoroutineScope.() -> Unit = {
-        when (navigatorEvent) {
-            is NavigatorEvent.Directions -> navController.navigate(navigatorEvent.route) {
-                launchSingleTop = true
-            }
-            NavigatorEvent.NavigateUp -> navController.navigateUp()
-            NavigatorEvent.NavigateBack -> navController.popBackStack()
-            NavigatorEvent.None -> {}
         }
     }
 }
