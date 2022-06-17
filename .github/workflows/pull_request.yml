@@ -6,6 +6,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  verify-snapshots:
+    name: Verify snapshots
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+          arguments: verifyPaparazziDebug --stacktrace
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy test results
+        if: failure()
+        run: |
+          mkdir -p snapshot
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} snapshot/ \;
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: snapshot-results
+          path: snapshot
 
   code-linting:
     name: Code linting
@@ -29,6 +59,7 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: build/reports/detekt/merge.sarif
+
   tests:
     name: Run tests
     if: github.ref != 'refs/heads/main'
@@ -52,24 +83,24 @@ jobs:
           mkdir -p junit
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
-#      - name: Upload test artifacts
-#        if: failure()
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: junit-results
-#          path: junit
-#
-#      - name: Upload coverage artifacts
-#        if: always()
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: coverage
-#          path: build/reports/kover
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit-results
+          path: junit
+  #
+  #      - name: Upload coverage artifacts
+  #        if: always()
+  #        uses: actions/upload-artifact@v3
+  #        with:
+  #          name: coverage
+  #          path: build/reports/kover
 
-#      - name: Codecov coverage
-#        uses: codecov/codecov-action@v3
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
+  #      - name: Codecov coverage
+  #        uses: codecov/codecov-action@v3
+  #        with:
+  #          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build
@@ -90,12 +121,12 @@ jobs:
           arguments: assertModuleGraph android-app:app:assembleDebug android-app:app:lintRelease
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Upload build outputs
-#        if: success()
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: build-outputs
-#          path: app/build/outputs
+  #      - name: Upload build outputs
+  #        if: success()
+  #        uses: actions/upload-artifact@v3
+  #        with:
+  #          name: build-outputs
+  #          path: app/build/outputs
 
   dep-diff:
     name: Dependency diff
