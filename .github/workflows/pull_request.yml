@@ -20,22 +20,22 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-          arguments: verifyPaparazziDebug
+          arguments: verifyPaparazziDebug --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Copy test results
         if: failure()
         run: |
-          mkdir -p junit
-          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
+          mkdir -p snapshot
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} snapshot/ \;
 
       - name: Upload test artifacts
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: junit-results
-          path: junit
+          name: snapshot-results
+          path: snapshot
 
   code-linting:
     name: Code linting
