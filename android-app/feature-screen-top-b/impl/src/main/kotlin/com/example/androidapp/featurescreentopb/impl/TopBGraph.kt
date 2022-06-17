@@ -15,7 +15,10 @@ fun NavGraphBuilder.topBGraph(
     ) {
         composable(
             route = TopBDestination.destination,
-            content = { TopBScreen(navigateToChild) }
+            content = {
+                // val viewModel: TopBViewModel = viewModel()
+                TopBScreen(navigateToChild)
+            }
         )
         nestedGraphs()
     }

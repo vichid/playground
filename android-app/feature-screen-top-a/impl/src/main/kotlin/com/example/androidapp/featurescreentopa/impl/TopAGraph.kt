@@ -1,6 +1,5 @@
 package com.example.androidapp.featurescreentopa.impl
 
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
@@ -18,7 +17,7 @@ fun NavGraphBuilder.topAGraph(
         composable(
             route = TopADestination.destination,
             content = {
-                val viewModel: TopAViewModel = viewModel()
+                // val viewModel: TopAViewModel = viewModel()
                 TopAScreen(
                     onFirstChildButtonClick = navigateToFirstChild,
                     onSecondChildButtonClick = navigateToSecondChild

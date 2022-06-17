@@ -9,8 +9,8 @@ import com.example.core.di.DaggerComponentOwner
 
 inline fun <reified T : DaggerComponent> Context.bindings() = bindings(T::class.java)
 
-inline fun <reified T : DaggerComponent> AndroidViewModel.bindings() =
-    ((this as? DaggerComponentOwner)?.daggerComponents as? T)
+inline fun <reified T : DaggerComponent> AndroidViewModel.bindings(): T =
+    (((this as? DaggerComponentOwner)?.daggerComponents ?: emptyList()).firstOrNull() as? T)
         ?: getApplication<Application>().bindings(T::class.java)
 
 @PublishedApi

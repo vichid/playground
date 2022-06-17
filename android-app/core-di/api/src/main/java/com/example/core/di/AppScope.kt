@@ -1,4 +1,4 @@
 package com.example.core.di
 
-@Suppress("UnnecessaryAbstractClass") // or use complexity.LargeClass
+@Suppress("UnnecessaryAbstractClass")
 abstract class AppScope private constructor()
