@@ -1,12 +1,14 @@
 package com.example.playground
 
 import android.app.Application
-import com.example.core.di.ComponentHolder
+import com.example.core.di.DaggerComponent
+import com.example.core.di.DaggerComponentOwner
 
-class PlaygroundApplication : Application() {
+class PlaygroundApplication : Application(), DaggerComponentOwner {
+    override lateinit var daggerComponents: List<DaggerComponent>
+
     override fun onCreate() {
         super.onCreate()
-
-        ComponentHolder.components += DaggerAppComponent.create()
+        daggerComponents = listOf(DaggerAppComponent.create())
     }
 }

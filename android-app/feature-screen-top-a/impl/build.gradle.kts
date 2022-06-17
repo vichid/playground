@@ -1,5 +1,6 @@
 plugins {
     id("io.github.vichid.library.compose")
+    id("com.squareup.anvil")
 }
 dependencies {
     api(projects.androidApp.featureScreenTopA.api)
@@ -13,4 +14,9 @@ dependencies {
 
     implementation(projects.androidApp.coreNavigation.api)
     implementation(libs.androidx.compose.navigation)
+
+    implementation(projects.androidApp.coreLogger.api)
+
+    implementation(projects.androidApp.coreDi.api)
+    implementation(projects.androidApp.coreDiUtils.api)
 }

@@ -30,20 +30,24 @@ import com.example.androidapp.featurescreentopa.api.TopADestination
 import com.example.androidapp.featurescreentopa.impl.topAGraph
 import com.example.androidapp.featurescreentopb.api.TopBDestination
 import com.example.androidapp.featurescreentopb.impl.topBGraph
-import com.example.core.di.ComponentHolder
+import com.example.core.di.utils.bindings
+import com.example.launch.api.LaunchRouteFactory
 import com.example.navigation.api.NavigationDestination
 import com.example.uicompose.theme.AppTheme
+import javax.inject.Inject
 
 class NavActivity : ComponentActivity() {
 
-    private val appComponent: AppComponent by lazy { ComponentHolder.component() }
+    @Inject
+    lateinit var launchRouteFactory: LaunchRouteFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
+        bindings<AppComponent>().inject(this)
         super.onCreate(savedInstanceState)
 
         setContent {
-            val startRoute = appComponent.launchRouteFactory().route
+            val startRoute = launchRouteFactory.route
 
             AppTheme {
                 val navController = rememberNavController()
