@@ -3,4 +3,4 @@
 #
 # These are explicitly windows files and should use crlf
 *.bat           text eol=crlf
-
+android-app/feature-screen-top-a/impl/src/test/snapshots/images/com.example.androidapp.featurescreentopa.impl_TopAScreenTest_snapTopAScreen.png filter=lfs diff=lfs merge=lfs -text
