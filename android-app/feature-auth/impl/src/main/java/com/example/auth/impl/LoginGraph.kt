@@ -1,5 +1,6 @@
 package com.example.auth.impl
 
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -10,9 +11,9 @@ fun NavGraphBuilder.loginGraph() {
         route = SignInDestination.route
     ) {
         val viewModel: SignInViewModel = viewModel()
-
+        val signInUIState = viewModel.state.collectAsState().value
         LoginScreen(
-            state = viewModel.state,
+            signInUIState = signInUIState,
             onUsernameChanged = viewModel::onUsernameChanged,
             onPasswordChanged = viewModel::onPasswordChanged,
             onSubmitClick = viewModel::onSubmitClick
