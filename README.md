@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/vichid/playground/actions/workflows/build_main.yml" target=_blank>
-    <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/vichid/playground/build_main/main?logo=github"/>
+    <img alt="GitHub Workflow Status" src="https://github.com/vichid/playground/actions/workflows/build_main.yml/badge.svg"/>
   </a>
   &nbsp;
   <a href="https://github.com/vichid/playground/blob/main/LICENSE.md" target=_blank>
