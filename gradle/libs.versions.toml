@@ -14,11 +14,12 @@ detekt-custom-rules = "0.0.1"
 gradlePlugins-android = "7.2.1"
 gradlePlugins-anvil = "2.4.0"
 gradlePlugins-autoManifest = "2.0"
-gradlePlugins-buildLogic = "0.0.16"
+gradlePlugins-buildLogic = "0.0.17"
 gradlePlugins-dependencyAnalysis = "1.5.0"
 gradlePlugins-doctor = "0.8.1"
 gradlePlugins-junit5 = "1.8.2.0"
 gradlePlugins-moduleGraphAssertion = "2.2.0"
+gradlePlugins-paparazzi = "1.0.0"
 gradlePlugins-ruler = "1.2.1"
 gradlePlugins-versionUpdate = "0.42.0"
 inject = "1"
@@ -84,6 +85,7 @@ gradlePlugins-doctor = { module = "com.osacky.doctor:doctor-plugin", version.ref
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "gradlePlugins-moduleGraphAssertion" }
+gradlePlugins-paparazzi = { module = "app.cash.paparazzi:paparazzi-gradle-plugin", version.ref = "gradlePlugins-paparazzi" }
 gradlePlugins-ruler = { module = "com.spotify.ruler:ruler-gradle-plugin", version.ref = "gradlePlugins-ruler" }
 gradlePlugins-versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-versionUpdate" }
 inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }

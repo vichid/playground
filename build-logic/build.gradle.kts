@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.vichid"
-version = "0.0.16"
+version = "0.0.17"
 
 java {
     toolchain {
@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.gradlePlugins.doctor)
     implementation(libs.gradlePlugins.kotlin)
     implementation(libs.gradlePlugins.moduleGraphAssertion)
+    implementation(libs.gradlePlugins.paparazzi)
     implementation(libs.gradlePlugins.ruler)
     implementation(libs.gradlePlugins.versionUpdate)
     implementation(libs.kover) { exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8") }
