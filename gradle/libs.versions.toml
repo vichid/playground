@@ -11,6 +11,7 @@ coroutines = "1.6.2"
 dagger = "2.42"
 detekt = "1.21.0-RC1"
 detekt-custom-rules = "0.0.1"
+guavaJre = "31.1-jre"
 gradlePlugins-android = "7.2.1"
 gradlePlugins-anvil = "2.4.0"
 gradlePlugins-autoManifest = "2.0"
@@ -88,6 +89,7 @@ gradlePlugins-moduleGraphAssertion = { module = "com.jraska.module.graph.asserti
 gradlePlugins-paparazzi = { module = "app.cash.paparazzi:paparazzi-gradle-plugin", version.ref = "gradlePlugins-paparazzi" }
 gradlePlugins-ruler = { module = "com.spotify.ruler:ruler-gradle-plugin", version.ref = "gradlePlugins-ruler" }
 gradlePlugins-versionUpdate = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "gradlePlugins-versionUpdate" }
+guava-jre = { group = "com.google.guava", name = "guava", version.ref = "guavaJre" }
 inject-annotations = { module = "javax.inject:javax.inject", version.ref = "inject" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }

@@ -2,7 +2,10 @@ import com.android.build.gradle.LibraryExtension
 import io.github.vichid.ComposeConfiguration.configureCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.tasks.testing.Test
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 
@@ -19,6 +22,11 @@ class LibraryComposeConventionPlugin : Plugin<Project> {
 
             tasks.withType<Test>().configureEach {
                 this.jvmArgs("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED")
+            }
+            val libs: VersionCatalog =
+                project.extensions.getByType<VersionCatalogsExtension>().named("libs")
+            dependencies {
+                add("testImplementation", libs.findLibrary("guava.jre").get().get())
             }
         }
     }
