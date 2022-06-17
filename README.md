@@ -17,8 +17,7 @@ This is a personal pet project where I play with everything android related with
 
 - Written in Kotlin
 - Design system written in [Compose](https://developer.android.com/jetpack/compose)
-- Modular compose navigation
-- Dagger 2 + Anvil + Custom Anvil Code Generators (ContributesApi, ContributesViewModel)
+- Dagger 2 + Anvil + Custom Anvil Code Generators (ContributesApi)
 - Custom gradle plugins with conventions for each type of module (plain jvm, android library, compose, etc.)
 - Code analysis with [Detekt](https://github.com/detekt/detekt) + Custom Detekt rules module
 - Macrobenchmarks + baseline profiles
