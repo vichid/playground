@@ -14,7 +14,6 @@ import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.registering
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class KotlinConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -65,30 +64,6 @@ class KotlinConventionPlugin : Plugin<Project> {
             dependencies {
                 "detektPlugins"(libs.findLibrary("detekt.formatting").get().get())
                 "detektPlugins"(libs.findLibrary("detekt.custom.rules").get().get())
-            }
-
-            tasks.withType<KotlinCompile> {
-                kotlinOptions {
-                    allWarningsAsErrors = true
-                    kotlinOptions {
-                        freeCompilerArgs =
-                            freeCompilerArgs + listOf("-opt-in=kotlin.RequiresOptIn")
-
-                        if (project.findProperty("playground.enableComposeCompilerReports") == "true") {
-                            freeCompilerArgs = freeCompilerArgs +
-                                listOf(
-                                    "-P",
-                                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                                        project.buildDir.absolutePath + "/compose_metrics"
-                                ) +
-                                listOf(
-                                    "-P",
-                                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                                        project.buildDir.absolutePath + "/compose_metrics"
-                                )
-                        }
-                    }
-                }
             }
         }
     }
