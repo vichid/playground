@@ -1,4 +1,4 @@
-name: Build detekt-rules
+name: 🔨 Build detekt-rules
 on:
   push:
     branches: [ main ]
@@ -10,8 +10,18 @@ on:
       - '**.md'
 
 jobs:
+  validate-wrapper:
+    name: 🏗 Validate wrapper
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
   build:
-    name: Build
+    name: 🔨 Build
+    needs: validate-wrapper
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -19,9 +29,6 @@ jobs:
         uses: actions/checkout@v3
 
       - uses: ./.github/actions/setup
-
-      - name: Validate
-        uses: gradle/wrapper-validation-action@v1
 
       - uses: gradle/gradle-build-action@v2
         with:

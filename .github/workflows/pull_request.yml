@@ -6,41 +6,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  verify-snapshots:
-    name: Verify snapshots
-    if: github.ref != 'refs/heads/main'
+  validate-wrapper:
+    name: 🏗 Validate wrapper
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          lfs: true
 
-      - uses: ./.github/actions/setup
-
-      - uses: gradle/gradle-build-action@v2
-        with:
-          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-          arguments: verifyPaparazziDebug --stacktrace
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Copy test results
-        if: failure()
-        run: |
-          mkdir -p snapshot
-          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} snapshot/ \;
-
-      - name: Upload test artifacts
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: snapshot-results
-          path: snapshot
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
 
   code-linting:
-    name: Code linting
+    name: 🧹 Code linting
+    needs: validate-wrapper
     if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -63,7 +41,8 @@ jobs:
           sarif_file: build/reports/detekt/merge.sarif
 
   tests:
-    name: Run tests
+    name: 🧪 Run unit tests
+    needs: code-linting
     if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -105,7 +84,8 @@ jobs:
   #          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
-    name: Build
+    name: 🔨 Build
+    needs: code-linting
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -113,9 +93,6 @@ jobs:
         uses: actions/checkout@v3
 
       - uses: ./.github/actions/setup
-
-      - name: Validate
-        uses: gradle/wrapper-validation-action@v1
 
       - uses: gradle/gradle-build-action@v2
         with:
@@ -130,8 +107,43 @@ jobs:
   #          name: build-outputs
   #          path: app/build/outputs
 
+  verify-snapshots:
+    name: 📸 Verify snapshots
+    needs: build
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - uses: ./.github/actions/setup
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+          arguments: verifyPaparazziDebug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy test results
+        if: failure()
+        run: |
+          mkdir -p snapshot
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} snapshot/ \;
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: snapshot-results
+          path: snapshot
+
   dep-diff:
-    name: Dependency diff
+    name: 👀 Dependency diff
+    needs: verify-snapshots
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

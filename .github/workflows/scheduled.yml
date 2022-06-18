@@ -4,7 +4,17 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 jobs:
+  validate-wrapper:
+    name: 🏗 Validate wrapper
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
   dependecy-updates:
+    needs: validate-wrapper
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -19,12 +29,13 @@ jobs:
           arguments: dependencyUpdates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Upload dependency updates report
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: dependency-updates
-#          path: build/dependencyUpdates
+      - name: Upload dependency updates report
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-updates
+          path: build/dependencyUpdates
   gradle-rc:
+    needs: validate-wrapper
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
