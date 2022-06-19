@@ -79,5 +79,9 @@ dependencies {
     implementation(libs.gradlePlugins.paparazzi)
     implementation(libs.gradlePlugins.ruler)
     implementation(libs.gradlePlugins.versionUpdate)
-    implementation(libs.kover) { exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8") }
+    implementation(libs.kover) {
+        exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
+    }
+    implementation(libs.mixpanel.java)
+    implementation(libs.moshi.kotlin)
 }

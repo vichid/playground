@@ -19,4 +19,3 @@ object AnvilConfiguration {
             dependencies.add("implementation", libs.findLibrary("dagger").get().get())
         }
 }
-
