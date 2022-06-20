@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.gradlePlugins.detekt)
     implementation(libs.gradlePlugins.doctor)
     implementation(libs.gradlePlugins.kotlin)
+    implementation(libs.gradlePlugins.ksp)
     implementation(libs.gradlePlugins.moduleGraphAssertion)
     implementation(libs.gradlePlugins.paparazzi)
     implementation(libs.gradlePlugins.ruler)
