@@ -1,9 +1,7 @@
-import com.android.build.gradle.LibraryExtension
-import io.github.vichid.ComposeConfiguration.configureCompose
+import io.github.vichid.ComposeConfiguration.configureComposeLibrary
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
-import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 
 class LibraryComposeConventionPlugin : Plugin<Project> {
@@ -11,12 +9,10 @@ class LibraryComposeConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("io.github.vichid.library")
+                withPlugin("io.github.vichid.library", configureComposeLibrary())
                 apply("app.cash.paparazzi")
                 apply("com.google.devtools.ksp")
             }
-
-            extensions.getByType<LibraryExtension>()
-                .configureCompose(project)
 
             tasks.withType<Test>().configureEach {
                 this.jvmArgs("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED")
