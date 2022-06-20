@@ -12,6 +12,7 @@ class LibraryComposeConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("io.github.vichid.library")
                 apply("app.cash.paparazzi")
+                apply("com.google.devtools.ksp")
             }
 
             extensions.getByType<LibraryExtension>()
