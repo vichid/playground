@@ -5,7 +5,6 @@ import org.gradle.kotlin.dsl.register
 
 class ModuleConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-
         with(target) {
             tasks.register<ModuleGenerationTask>("createModules") {
                 group = "help"

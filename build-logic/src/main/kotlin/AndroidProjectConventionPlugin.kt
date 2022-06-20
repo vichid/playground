@@ -1,9 +1,8 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.gradleup.auto.manifest.AutoManifestExtension
+import io.github.vichid.AutoManifestConfiguration.configureAutoManifest
+import io.github.vichid.DependencyUpdatesConfiguration.configureDependencyUpdates
+import io.github.vichid.GraphRulesConfiguration.configureGraphRules
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.withType
 
 class AndroidProjectConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -12,46 +11,13 @@ class AndroidProjectConventionPlugin : Plugin<Project> {
                 apply("com.autonomousapps.dependency-analysis")
                 apply("com.osacky.doctor")
                 apply("com.github.ben-manes.versions")
+                withPlugin("com.github.ben-manes.versions", configureDependencyUpdates())
                 apply("io.github.vichid.module")
                 apply("com.jraska.module.graph.assertion")
+                withPlugin("com.jraska.module.graph.assertion", configureGraphRules())
                 apply("org.jetbrains.kotlinx.kover")
                 apply("com.gradleup.auto.manifest")
-            }
-
-            extensions.configure<AutoManifestExtension> {
-                packageName.set("com.example.playground")
-            }
-
-            fun String.isNonStable(): Boolean {
-                val stableKeyword =
-                    listOf("RELEASE", "FINAL", "GA").any { toUpperCase().contains(it) }
-                val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-                val isStable = stableKeyword || regex.matches(this)
-                return isStable.not()
-            }
-
-            tasks.withType<DependencyUpdatesTask> {
-                rejectVersionIf {
-                    candidate.version.isNonStable()
-                }
-
-                checkForGradleUpdate = true
-                outputFormatter = "json"
-                outputDir = "build/dependencyUpdates"
-                reportfileName = "report"
-            }
-
-            extensions.configure<com.jraska.module.graph.assertion.GraphRulesExtension> {
-                maxHeight = 4
-                allowed = arrayOf(
-                    ":android-app:app -> :android-app:.*:impl",
-                    ":android-app:.*:demo -> :android-app:.*:impl",
-                    ":android-app:.* -> :android-app:core.*",
-                    ":android-app:.*:impl -> :android-app:.*:api",
-                )
-                restricted = arrayOf(
-                    ":android-app:.*:impl -X> :android-app:.*:impl",
-                )
+                withPlugin("com.gradleup.auto.manifest", configureAutoManifest())
             }
         }
     }

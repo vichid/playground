@@ -1,8 +1,11 @@
 package io.github.vichid
 
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.plugins.AppliedPlugin
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.provideDelegate
@@ -12,8 +15,18 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object ComposeConfiguration {
 
+    fun Project.configureComposeApp(): (AppliedPlugin).() -> Unit =
+        {
+            extensions.getByType<BaseAppModuleExtension>().configureCompose(project)
+        }
+
+    fun Project.configureComposeLibrary(): (AppliedPlugin).() -> Unit =
+        {
+            extensions.getByType<LibraryExtension>().configureCompose(project)
+        }
+
     @Suppress("UnstableApiUsage")
-    fun CommonExtension<*, *, *, *>.configureCompose(project: Project) {
+    private fun CommonExtension<*, *, *, *>.configureCompose(project: Project) {
         val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
         buildFeatures {
             compose = true
