@@ -29,6 +29,6 @@ private const val ELEMENTS = 5
 
 @Preview
 @Composable
-private fun ListScreenPreview() {
+fun ListScreenPreview() {
     ListScreen()
 }
