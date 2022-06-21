@@ -1,4 +1,6 @@
 import io.github.vichid.ComposeConfiguration.configureComposeLibrary
+import io.github.vichid.KspConfiguration.configureKsp
+import io.github.vichid.ShowkaseConfiguration.configureShowkase
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
@@ -12,6 +14,8 @@ class LibraryComposeConventionPlugin : Plugin<Project> {
                 withPlugin("io.github.vichid.library", configureComposeLibrary())
                 apply("app.cash.paparazzi")
                 apply("com.google.devtools.ksp")
+                withPlugin("com.google.devtools.ksp", configureKsp())
+                withPlugin("com.google.devtools.ksp", configureShowkase())
             }
 
             tasks.withType<Test>().configureEach {
