@@ -32,6 +32,6 @@ fun TopAScreen(
 
 @Preview
 @Composable
-private fun TopAScreenPreview() {
+fun TopAScreenPreview() {
     TopAScreen({}, {})
 }

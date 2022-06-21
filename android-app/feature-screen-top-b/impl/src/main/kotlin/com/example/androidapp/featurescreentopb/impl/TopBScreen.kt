@@ -26,6 +26,6 @@ internal fun TopBScreen(onButtonClick: () -> Unit) {
 
 @Preview
 @Composable
-private fun ListScreenPreview() {
+fun ListScreenPreview() {
     TopBScreen {}
 }

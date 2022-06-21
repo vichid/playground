@@ -59,7 +59,7 @@ internal fun LoginScreen(
 
 @Preview
 @Composable
-internal fun LoginPreview() {
+fun LoginPreview() {
     AppTheme {
         LoginScreen(SignInUIState.Empty, { }, { }, { })
     }

@@ -22,6 +22,6 @@ internal fun ChildBScreen() {
 
 @Preview
 @Composable
-private fun ListScreenPreview() {
+fun ChildBScreenPreview() {
     ChildBScreen()
 }
