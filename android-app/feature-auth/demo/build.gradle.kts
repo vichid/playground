@@ -5,6 +5,7 @@ plugins {
 android {
     defaultConfig {
         applicationId = "com.example.playground.loginscreen"
+        namespace = "com.example.playground.loginscreen"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
