@@ -1,5 +1,5 @@
 [versions]
-activityCompose = "1.4.0"
+activityCompose = "1.5.0"
 appCompat = "1.4.2"
 automator = "2.2.0"
 autoService = "1.0.1"
