@@ -166,6 +166,8 @@ jobs:
         with:
           configuration: 'debugRuntimeClasspath'
           project: 'android-app:app'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: peter-evans/find-comment@v2
         id: find_comment
