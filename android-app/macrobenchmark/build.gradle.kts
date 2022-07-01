@@ -3,6 +3,9 @@ plugins {
 }
 
 android {
+    defaultConfig {
+        namespace = "com.example.playground.macrobenchmark"
+    }
     buildTypes {
         create("release") {
             isMinifyEnabled = true
