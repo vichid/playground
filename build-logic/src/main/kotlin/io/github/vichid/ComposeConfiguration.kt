@@ -32,7 +32,7 @@ object ComposeConfiguration {
             compose = true
         }
         composeOptions {
-            kotlinCompilerExtensionVersion = libs.findVersion("compose").get().toString()
+            kotlinCompilerExtensionVersion = libs.findVersion("compose.compiler").get().toString()
         }
         val composeTxtReportMerge by project.tasks.registering(ComposeReportMergeTask::class) {
             output.set(project.rootProject.buildDir.resolve("reports/compose-metrics/merged-composables.txt"))

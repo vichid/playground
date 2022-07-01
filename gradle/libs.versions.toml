@@ -4,17 +4,18 @@ appCompat = "1.4.2"
 automator = "2.2.0"
 autoService = "1.0.1"
 benchmark = "1.1.0"
-compose = "1.2.0-rc01"
-composeMaterial3 = "1.0.0-alpha13"
-composeNavigation = "2.4.2"
+compose = "1.2.0-rc03"
+compose-compiler = "1.2.0"
+compose-material3 = "1.0.0-alpha14"
+compose-navigation = "2.5.0"
 coroutines = "1.6.3"
 dagger = "2.42"
 detekt = "1.21.0-RC2"
 detekt-custom-rules = "0.0.1"
 gradlePlugins-android = "7.2.1"
-gradlePlugins-anvil = "2.4.0"
+gradlePlugins-anvil = "2.4.1"
 gradlePlugins-autoManifest = "2.0"
-gradlePlugins-buildLogic = "0.0.19"
+gradlePlugins-buildLogic = "0.0.23"
 gradlePlugins-dependencyAnalysis = "1.9.0"
 gradlePlugins-doctor = "0.8.1"
 gradlePlugins-junit5 = "1.8.2.0"
@@ -25,12 +26,12 @@ gradlePlugins-versionUpdate = "0.42.0"
 inject = "1"
 junit5 = "1.8.2.0"
 jupiter = "5.8.2"
-kotlin = "1.6.21"
+kotlin = "1.7.0"
 kotlin-poet = "1.12.0"
 kover = "0.5.1"
-ksp = "1.6.21-1.0.6"
+ksp = "1.7.0-1.0.6"
 leakcanary = "2.9.1"
-lifecycle = "2.4.1"
+lifecycle = "2.5.0"
 mixpanel-java = "1.5.0"
 moshi-kotlin = "1.13.0"
 profileinstaller = "1.2.0-rc01"
@@ -47,12 +48,12 @@ turbine = "0.8.0"
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 androidx-benchmark = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmark" }
-androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose" }
+androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
-androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 androidx-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
-androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 androidx-compose-runtimeLivedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
