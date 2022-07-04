@@ -5,7 +5,6 @@ plugins {
 android {
     defaultConfig {
         applicationId = "com.example.playground"
-        namespace = "com.example.playground"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

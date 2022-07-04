@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.vichid"
-version = "0.0.23"
+version = "0.0.24"
 
 java {
     toolchain {
@@ -67,22 +67,23 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation(libs.detekt.api)
-    implementation(libs.gradlePlugins.android)
-    implementation(libs.gradlePlugins.anvil)
-    implementation(libs.gradlePlugins.autoManifest)
     implementation(libs.gradlePlugins.dependencyAnalysis)
-    implementation(libs.gradlePlugins.detekt)
     implementation(libs.gradlePlugins.doctor)
-    implementation(libs.gradlePlugins.kotlin)
-    implementation(libs.gradlePlugins.ksp)
     implementation(libs.gradlePlugins.moduleGraphAssertion)
-    implementation(libs.gradlePlugins.paparazzi)
     implementation(libs.gradlePlugins.ruler)
     implementation(libs.gradlePlugins.versionUpdate)
-    implementation(libs.kover) {
-        exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
-    }
     implementation(libs.mixpanel.java)
     implementation(libs.moshi.kotlin)
+
+    compileOnly(libs.detekt.api)
+    compileOnly(libs.gradlePlugins.android)
+    compileOnly(libs.gradlePlugins.anvil)
+    compileOnly(libs.gradlePlugins.autoManifest)
+    compileOnly(libs.gradlePlugins.detekt)
+    compileOnly(libs.gradlePlugins.kotlin)
+    compileOnly(libs.gradlePlugins.kover) {
+        exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
+    }
+    compileOnly(libs.gradlePlugins.ksp)
+    compileOnly(libs.gradlePlugins.paparazzi)
 }

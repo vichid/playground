@@ -5,7 +5,6 @@ plugins {
 android {
     defaultConfig {
         applicationId = "com.example.playground.coreUiCompose"
-        namespace = "com.example.playground.coreUiCompose"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

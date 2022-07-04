@@ -30,15 +30,15 @@ object AndroidConfiguration {
         }
 
     private fun getAndroidConf(providers: ProviderFactory): AndroidConf {
-        val compileSdk = providers.gradleProperty("android.compileSdk")
+        val compileSdk = providers.gradleProperty("app.compileSdk")
             .map { it.toInt() }
-            .orNull
-        val minSdk = providers.gradleProperty("android.minSdk")
+            .orNull ?: missing("app.compileSdk")
+        val minSdk = providers.gradleProperty("app.minSdk")
             .map { it.toInt() }
-            .orNull
-        val targetSdk = providers.gradleProperty("android.targetSdk")
+            .orNull ?: missing("app.minSdk")
+        val targetSdk = providers.gradleProperty("app.targetSdk")
             .map { it.toInt() }
-            .orNull
+            .orNull ?: missing("app.targetSdk")
         return AndroidConf(compileSdk, minSdk, targetSdk)
     }
 
@@ -46,6 +46,9 @@ object AndroidConfiguration {
     private fun CommonExtension<*, *, *, *>.configureAndroid(providers: ProviderFactory) {
         val androidConf = getAndroidConf(providers)
         compileSdk = androidConf.compileSdk
+        namespace = providers.gradleProperty("app.namespace")
+            .orNull ?: missing("app.namespace")
+
         defaultConfig.minSdk = androidConf.minSdk
         defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         when (this) {
@@ -79,8 +82,8 @@ object AndroidConfiguration {
     }
 
     data class AndroidConf(
-        val compileSdk: Int?,
-        val minSdk: Int?,
-        val targetSdk: Int?
+        val compileSdk: Int,
+        val minSdk: Int,
+        val targetSdk: Int
     )
 }
