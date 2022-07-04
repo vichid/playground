@@ -1,4 +1,9 @@
-clean_build {
+cleanBuild {
     tasks = [":android-app:app:assembleDebug"]
     cleanup-tasks = [":android-app:app:clean"]
+}
+configurationTime {
+    title = "configurationTime"
+    tasks = [":android-app:app:assembleDebug"]
+    gradle-args = ["--dry-run", "-Pandroidx.allWarningsAsErrors"]
 }
