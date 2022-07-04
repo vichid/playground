@@ -2,6 +2,19 @@ buildscript {
     dependencies {
         classpath(libs.gradlePlugins.junit5)
         classpath(libs.gradlePlugins.buildLogic)
+        classpath(libs.gradlePlugins.android)
+        classpath(libs.gradlePlugins.anvil)
+        classpath(libs.gradlePlugins.autoManifest)
+        classpath(libs.gradlePlugins.dependencyAnalysis)
+        classpath(libs.gradlePlugins.detekt)
+        classpath(libs.gradlePlugins.doctor)
+        classpath(libs.gradlePlugins.kotlin)
+        classpath(libs.gradlePlugins.kover)
+        classpath(libs.gradlePlugins.ksp)
+        classpath(libs.gradlePlugins.moduleGraphAssertion)
+        classpath(libs.gradlePlugins.paparazzi)
+        classpath(libs.gradlePlugins.ruler)
+        classpath(libs.gradlePlugins.versionUpdate)
     }
 
     repositories {

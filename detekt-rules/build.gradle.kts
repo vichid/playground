@@ -8,6 +8,9 @@ version = "0.0.1"
 buildscript {
     dependencies {
         classpath(libs.gradlePlugins.buildLogic)
+        classpath(libs.gradlePlugins.anvil)
+        classpath(libs.gradlePlugins.detekt)
+        classpath(libs.gradlePlugins.kotlin)
     }
 
     repositories {

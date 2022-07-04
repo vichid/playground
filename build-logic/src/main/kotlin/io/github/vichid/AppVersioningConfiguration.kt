@@ -12,21 +12,15 @@ object AppVersioningConfiguration {
                 val major = providers.gradleProperty("app.major")
                     .map { it.toInt() }
                     .orNull
-                    ?: throw IllegalArgumentException(
-                        "Add missing app.major property to your gradle.properties file"
-                    )
+                    ?: missing("app.major")
                 val minor = providers.gradleProperty("app.minor")
                     .map { it.toInt() }
                     .orNull
-                    ?: throw IllegalArgumentException(
-                        "Add missing app.minor property to your gradle.properties file"
-                    )
+                    ?: missing("app.minor")
                 val patch = providers.gradleProperty("app.patch")
                     .map { it.toInt() }
                     .orNull
-                    ?: throw IllegalArgumentException(
-                        "Add missing app.patch property to your gradle.properties file"
-                    )
+                    ?: missing("app.patch")
                 onVariants { variant ->
                     variant.outputs.forEach {
                         it.versionCode.set(major * 10000 + minor * 100 + patch)

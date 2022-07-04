@@ -15,10 +15,11 @@ detekt-custom-rules = "0.0.1"
 gradlePlugins-android = "7.2.1"
 gradlePlugins-anvil = "2.4.1"
 gradlePlugins-autoManifest = "2.0"
-gradlePlugins-buildLogic = "0.0.23"
+gradlePlugins-buildLogic = "0.0.24"
 gradlePlugins-dependencyAnalysis = "1.9.0"
 gradlePlugins-doctor = "0.8.1"
 gradlePlugins-junit5 = "1.8.2.1"
+gradlePlugins-kover = "0.5.1"
 gradlePlugins-moduleGraphAssertion = "2.2.0"
 gradlePlugins-paparazzi = "1.0.0"
 gradlePlugins-ruler = "1.2.1"
@@ -28,7 +29,6 @@ junit5 = "1.8.2.0"
 jupiter = "5.8.2"
 kotlin = "1.7.0"
 kotlin-poet = "1.12.0"
-kover = "0.5.1"
 ksp = "1.7.0-1.0.6"
 leakcanary = "2.9.1"
 lifecycle = "2.5.0"
@@ -89,6 +89,7 @@ gradlePlugins-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plu
 gradlePlugins-doctor = { module = "com.osacky.doctor:doctor-plugin", version.ref = "gradlePlugins-doctor" }
 gradlePlugins-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "gradlePlugins-junit5" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "gradlePlugins-kover" }
 gradlePlugins-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 gradlePlugins-moduleGraphAssertion = { module = "com.jraska.module.graph.assertion:plugin", version.ref = "gradlePlugins-moduleGraphAssertion" }
 gradlePlugins-paparazzi = { module = "app.cash.paparazzi:paparazzi-gradle-plugin", version.ref = "gradlePlugins-paparazzi" }
@@ -105,7 +106,6 @@ kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-te
 kotlin-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
 kotlinPoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlin-poet" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi-kotlin" }
 mixpanel-java = { module = "com.mixpanel:mixpanel-java", version.ref = "mixpanel-java" }
