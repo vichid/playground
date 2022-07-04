@@ -17,53 +17,54 @@ object ComposeConfiguration {
 
     fun Project.configureComposeApp(): (AppliedPlugin).() -> Unit =
         {
-            extensions.getByType<BaseAppModuleExtension>().configureCompose(project)
+            configureCompose(extensions.getByType<BaseAppModuleExtension>())
         }
 
     fun Project.configureComposeLibrary(): (AppliedPlugin).() -> Unit =
         {
-            extensions.getByType<LibraryExtension>().configureCompose(project)
+            configureCompose(extensions.getByType<LibraryExtension>())
         }
 
     @Suppress("UnstableApiUsage")
-    private fun CommonExtension<*, *, *, *>.configureCompose(project: Project) {
-        val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
-        buildFeatures {
-            compose = true
+    private fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *>) {
+        val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+        with(commonExtension) {
+            buildFeatures {
+                compose = true
+            }
+            composeOptions {
+                kotlinCompilerExtensionVersion =
+                    libs.findVersion("compose.compiler").get().toString()
+            }
         }
-        composeOptions {
-            kotlinCompilerExtensionVersion = libs.findVersion("compose.compiler").get().toString()
-        }
-        val composeTxtReportMerge by project.tasks.registering(ComposeReportMergeTask::class) {
-            output.set(project.rootProject.buildDir.resolve("reports/compose-metrics/merged-composables.txt"))
-        }
-        val composeCsvReportMerge by project.tasks.registering(ComposeReportMergeTask::class) {
-            output.set(project.rootProject.buildDir.resolve("reports/compose-metrics/merged-composables.csv"))
-        }
-        project.tasks.withType<KotlinCompile> {
-            finalizedBy(composeTxtReportMerge)
-            finalizedBy(composeCsvReportMerge)
+        if (findProperty("playground.enableComposeCompilerReports") == "true") {
+            val composeTxtReportMerge by tasks.registering(ComposeReportMergeTask::class) {
+                output.set(rootProject.buildDir.resolve("reports/compose-metrics/merged-composables.txt"))
+            }
+            val composeCsvReportMerge by tasks.registering(ComposeReportMergeTask::class) {
+                output.set(rootProject.buildDir.resolve("reports/compose-metrics/merged-composables.csv"))
+            }
             composeTxtReportMerge.configure {
-                input.from("${project.buildDir.absolutePath}/compose-metrics/${project.name}_release-composables.txt")
+                input.from("${buildDir.absolutePath}/compose-metrics/${project.name}_release-composables.txt")
             }
             composeCsvReportMerge.configure {
-                input.from("${project.buildDir.absolutePath}/compose-metrics/${project.name}_release-composables.csv")
+                input.from("${buildDir.absolutePath}/compose-metrics/${project.name}_release-composables.csv")
             }
-            kotlinOptions {
+            tasks.withType<KotlinCompile>().configureEach {
+                finalizedBy(composeTxtReportMerge)
+                finalizedBy(composeCsvReportMerge)
                 kotlinOptions {
-                    if (project.findProperty("playground.enableComposeCompilerReports") == "true") {
-                        freeCompilerArgs = freeCompilerArgs +
-                            listOf(
-                                "-P",
-                                "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                                    project.buildDir.absolutePath + "/compose-metrics"
-                            ) +
-                            listOf(
-                                "-P",
-                                "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                                    project.buildDir.absolutePath + "/compose-metrics"
-                            )
-                    }
+                    freeCompilerArgs = freeCompilerArgs +
+                        listOf(
+                            "-P",
+                            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                                buildDir.absolutePath + "/compose-metrics"
+                        ) +
+                        listOf(
+                            "-P",
+                            "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                                buildDir.absolutePath + "/compose-metrics"
+                        )
                 }
             }
         }

@@ -24,6 +24,6 @@ object RulerConfiguration {
                 input.set(buildDir.resolve("reports/ruler/release/report.json"))
             }
 
-            tasks.withType<RulerTask> { finalizedBy(mixpanelReporterTask) }
+            tasks.withType<RulerTask>().configureEach { finalizedBy(mixpanelReporterTask) }
         }
 }
