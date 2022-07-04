@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.vichid"
-version = "0.0.24"
+version = "0.0.25"
 
 java {
     toolchain {
@@ -19,7 +19,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/vichid/playground")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                password = System.getenv("GITHUB_TOKEN_PUBLISH")
             }
         }
     }

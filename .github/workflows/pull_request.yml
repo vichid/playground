@@ -33,7 +33,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: detekt
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF to Github using the upload-sarif action
         uses: github/codeql-action/upload-sarif@v2
         if: success() || failure()
@@ -57,7 +57,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: testDebugUnitTest koverXmlReport
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy test results
         if: failure()
         run: |
@@ -99,7 +99,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: assertModuleGraph android-app:app:assembleDebug android-app:app:lintRelease
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
   #      - name: Upload build outputs
   #        if: success()
   #        uses: actions/upload-artifact@v3
@@ -126,7 +126,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: verifyPaparazziDebug
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Copy test results
         if: failure()
@@ -159,7 +159,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           arguments: android-app:app:dependencies --configuration debugRuntimeClasspath
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
       - id: dependency-diff
         name: Generate dependency diff
         uses: usefulness/dependency-tree-diff-action@v1
@@ -167,7 +167,7 @@ jobs:
           configuration: 'debugRuntimeClasspath'
           project: 'android-app:app'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: peter-evans/find-comment@v2
         id: find_comment

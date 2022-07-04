@@ -25,8 +25,8 @@ dependencyResolutionManagement {
         mavenCentral()
         maven("https://maven.pkg.github.com/vichid/playground") {
             credentials {
-                username = "vichid"
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN_PUBLISH")
             }
         }
     }

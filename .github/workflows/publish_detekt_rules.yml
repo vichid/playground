@@ -15,4 +15,4 @@ jobs:
         with:
           arguments: :detekt-rules:publish -Pbuild.logic.path=build-logic -Pdetekt.rules.path=../detekt-rules --no-configuration-cache
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}

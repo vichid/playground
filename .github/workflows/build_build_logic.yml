@@ -34,4 +34,4 @@ jobs:
         with:
           arguments: :build-logic:assemble -Pbuild.logic.path=build-logic --no-configuration-cache
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
