@@ -18,8 +18,8 @@ buildscript {
         maven("https://plugins.gradle.org/m2/")
         maven("https://maven.pkg.github.com/vichid/playground") {
             credentials {
-                username = "vichid"
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN_PUBLISH")
             }
         }
     }
@@ -40,7 +40,7 @@ configure<PublishingExtension> {
             url = uri("https://maven.pkg.github.com/vichid/playground")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                password = System.getenv("GITHUB_TOKEN_PUBLISH")
             }
         }
     }
