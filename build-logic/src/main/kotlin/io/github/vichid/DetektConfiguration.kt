@@ -1,7 +1,6 @@
 package io.github.vichid
 
 import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -17,7 +16,18 @@ import org.gradle.kotlin.dsl.withType
 object DetektConfiguration {
     fun Project.configureDetekt(): (AppliedPlugin).() -> Unit =
         {
-
+            val reportXmlMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+                output.set(rootProject.buildDir.resolve("reports/detekt/merge.xml"))
+            }
+            val reportSarifMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+                output.set(rootProject.buildDir.resolve("reports/detekt/merge.sarif"))
+            }
+            reportXmlMerge.configure {
+                input.from("${buildDir.absolutePath}/reports/detekt/detekt.xml")
+            }
+            reportSarifMerge.configure {
+                input.from("${buildDir.absolutePath}/reports/detekt/detekt.sarif")
+            }
             tasks.withType<Detekt>().configureEach {
                 config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
                 buildUponDefaultConfig = true
@@ -33,26 +43,8 @@ object DetektConfiguration {
                         DetektExtension.DEFAULT_TEST_SRC_DIR_KOTLIN,
                     )
                 )
-            }
-
-            val reportXmlMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
-                output.set(rootProject.buildDir.resolve("reports/detekt/merge.xml"))
-            }
-            val reportSarifMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
-                output.set(rootProject.buildDir.resolve("reports/detekt/merge.sarif"))
-            }
-            plugins.withType<DetektPlugin> {
-                tasks.withType<Detekt> {
-                    finalizedBy(reportXmlMerge)
-                    finalizedBy(reportSarifMerge)
-
-                    reportXmlMerge.configure {
-                        input.from(xmlReportFile)
-                    }
-                    reportSarifMerge.configure {
-                        input.from(sarifReportFile)
-                    }
-                }
+                finalizedBy(reportXmlMerge)
+                finalizedBy(reportSarifMerge)
             }
 
             val libs: VersionCatalog =

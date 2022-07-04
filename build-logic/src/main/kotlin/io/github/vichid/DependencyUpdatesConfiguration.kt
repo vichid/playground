@@ -17,7 +17,7 @@ object DependencyUpdatesConfiguration {
                 return isStable.not()
             }
 
-            tasks.withType<DependencyUpdatesTask> {
+            tasks.withType<DependencyUpdatesTask>().configureEach {
                 rejectVersionIf {
                     candidate.version.isNonStable()
                 }
