@@ -2,6 +2,7 @@ package io.github.vichid
 
 import org.gradle.api.Project
 import org.gradle.api.plugins.AppliedPlugin
+import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.kotlin.dsl.configure
 
 object GraphRulesConfiguration {
@@ -18,6 +19,9 @@ object GraphRulesConfiguration {
                 restricted = arrayOf(
                     ":android-app:.*:impl -X> :android-app:.*:impl",
                 )
+            }
+            tasks.named(JavaBasePlugin.CHECK_TASK_NAME) {
+                dependsOn("assertModuleGraph")
             }
         }
 }

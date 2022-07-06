@@ -4,11 +4,11 @@ plugins {
 }
 
 group = "io.github.vichid"
-version = "0.0.25"
+version = "0.0.26"
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(18))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
