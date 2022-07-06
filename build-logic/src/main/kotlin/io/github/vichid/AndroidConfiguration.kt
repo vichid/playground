@@ -13,10 +13,9 @@ object AndroidConfiguration {
 
     fun Project.configureAppAndroid(): (AppliedPlugin).() -> Unit =
         {
-            extensions.getByType<BaseAppModuleExtension>().apply {
-                configureAndroid(providers)
-                configureApp()
-            }
+            val extension = extensions.getByType<BaseAppModuleExtension>()
+            extension.configureAndroid(providers)
+            extension.configureApp()
         }
 
     fun Project.configureLibraryAndroid(): (AppliedPlugin).() -> Unit =
@@ -71,13 +70,6 @@ object AndroidConfiguration {
                 )
                 signingConfig = signingConfigs.getByName("debug")
             }
-        }
-        lint {
-            warningsAsErrors = true
-            checkDependencies = true
-            checkReleaseBuilds = false
-            abortOnError = true
-            ignoreTestSources = true
         }
     }
 

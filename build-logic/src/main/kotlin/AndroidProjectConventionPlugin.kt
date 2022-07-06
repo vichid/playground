@@ -8,6 +8,7 @@ class AndroidProjectConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
+                apply("base")
                 apply("com.autonomousapps.dependency-analysis")
                 apply("com.osacky.doctor")
                 apply("com.github.ben-manes.versions")
