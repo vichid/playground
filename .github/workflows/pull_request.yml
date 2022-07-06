@@ -82,7 +82,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-          arguments: android-app:app:assembleDebug android-app:app:lintRelease
+          arguments: android-app:app:assembleDebug
         env:
           GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
   #      - name: Upload build outputs
