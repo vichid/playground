@@ -23,7 +23,7 @@ fun ClearableOutlinedTextField(
     hint: String,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions(),
-    visualTransformation: VisualTransformation = VisualTransformation.None,
+    visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
     OutlinedTextField(
         value = value,
@@ -37,7 +37,7 @@ fun ClearableOutlinedTextField(
                 exit = fadeOut()
             ) {
                 IconButton(
-                    onClick = { onValueChange("") },
+                    onClick = { onValueChange("") }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Clear,
@@ -50,6 +50,6 @@ fun ClearableOutlinedTextField(
         singleLine = true,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
-        visualTransformation = visualTransformation,
+        visualTransformation = visualTransformation
     )
 }

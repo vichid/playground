@@ -12,8 +12,8 @@ if ("build.logic.path" in extra.properties) {
     val path = (extra["build.logic.path"] as String)
     includeBuild(path) {
         dependencySubstitution {
-            substitute(module("io.github.vichid:build-logic"))
-                .using(project(":"))
+            substitute(module("io.github.vichid:build-plugin"))
+                .using(project(":build-plugin"))
         }
     }
 }
@@ -23,7 +23,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://maven.pkg.github.com/vichid/playground") {
+        maven("https://maven.pkg.github.com/vichid/detekt-rules") {
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN_PUBLISH")
+            }
+        }
+        maven("https://maven.pkg.github.com/vichid/android-build-plugin") {
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN_PUBLISH")

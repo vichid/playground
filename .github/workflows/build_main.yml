@@ -2,13 +2,8 @@ name: 🔨 Build android-app
 on:
   push:
     branches: [ main ]
-    paths-ignore:
-      - 'server/**'
-      - 'build-logic/**'
-      - 'detekt-rules/**'
-      - 'art/**'
-      - '**.md'
-
+env:
+  GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   validate-wrapper:
     name: 🏗 Validate wrapper
@@ -36,14 +31,10 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: check
-        env:
-          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: android-app:app:assembleDebug
-        env:
-          GITHUB_TOKEN_PUBLISH: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload SARIF to Github using the upload-sarif action
         uses: github/codeql-action/upload-sarif@v2
