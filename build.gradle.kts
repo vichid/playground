@@ -1,7 +1,7 @@
 buildscript {
     dependencies {
         classpath(libs.gradlePlugins.junit5)
-        classpath(libs.gradlePlugins.buildLogic)
+        classpath(libs.gradlePlugins.buildPlugin)
         classpath(libs.gradlePlugins.android)
         classpath(libs.gradlePlugins.anvil)
         classpath(libs.gradlePlugins.autoManifest)
@@ -14,10 +14,8 @@ buildscript {
 
     repositories {
         google()
-        maven {
-            url = uri("https://plugins.gradle.org/m2/")
-        }
-        maven("https://maven.pkg.github.com/vichid/playground") {
+        gradlePluginPortal()
+        maven("https://maven.pkg.github.com/vichid/android-build-plugin") {
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN_PUBLISH")

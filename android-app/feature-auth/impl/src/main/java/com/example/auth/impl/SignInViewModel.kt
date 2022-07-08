@@ -33,7 +33,7 @@ class SignInViewModel
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-        initialValue = SignInUIState.Empty,
+        initialValue = SignInUIState.Empty
     )
 
     fun onUsernameChanged(username: String) {

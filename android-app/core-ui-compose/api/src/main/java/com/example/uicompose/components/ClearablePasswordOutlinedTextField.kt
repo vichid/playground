@@ -11,7 +11,7 @@ fun ClearablePasswordOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     hint: String,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     ClearableOutlinedTextField(
         value = value,
@@ -19,6 +19,6 @@ fun ClearablePasswordOutlinedTextField(
         hint = hint,
         modifier = modifier,
         visualTransformation = PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
     )
 }

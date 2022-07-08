@@ -488,6 +488,9 @@ potential-bugs:
 
 style:
   active: true
+  MaxChainedCallsOnSameLine:
+    active: true
+    maxChainedCalls: 10
   CanBeNonNullable:
     active: false
   ClassOrdering:

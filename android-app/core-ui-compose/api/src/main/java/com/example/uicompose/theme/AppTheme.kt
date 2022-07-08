@@ -30,13 +30,13 @@ fun AppTheme(
     typography: AppTypography = AppTypography.defaultTypography(),
     shapes: AppShapes = AppShapes.defaultShapes(),
     dimens: AppDimens = AppDimens.defaultDimens(),
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
         LocalColors provides colors,
         LocalTypography provides typography,
         LocalShapes provides shapes,
-        LocalDimens provides dimens,
+        LocalDimens provides dimens
     ) {
         content()
     }

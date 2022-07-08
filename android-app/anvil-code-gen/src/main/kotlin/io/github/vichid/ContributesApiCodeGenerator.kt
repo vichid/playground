@@ -68,9 +68,9 @@ class ContributesApiCodeGenerator : CodeGenerator {
                                 "return retrofit.create(%T::class.java)",
                                 apiClass.asClassName()
                             )
-                            .build(),
+                            .build()
                     )
-                    .build(),
+                    .build()
             )
         }
         return createGeneratedFile(codeGenDir, generatedPackage, moduleClassName, content)
