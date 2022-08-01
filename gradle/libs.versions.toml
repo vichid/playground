@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.5.0"
-anvil = "2.4.1"
+anvil = "2.4.1-1-6"
 appCompat = "1.4.2"
 automator = "2.2.0"
 autoService = "1.0.1"
