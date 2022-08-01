@@ -1,6 +1,5 @@
 plugins {
     id("io.github.vichid.library")
-    id("de.mannodermaus.android-junit5")
     id("com.squareup.anvil")
 }
 
@@ -11,7 +10,4 @@ dependencies {
     implementation(projects.androidApp.featureScreenTopA.api)
 
     implementation(libs.androidx.startup.runtime)
-
-    testRuntimeOnly(libs.jupiter.engine)
-    testImplementation(libs.bundles.unitTests)
 }
