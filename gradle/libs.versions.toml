@@ -1,7 +1,7 @@
 [versions]
 activityCompose = "1.5.1"
 anvil = "2.4.1"
-appCompat = "1.4.2"
+appCompat = "1.5.0"
 automator = "2.2.0"
 autoService = "1.0.1"
 benchmark = "1.1.0"
